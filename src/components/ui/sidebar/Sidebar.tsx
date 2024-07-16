@@ -1,8 +1,10 @@
 'use client'
 
-
 import { SidebarOption } from "./SidebarOption"
 import { IoCloseOutline, IoLogInOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
+
+import { useUIStore } from "@/store"
+import clsx from "clsx"
 
 
 const sidebarOptions = {
@@ -46,26 +48,49 @@ const sidebarOptions = {
 
 
 export const Sidebar = () => {
+
+  const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
+  const closeMenu = useUIStore(state => state.closeSideMenu);
+
+
   return (
     <div>
-
       {/* Black background */}
-      <div className="fixed top-0 w-screen h-screen z-10 bg-black opacity-40" />
+      {
+        isSideMenuOpen && (
+          <div className="fixed top-0 w-screen h-screen z-10 bg-black opacity-40" />
+        )
+      }
 
 
       {/* Blur */}
-      <div className="fade-in fixed z-10 top-0 left-0 w-screen h-screen backdrop-filter backdrop-blur-sm" />
+      {
+        isSideMenuOpen && (
+          <div
+            onClick={closeMenu}
+            className="fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm"
+          />
+        )
+      }
 
 
       {/* Sidemenu */}
       <nav
-        // todo: efecto de slide
-        className="fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300">
+        className={
+
+          // Validate if menu is open
+          clsx(
+            "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
+            {
+              "translate-x-full": !isSideMenuOpen
+            }
+          )
+        }>
 
         <IoCloseOutline
           size={40}
           className="absolute top-5 right-5 cursor-pointer"
-          onClick={() => console.log('click')}
+          onClick={closeMenu}
         />
 
         {/* Input */}
