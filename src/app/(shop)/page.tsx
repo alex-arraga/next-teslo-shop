@@ -1,10 +1,9 @@
-import { titleFont } from "@/config/fonts";
+import { Title } from "@/components";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div>
-      <h1>Home page Teslo</h1>
-      <h1 className={`${titleFont.className} font-bold`}>Home page Teslo</h1>
+      <Title title="Hombres" />
     </div>
   );
 }
