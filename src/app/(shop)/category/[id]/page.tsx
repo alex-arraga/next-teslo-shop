@@ -1,20 +1,44 @@
+import { ProductGrid, Title } from "@/components";
 import { notFound } from "next/navigation";
+import { Category } from '@/interfaces';
+import { initialData } from "@/seed/seed";
+
 
 interface Props {
   params: {
-    id: string
+    id: Category
   }
 }
 
+
+const seedProducts = initialData.products;
+
+
 export default function ({ params }: Props) {
-  
-  if(params.id === 'kids') {
-    notFound()
+  const { id } = params;
+  const products = seedProducts.filter(product => product.gender === id)
+
+  const labels: Record<Category, string> = {
+    'men': 'Hombres',
+    'women': 'Mujeres',
+    'kid': 'Niños',
+    'unisex': 'Unisex'
   }
 
+  // todo: validate query params
+  // if (id === 'kids') {
+  //   notFound()
+  // }
+
   return (
-    <div>
-      <h1>Category page</h1>
-    </div>
+    <>
+      <Title
+        title={`Artículos de ${(labels)[id]}`}
+        subtitle="Todos los artículos"
+      />
+
+      <ProductGrid products={products} />
+
+    </>
   );
 }

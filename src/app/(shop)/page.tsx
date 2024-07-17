@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div>
       <Title
-        title="Hombres"
+        title="Tienda"
         subtitle="Todos los productos"
       />
 
