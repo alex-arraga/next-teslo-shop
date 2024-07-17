@@ -11,4 +11,5 @@ export * from './products/product-grid/ProductGridItem'
 
 
 // Product
-export * from './product/size-selector/SizesSelector'
+export * from './product/size-selector/SizeSelector'
+export * from './product/quantity-selector/QuantitySelector'

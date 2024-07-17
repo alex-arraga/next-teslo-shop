@@ -1,7 +1,7 @@
 import { initialData } from "@/seed/seed";
 import notFound from "../not-found";
 import { titleFont } from "@/config/fonts";
-import { SizesSelector } from "@/components";
+import { QuantitySelector, SizeSelector } from "@/components";
 
 interface Props {
   params: {
@@ -28,7 +28,7 @@ export default function ProductPage({ params }: Props) {
       </div>
 
       {/* Product details */}
-      <div className="md:col-span-1 bg-gray-200 p-4 rounded">
+      <div className="md:col-span-1 p-4 rounded">
         <div className="flex flex-col mb-6">
           <h1 className={`${titleFont.className} text-2xl font-bold`}>{product?.title}</h1>
           <span className="font-semibold text-lg">${product?.price}</span>
@@ -36,15 +36,17 @@ export default function ProductPage({ params }: Props) {
 
 
         {/* Selector de Tallas */}
-        <SizesSelector
+        <SizeSelector
           availableSizes={product?.sizes!}
           selectedSize={product?.sizes[0]!}
         />
 
 
         {/* Selector de cantidad */}
+        <QuantitySelector
+          quantity={3}
+        />
 
-      
         {/* Button */}
         <button className="btn-primary mb-6">
           Agregar al carrito

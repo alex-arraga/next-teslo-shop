@@ -7,7 +7,7 @@ interface Props {
   availableSizes: Size[]
 }
 
-export const SizesSelector = ({ availableSizes, selectedSize }: Props) => {
+export const SizeSelector = ({ availableSizes, selectedSize }: Props) => {
   return (
     <div className='mb-6'>
       <h3 className='font-bold mb-4'>Tallas disponibles</h3>
