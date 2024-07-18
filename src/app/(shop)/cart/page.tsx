@@ -1,8 +1,9 @@
-import { ProductsInCart, QuantitySelector, Title } from "@/components";
-import { initialData } from "@/seed/seed";
 import Link from "next/link";
 
+import { ProductsInCart, Title } from "@/components";
+import { initialData } from "@/seed/seed";
 
+// todo: replace for products in cookies
 const productsInCart = [
   initialData.products[0],
   initialData.products[1],
