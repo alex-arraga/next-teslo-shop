@@ -59,6 +59,7 @@ export default function ProductPage({ params }: Props) {
         {/* Selector de cantidad */}
         <QuantitySelector
           quantity={3}
+          className="mb-8"
         />
 
         {/* Button */}

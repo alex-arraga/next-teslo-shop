@@ -5,9 +5,10 @@ import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5"
 
 interface Props {
   quantity: number
+  className?: string
 }
 
-export const QuantitySelector = ({ quantity }: Props) => {
+export const QuantitySelector = ({ quantity, className }: Props) => {
   const [count, setCount] = useState(quantity)
 
   const onQuantityChange = (value: number) => {
@@ -17,7 +18,7 @@ export const QuantitySelector = ({ quantity }: Props) => {
 
 
   return (
-    <div className="mb-8">
+    <div className={className}>
       <h3 className="mb-2 font-medium">Cantidad</h3>
 
       <div className="flex items-center">

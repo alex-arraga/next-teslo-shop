@@ -15,3 +15,7 @@ export * from './product/size-selector/SizeSelector'
 export * from './product/quantity-selector/QuantitySelector'
 export * from './product/slideshow/ProductSlideshow'
 export * from './product/slideshow/ProductMobileSlideshow'
+
+
+// Cart
+export * from './cart/products-in-cart/ProductsInCart'
