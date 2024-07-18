@@ -11,7 +11,7 @@ const productsInCart = [
 ]
 
 
-export default function () {
+export default function CartPage() {
   return (
     <section className="flex justify-center w-full">
       <div className="grid grid-cols-1 xl:grid-cols-2 p-4 xl:p-6 gap-6">

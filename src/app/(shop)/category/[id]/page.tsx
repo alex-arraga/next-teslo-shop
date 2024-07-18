@@ -14,7 +14,7 @@ interface Props {
 const seedProducts = initialData.products;
 
 
-export default function ({ params }: Props) {
+export default function ProductsByCategoryPage({ params }: Props) {
   const { id } = params;
   const products = seedProducts.filter(product => product.gender === id)
 
