@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { ProductsInCart, Title } from "@/components";
 import { initialData } from "@/seed/seed";
+import { IoChevronForward } from "react-icons/io5";
 
 // todo: replace for products in cookies
 const productsInCart = [
@@ -14,14 +15,14 @@ const productsInCart = [
 export default function CartPage() {
   return (
     <section className="flex justify-center w-full">
-      <div className="grid grid-cols-1 xl:grid-cols-2 p-4 xl:p-6 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 p-4 xl:p-6 gap-6 max-w-[calc(60vw)]">
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md xl:p-6">
           <Title
             title="Carrito de compra"
-            subtitle="Añadir mas productos"
           />
 
-          <Link href='/shop' className="p-2 w-fit bg-gray-200 rounded-md mb-2 hover:bg-blue-200 hover:font-semibold transition-all">
+          <Link href='/cart' className="flex items-center gap-1 rounded-md mb-2 w-fit transform hover:translate-x-1 hover:text-blue-400 hover:font-semibold transition-all">
+            <IoChevronForward size={15} />
             Seguir comprando
           </Link>
 
@@ -37,7 +38,7 @@ export default function CartPage() {
         {/* Checkout */}
         <div className="mb-10 xl:mb-0 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 xl:p-6">
           <Title
-            title="Resumen de orden"
+            title="Resumen"
           />
 
           <div className="grid grid-cols-2">
@@ -56,8 +57,8 @@ export default function CartPage() {
           </div>
 
           <button className="w-full mt-4 btn-primary">
-            <Link href='/checkout/address' className="text-center">
-              Confirmar compra
+            <Link href='/checkout/address' className="text-center block">
+              Continuar
             </Link>
           </button>
         </div>

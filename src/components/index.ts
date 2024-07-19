@@ -19,3 +19,6 @@ export * from './product/slideshow/ProductMobileSlideshow'
 
 // Cart
 export * from './cart/products-in-cart/ProductsInCart'
+
+// Checkout
+export * from './checkout/products-in-checkout/ProductsInCheckout'
