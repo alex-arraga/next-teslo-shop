@@ -15,7 +15,7 @@ const productsInCart = [
 export default function CheckoutPage() {
   return (
     <section className="flex justify-center w-full">
-      <div className="grid grid-cols-1 xl:grid-cols-2 p-4 xl:p-6 gap-6 max-w-[calc(60vw)]">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md xl:p-6">
           <Title
             title="Productos"
@@ -36,7 +36,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Checkout */}
-        <div className="mb-10 xl:mb-0 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 xl:p-6">
+        <div className="mb-28 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 xl:p-6">
           <Title
             title="Orden de compra"
           />

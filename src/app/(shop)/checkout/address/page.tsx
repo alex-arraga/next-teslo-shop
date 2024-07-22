@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CheckoutAddressPage() {
   return (
-    <div className="flex flex-col sm:justify-center sm:items-center mb-72 px-10 sm:px-0">
+    <div className="flex flex-col sm:justify-center sm:items-center pb-28">
       <div className="w-full xl:w-[1000px] flex flex-col justify-center text-left">
 
         <Title
@@ -84,7 +84,7 @@ export default function CheckoutAddressPage() {
 
 
           {/* Button checkout */}
-          <div className="flex flex-col mb-2 sm:mt-10">
+          <div className="flex flex-col mt-4 sm:mt-10">
             <Link
               href='/checkout'
               className="btn-primary flex w-full sm:w-1/2 justify-center ">
