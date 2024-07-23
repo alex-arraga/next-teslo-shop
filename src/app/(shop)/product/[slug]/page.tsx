@@ -21,10 +21,8 @@ export default function ProductPage({ params }: Props) {
 
   return (
     <section className="md:mx-10 grid grid-cols-1 md:grid-cols-4 gap-2 w-full">
-
-
-
-      <div className="col-span-1 md:col-span-2 md:rounded-xl md:p-4">
+      
+      <div className="col-span-1 md:col-span-2 md:rounded-xl">
         {/* Mobile Slideshow */}
         <ProductMobileSlideshow
           images={product?.images!}
@@ -42,7 +40,7 @@ export default function ProductPage({ params }: Props) {
       </div>
 
       {/* Product details */}
-      <div className="mx-4 sm:mx-6 md:mx-10 md:col-span-2 p-4 rounded">
+      <div className="md:mx-10 md:col-span-2 rounded">
         <div className="flex flex-col mb-6">
           <h1 className={`${titleFont.className} text-2xl font-bold`}>{product?.title}</h1>
           <span className="font-semibold text-lg">${product?.price}</span>
@@ -71,7 +69,7 @@ export default function ProductPage({ params }: Props) {
 
         {/* Descripción */}
         <h3 className="font-bold my-6">Descripción</h3>
-        <p>{product?.description}</p>
+        <p className="mb-28 md:mb-0">{product?.description}</p>
       </div>
     </section>
   );
