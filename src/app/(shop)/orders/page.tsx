@@ -2,13 +2,9 @@
 import { Title } from '@/components';
 
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 import { IoCardOutline } from 'react-icons/io5';
 
 export default function OrdersPage() {
-  // redirect('/empty')
-
-
   return (
     <>
       <Title title="Ordenes" />

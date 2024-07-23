@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ProductsInCart, Title } from "@/components";
 import { initialData } from "@/seed/seed";
 import { IoChevronForward } from "react-icons/io5";
+// import { redirect } from "next/navigation";
 
 // todo: replace for products in cookies
 const productsInCart = [
@@ -13,6 +14,9 @@ const productsInCart = [
 
 
 export default function CartPage() {
+  // todo: redirect to empty if the user hasn't any product
+  // redirect('/empty')
+
   return (
     <section className="flex justify-center w-full">
       <div className="grid grid-cols-1 xl:grid-cols-2 xl:p-6 gap-6 xl:max-w-[calc(60vw)]">
