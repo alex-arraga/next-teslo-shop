@@ -8,7 +8,8 @@ Eccomerce de ropa donde podemos encontrar diferentes categorias de productos com
 2. Instalar dependencias ```npm install```
 3. Crear una copiar del archivo ```.env.template```, renombrarlo a ```.env ``` y cambiar el valor de sus variables para que la db local funcione
 4. Levantar la base de datos ```docker compose up -d```
-5. Correr la app ```npm run dev``` 
+5. Ejecutar las migraciónes de Prisma ```npx prisma migrate dev``` para sincronizar los modelos de la DB con los de nuestro archivo `schema.prisma` 
+6. Correr la app ```npm run dev``` 
 
 
 ## Correr en prod

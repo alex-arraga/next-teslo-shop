@@ -30,6 +30,7 @@ enum Gender {
   unisex
 }
 
+// Models (tables)
 model Category {
   id      String    @id @default(uuid())
   name    String    @unique
@@ -46,8 +47,19 @@ model Product {
   tags        String[] @default([])
   gender      Gender
 
+  // Relaciones
   category   Category @relation(fields: [categoryId], references: [id])
   categoryId String
 
+  ProductImage ProductImage[]
+
   @@index([gender])
+}
+
+model ProductImage {
+  id  Int    @id @default(autoincrement())
+  url String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
 }
