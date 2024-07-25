@@ -6,10 +6,19 @@ interface abc {
 }
 
 async function main() {
-  // Delete all records
+  // 1. Delete all records
   await prisma.productImage.deleteMany()
   await prisma.category.deleteMany()
   await prisma.product.deleteMany()
+
+  // 2. Insert categories
+  const { categories, products } = initialData;
+
+  const categoryData = categories.map(category => ({ name: category }))
+
+  await prisma.category.createMany({
+    data: categoryData
+  })
 
   console.log('Seed successfully executed')
 }
