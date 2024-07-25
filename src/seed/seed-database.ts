@@ -30,25 +30,29 @@ async function main() {
   }, {} as Record<string, string>); // <string: shirt, string: uuid>
 
 
-  // 3. Insert products
-  // const { type, images, ...product1 } = products[0];
+  // 3. Insert products and products
+  products.forEach(async (product) => {
 
-  // await prisma.product.create({
-  //   data: {
-  //     ...product1,
-  //     categoryId: categoriesMap['shirts']
-  //   }
-  // })
-
-  products.map(async (product) => {
     const { type, images, ...rest } = product;
 
-    await prisma.product.createMany({
+    // products
+    const dbProduct = await prisma.product.create({
       data: {
         ...rest,
         categoryId: categoriesMap[type]
       }
-    })
+    });
+
+    // images
+    const imagesData = images.map(image => ({
+      url: image,
+      productId: dbProduct.id
+    }))
+
+    await prisma.productImage.createMany({
+      data: imagesData
+    });
+
   })
 
   console.log('Seed successfully executed')
