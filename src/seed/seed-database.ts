@@ -30,7 +30,7 @@ async function main() {
   }, {} as Record<string, string>); // <string: shirt, string: uuid>
 
 
-  // 3. Insert products and products
+  // 3. Insert products and images
   products.forEach(async (product) => {
 
     const { type, images, ...rest } = product;
