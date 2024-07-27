@@ -2,11 +2,19 @@
 
 import prisma from "@/lib/prisma"
 
-export async function getPaginatedProductWithImages() {
-  
+interface PaginationsOptions {
+  page?: number
+  take?: number
+}
+
+export async function getPaginatedProductWithImages({ page = 1, take = 12 }: PaginationsOptions) {
+  if (page <= 0) page = 1;
+  if (isNaN(page)) page = 1;
+
   try {
     const products = await prisma.product.findMany({
-      take: 12,
+      skip: (page - 1) * take,
+      take: take,
       include: {
         ProductImage: {
           take: 2,
