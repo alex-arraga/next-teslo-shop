@@ -5,6 +5,7 @@ export * from './ui/title/Title'
 export * from './ui/sidebar/Sidebar'
 export * from './ui/sidebar/SidebarOption'
 export * from './ui/footer/Footer'
+export * from './ui/pagination/Pagination'
 
 // Products
 export * from './products/product-grid/ProductGrid'
