@@ -1,3 +1,5 @@
+export const revalidate = 120 // revalidate every 2 minutes
+
 import { Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductWithImages } from "@/actions";
 import { redirect } from "next/navigation";
