@@ -15,7 +15,7 @@ interface Props {
 
 
 
-export default async function ProductsByCategoryPage({ params, searchParams }: Props) {
+export default async function ProductsByGenderPage({ params, searchParams }: Props) {
   const page = searchParams.page ? Number(searchParams.page) : 1;
   const { gender } = params;
 
