@@ -1,19 +1,23 @@
 'use client'
 
-import { titleFont } from "@/config/fonts"
 import Link from "next/link"
-
-import { IoCartOutline, IoSearchOutline } from "react-icons/io5"
+import { useParams } from "next/navigation"
+import { titleFont } from "@/config/fonts"
 import { useUIStore } from "@/store"
+
+import clsx from "clsx"
+import { IoCartOutline, IoSearchOutline } from "react-icons/io5"
+import { Gender } from "@prisma/client"
+
 
 export const TopMenu = () => {
 
-  const openSideMenu = useUIStore(state => state.openSideMenu)
+  const openSideMenu = useUIStore(state => state.openSideMenu);
+  const params = useParams<{ gender: Gender }>();
 
 
   return (
     <nav className="flex px-5 justify-between items-center w-full">
-
 
       {/* Logo */}
       <div>
@@ -24,15 +28,42 @@ export const TopMenu = () => {
 
       {/* Center menu */}
       <div className="hidden sm:block">
-        <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/men">
+        <Link
+          href="/gender/men"
+          className={
+            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100",
+              {
+                "bg-blue-500 text-white hover:bg-blue-600 hover:text-white": params.gender === 'men'
+              }
+            )
+          }
+        >
           Hombres
         </Link>
 
-        <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/women">
+        <Link
+          href="/gender/women"
+          className={
+            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100",
+              {
+                "bg-blue-500 text-white hover:bg-blue-600 hover:text-white": params.gender === 'women'
+              }
+            )
+          }
+        >
           Mujeres
         </Link>
 
-        <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/kid">
+        <Link
+          href="/gender/kid"
+          className={
+            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100",
+              {
+                "bg-blue-500 text-white hover:bg-blue-600 hover:text-white": params.gender === 'kid'
+              }
+            )
+          }
+        >
           Niños
         </Link>
       </div>
