@@ -26,7 +26,7 @@ export default function OrdersByIdPage({ params }: Props) {
 
 
   return (
-    <section className="flex justify-center w-full">
+    <section className="flex justify-center w-full min-h-screen">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md xl:p-6">
           <Title

@@ -6,11 +6,13 @@ import { IoCardOutline } from 'react-icons/io5';
 
 export default function OrdersPage() {
   return (
-    <>
+    <section className='min-h-screen'>
+
       <Title title="Ordenes" />
 
       <div className="mb-10">
         <table className="min-w-full">
+
           <thead className="bg-gray-200 border-b">
             <tr>
               <th scope="col" className="text-sm font-semibold text-gray-900 px-6 py-4 text-left">
@@ -27,8 +29,8 @@ export default function OrdersPage() {
               </th>
             </tr>
           </thead>
-          <tbody>
 
+          <tbody>
             <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
 
               <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">1</td>
@@ -70,8 +72,10 @@ export default function OrdersPage() {
             </tr>
 
           </tbody>
+          
         </table>
       </div>
-    </>
+
+    </section>
   );
 }

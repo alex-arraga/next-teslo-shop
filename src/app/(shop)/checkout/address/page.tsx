@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CheckoutAddressPage() {
   return (
-    <div className="flex flex-col sm:justify-center sm:items-center pb-28">
+    <div className="flex flex-col sm:justify-start sm:items-center min-h-screen">
       <div className="w-full xl:w-[1000px] flex flex-col justify-center text-left">
 
         <Title
