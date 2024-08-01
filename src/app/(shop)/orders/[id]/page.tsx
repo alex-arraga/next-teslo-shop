@@ -1,3 +1,5 @@
+import { ResolvingMetadata, Metadata } from "next";
+
 import { ProductsInCheckout, Title } from "@/components";
 import { initialData } from "@/seed/seed";
 
@@ -16,6 +18,32 @@ interface Props {
     id: string;
   }
 }
+
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const orderId = params.id
+
+  // fetch data
+  // const product = await getProductBySlug(slug)
+
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `Order #${orderId}`,
+    description: `Order #${orderId}`,
+    openGraph: {
+      title: `Order #${orderId}`,
+      description: `Order #${orderId}`,
+      // images: [`/products/${product?.images[1]}`],
+    },
+  }
+}
+
 
 export default function OrdersByIdPage({ params }: Props) {
   const { id } = params;

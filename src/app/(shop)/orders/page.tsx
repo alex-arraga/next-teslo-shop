@@ -4,6 +4,13 @@ import { Title } from '@/components';
 import Link from 'next/link';
 import { IoCardOutline } from 'react-icons/io5';
 
+
+export const metadata = {
+ title: 'Orders',
+ description: 'Orders',
+};
+
+
 export default function OrdersPage() {
   return (
     <section className='min-h-screen'>

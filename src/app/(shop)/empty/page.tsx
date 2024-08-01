@@ -3,6 +3,13 @@ import { Title } from "@/components"
 
 import { IoCartOutline } from "react-icons/io5";
 
+
+export const metadata = {
+ title: 'Empty',
+ description: 'Empty',
+};
+
+
 export default function EmptyPage() {
   return (
     <section className="flex justify-center items-center h-[800px]">

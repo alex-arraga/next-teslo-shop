@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { ProductsInCheckout, Title } from "@/components";
 import { initialData } from "@/seed/seed";
+
 import { IoChevronForward, IoShirtOutline } from "react-icons/io5";
 
 // todo: replace for products in cookies
@@ -10,6 +11,12 @@ const productsInCart = [
   initialData.products[1],
   initialData.products[2],
 ]
+
+
+export const metadata = {
+  title: 'Checkout',
+  description: 'Checkout',
+};
 
 
 export default function CheckoutPage() {

@@ -1,9 +1,10 @@
 import Link from "next/link";
+// import { redirect } from "next/navigation";
 
 import { ProductsInCart, Title } from "@/components";
 import { initialData } from "@/seed/seed";
+
 import { IoChevronForward } from "react-icons/io5";
-// import { redirect } from "next/navigation";
 
 // todo: replace for products in cookies
 const productsInCart = [
@@ -11,6 +12,12 @@ const productsInCart = [
   initialData.products[1],
   initialData.products[2],
 ]
+
+
+export const metadata = {
+ title: 'Cart',
+ description: 'Cart',
+};
 
 
 export default function CartPage() {
