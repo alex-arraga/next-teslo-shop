@@ -11,7 +11,7 @@ interface Props {
 
 export const StockLabel = ({ slug }: Props) => {
   const [stock, setStock] = useState<number>(0);
-
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     getStock()
@@ -21,12 +21,27 @@ export const StockLabel = ({ slug }: Props) => {
   const getStock = async () => {
     const stock = await getStockBySlug(slug)
     setStock(stock)
+    setLoading(false)
   };
 
 
   return (
-    <h1 className={`${titleFont.className} text-xl text-blue-800 font-bold`}>
-      Stock: {stock}
-    </h1>
+    <>
+      {
+        loading
+          ? (
+            <div className="w-full max-w-20 rounded-md bg-gray-200 animate-pulse" >
+              &nbsp;
+            </div >
+          )
+
+          : (
+            <h1 className={`${titleFont.className} text-xl text-blue-800 font-bold`}>
+              Stock: {stock}
+            </h1 >
+          )
+      }
+    </>
+
   )
 }
