@@ -39,7 +39,7 @@ export async function generateMetadata(
       title: product?.title,
       description: product?.description,
       // images: [], --> https://mysite.com/product/slug/image.jpg
-      images: [`/products/${product?.images[1]}`],
+      images: [`http://locahost:3000/products/${product?.images[1]}`], //todo: replace for 'app_url' env
     },
   }
 }
