@@ -6,12 +6,11 @@ import { titleFont } from "@/config/fonts";
 import {
   ProductMobileSlideshow,
   ProductSlideshow,
-  QuantitySelector,
-  SizeSelector,
   StockLabel
 } from "@/components";
 
 import { getProductBySlug } from "@/actions";
+import { AddProduct } from "./ui/AddProduct";
 
 interface Props {
   params: {
@@ -91,25 +90,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
 
 
-        {/* Selector de Tallas */}
-        <SizeSelector
-          availableSizes={product.sizes!}
-          selectedSize={product.sizes[0]!}
-        />
-
-
-        {/* Selector de cantidad */}
-        <QuantitySelector
-          quantity={3}
-          className="mb-8"
-        />
-
-
-        {/* Button */}
-        <button className="btn-primary mb-6">
-          Agregar al carrito
-        </button>
-
+        <AddProduct product={product} />
 
         {/* Descripción */}
         <h3 className="font-bold my-6">Descripción</h3>
