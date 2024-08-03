@@ -7,6 +7,7 @@ interface CartState {
   cart: CartProduct[],
 
   addProductToCart: (product: CartProduct) => void,
+  getTotalItems: () => number,
   // updateProductQuantity: () => {}
   // removeProduct: () => {}
 }
@@ -19,12 +20,11 @@ export const useCartStore = create<CartState>()(
     (set, get) => ({
 
       cart: [],
-      // Methods
 
+      // Methods
       addProductToCart: (product: CartProduct) => {
 
         const { cart } = get();
-        console.log(cart)
 
         // 1. Revisar si el producto existe en el carrito con la talla seleccionada
         const productInCart = cart.some(
@@ -47,6 +47,12 @@ export const useCartStore = create<CartState>()(
 
         set({ cart: updatedCartProducts })
 
+      },
+
+
+      getTotalItems: () => {
+        const { cart } = get();
+        return cart.reduce((total, item) => total + item.quantity, 0);
       }
 
     })

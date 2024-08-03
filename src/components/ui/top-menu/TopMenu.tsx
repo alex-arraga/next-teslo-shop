@@ -1,9 +1,12 @@
 'use client'
 
+import { useEffect, useState } from "react"
+import { titleFont } from "@/config/fonts"
+
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { titleFont } from "@/config/fonts"
-import { useUIStore } from "@/store"
+
+import { useUIStore, useCartStore } from "@/store"
 
 import clsx from "clsx"
 import { IoCartOutline, IoSearchOutline } from "react-icons/io5"
@@ -11,9 +14,15 @@ import { Gender } from "@prisma/client"
 
 
 export const TopMenu = () => {
+  const [loaded, setLoaded] = useState<boolean>(false)
+  const params = useParams<{ gender: Gender }>();
 
   const openSideMenu = useUIStore(state => state.openSideMenu);
-  const params = useParams<{ gender: Gender }>();
+  const totalCartProducts = useCartStore(state => state.getTotalItems())
+
+  useEffect(() => {
+    setLoaded(true)
+  }, [])
 
 
   return (
@@ -76,9 +85,13 @@ export const TopMenu = () => {
 
         <Link className="mx-2" href="/cart">
           <div className="relative">
-            <span className="absolute text-xs font-semibold rounded-full -right-2 -top-2 px-1 bg-blue-600 text-white">
-              3
-            </span>
+            {
+              (totalCartProducts > 0 && loaded) && (
+                <span className="absolute text-xs font-semibold rounded-full -right-2 -top-2 px-1 fade-in bg-blue-600 text-white">
+                  {totalCartProducts}
+                </span>
+              )
+            }
             <IoCartOutline size={20} className="w-5 h-5" />
           </div>
         </Link>
