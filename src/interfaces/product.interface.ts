@@ -19,7 +19,7 @@ export interface CartProduct {
   description: string,
   price: number,
   slug: string,
-  quantity: string,
+  quantity: number,
   size: Size
   images: string,
 }

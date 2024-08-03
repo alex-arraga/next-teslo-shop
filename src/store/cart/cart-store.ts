@@ -1,5 +1,6 @@
 import { CartProduct } from "@/interfaces";
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 
 interface CartState {
@@ -12,15 +13,17 @@ interface CartState {
 
 
 export const useCartStore = create<CartState>()(
+
+
   (set, get) => ({
 
     cart: [],
-
     // Methods
 
     addProductToCart: (product: CartProduct) => {
 
       const { cart } = get();
+      console.log(cart)
 
       // 1. Revisar si el producto existe en el carrito con la talla seleccionada
       const productInCart = cart.some(
