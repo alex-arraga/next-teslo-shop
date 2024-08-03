@@ -14,38 +14,46 @@ interface CartState {
 
 export const useCartStore = create<CartState>()(
 
+  // Sincroniza nuestro cart (store) en el localStorage...
+  persist(
+    (set, get) => ({
 
-  (set, get) => ({
+      cart: [],
+      // Methods
 
-    cart: [],
-    // Methods
+      addProductToCart: (product: CartProduct) => {
 
-    addProductToCart: (product: CartProduct) => {
+        const { cart } = get();
+        console.log(cart)
 
-      const { cart } = get();
-      console.log(cart)
+        // 1. Revisar si el producto existe en el carrito con la talla seleccionada
+        const productInCart = cart.some(
+          (item) => (item.id === product.id && item.size === product.size)
+        )
 
-      // 1. Revisar si el producto existe en el carrito con la talla seleccionada
-      const productInCart = cart.some(
-        (item) => (item.id === product.id && item.size === product.size)
-      )
-
-      if (!productInCart) {
-        set({ cart: [...cart, product] })
-        return;
-      }
-
-      // 2. El producto existe por talla... Hay que incrementarlo
-      const updatedCartProducts = cart.map((item) => {
-        if (item.id === product.id && item.size === product.size) {
-          return { ...item, quantity: item.quantity + product.quantity }
+        if (!productInCart) {
+          set({ cart: [...cart, product] })
+          return;
         }
 
-        return item;
-      })
+        // 2. El producto existe por talla... Hay que incrementarlo
+        const updatedCartProducts = cart.map((item) => {
+          if (item.id === product.id && item.size === product.size) {
+            return { ...item, quantity: item.quantity + product.quantity }
+          }
 
-      set({ cart: updatedCartProducts })
+          return item;
+        })
 
+        set({ cart: updatedCartProducts })
+
+      }
+
+    })
+    , {
+      name: 'shopping-cart'
     }
-  })
+  )
+
+
 )
