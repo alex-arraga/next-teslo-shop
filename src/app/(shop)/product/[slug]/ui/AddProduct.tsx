@@ -10,10 +10,18 @@ interface Props {
 
 export const AddProduct = ({ product }: Props) => {
   const [size, setSize] = useState<Size | undefined>();
+  const [quantity, setQuantity] = useState<number>(1);
+
+
+  const addToCart = () => {
+    if(!size) return;
+    console.log({size, quantity})
+  }
 
 
   return (
     <>
+
       {/* Selector de Tallas */}
       <SizeSelector
         availableSizes={product.sizes!}
@@ -24,13 +32,17 @@ export const AddProduct = ({ product }: Props) => {
 
       {/* Selector de cantidad */}
       <QuantitySelector
-        quantity={3}
+        quantity={quantity}
         className="mb-8"
+        onQuantityChanged={setQuantity}
       />
 
 
       {/* Button */}
-      <button className="btn-primary mb-6">
+      <button
+        className="btn-primary mb-6"
+        onClick={addToCart}
+      >
         Agregar al carrito
       </button>
 
