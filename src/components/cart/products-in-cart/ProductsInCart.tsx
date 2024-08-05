@@ -3,26 +3,29 @@
 import { useEffect, useState } from "react";
 
 import Image from "next/image"
+import Link from "next/link";
 import { QuantitySelector } from '@/components';
 
 import { IoTrashOutline } from "react-icons/io5";
 import { useCartStore } from "@/store";
-import Link from "next/link";
 
 
 export const ProductsInCart = () => {
   const [loading, setloading] = useState(false)
+
+  // Store
   const productsInCart = useCartStore(store => store.cart)
+  const updateQuantity = useCartStore(store => store.updateProductQuantity)
 
   useEffect(() => {
     setloading(true)
   }, [])
 
-
   if (!loading) {
     return <p>Loading...</p>
   }
 
+  
   return (
     <div className="w-full">
       {
@@ -36,11 +39,11 @@ export const ProductsInCart = () => {
               alt={product.title}
               width={120}
               height={120}
+              className="rounded object-contain mr-4"
               style={{
                 width: '100px',
                 height: '100px'
               }}
-              className="rounded object-contain mr-4"
             />
 
             <div className="flex flex-col w-full">
@@ -55,9 +58,9 @@ export const ProductsInCart = () => {
               </Link>
 
               <QuantitySelector
-                quantity={3}
+                quantity={product.quantity}
                 className="mb-4 text-sm md:text-base"
-                onQuantityChanged={value => console.log(value)}
+                onQuantityChanged={quantity => updateQuantity(product, quantity)}
               />
 
               <button className="flex items-center text-sm md:text-base gap-1 text-gray-500 hover:text-red-400 w-fit hover:font-semibold transition-all">
