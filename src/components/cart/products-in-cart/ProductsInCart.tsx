@@ -60,7 +60,7 @@ export const ProductsInCart = () => {
                 <p className="text-sm md:text-base font-semibold">
                   {currencyFormat({
                     value: product.price,
-                    country: "Argentina",
+                    country: "United States",
                     minFractionDigis: 0
                   })}
                 </p>
