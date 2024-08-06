@@ -3,6 +3,8 @@
 import { useCartStore } from "@/store"
 import { useEffect, useState } from "react"
 
+import { currencyFormat } from '@/utils/currencyFormat';
+
 
 export const SummaryOrderCart = () => {
   const {
@@ -35,17 +37,17 @@ export const SummaryOrderCart = () => {
 
       <span>Subtotal</span>
       <span className="text-right">
-        ${subTotal}
+        {currencyFormat(subTotal, "United States")}
       </span>
 
       <span>Impuestos 15%</span>
       <span className="text-right">
-        ${tax}
+        {currencyFormat(tax, "United States")}
       </span>
 
       <span className="mt-5 text-lg font-bold">Total</span>
       <span className="mt-5 text-lg font-bold text-right">
-        ${total}
+        {currencyFormat(total, "United States")}
       </span>
 
     </div>
