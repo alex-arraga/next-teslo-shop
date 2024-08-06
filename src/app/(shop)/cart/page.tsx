@@ -1,7 +1,7 @@
 import Link from "next/link";
 // import { redirect } from "next/navigation";
 
-import { ProductsInCart, Title } from "@/components";
+import { ProductsInCart, SummaryOrderCart, Title } from "@/components";
 import { IoChevronForward } from "react-icons/io5";
 
 
@@ -40,20 +40,7 @@ export default function CartPage() {
             title="Resumen"
           />
 
-          <div className="grid grid-cols-2">
-            <span>N° Productos</span>
-            <span className="text-right">3 articulos</span>
-
-            <span>Subtotal</span>
-            <span className="text-right">$100</span>
-
-            <span>Impuestos (15%)</span>
-            <span className="text-right">$15</span>
-
-            <span className="mt-5 text-lg font-bold">Total</span>
-            <span className="mt-5 text-lg font-bold text-right">$115</span>
-
-          </div>
+          <SummaryOrderCart />
 
           <button className="w-full mt-4 btn-primary">
             <Link href='/checkout/address' className="text-center block">

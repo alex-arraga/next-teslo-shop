@@ -6,8 +6,15 @@ import { persist } from "zustand/middleware";
 interface CartState {
   cart: CartProduct[],
 
-  addProductToCart: (product: CartProduct) => void,
   getTotalItems: () => number,
+  getSummaryInformation: () => {
+    totalItems: number;
+    subTotal: number;
+    tax: number;
+    total: number;
+  }
+
+  addProductToCart: (product: CartProduct) => void,
   updateProductQuantity: (product: CartProduct, quantity: number) => void,
   removeProduct: (product: CartProduct) => void
 }
@@ -23,7 +30,6 @@ export const useCartStore = create<CartState>()(
 
       // Methods
       addProductToCart: (product: CartProduct) => {
-
         const { cart } = get();
 
         // 1. Revisar si el producto existe en el carrito con la talla seleccionada
@@ -46,14 +52,38 @@ export const useCartStore = create<CartState>()(
         })
 
         set({ cart: updatedCartProducts })
-
       },
 
+      
 
       getTotalItems: () => {
         const { cart } = get();
         return cart.reduce((total, item) => total + item.quantity, 0);
       },
+
+
+
+      getSummaryInformation: () => {
+        const { cart } = get()
+
+        const totalItems = cart.reduce((total, item) => 
+          total + item.quantity, 0);
+
+        const subTotal = cart.reduce((subTotal, product) =>
+          (product.quantity * product.price) + subTotal, 0);
+
+        const tax = subTotal * 0.15;
+        const total = tax + subTotal;
+
+        return {
+          totalItems,
+          subTotal,
+          tax,
+          total
+        }
+      },
+
+
 
       updateProductQuantity: (product: CartProduct, quantity: number) => {
         const { cart } = get()
@@ -70,6 +100,8 @@ export const useCartStore = create<CartState>()(
 
         set({ cart: productWithNewQuantity })
       },
+
+
 
       removeProduct: (product: CartProduct) => {
         const { cart } = get()

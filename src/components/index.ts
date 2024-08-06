@@ -22,6 +22,7 @@ export * from './product/stock/StockLabel'
 
 // Cart
 export * from './cart/products-in-cart/ProductsInCart'
+export * from './cart/summary-order/SummaryOrderCart'
 
 // Checkout
 export * from './checkout/products-in-checkout/ProductsInCheckout'
