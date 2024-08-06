@@ -7,6 +7,7 @@ import Link from "next/link";
 import { QuantitySelector } from '@/components';
 
 import { IoTrashOutline } from "react-icons/io5";
+import { currencyFormat } from "@/utils";
 import { useCartStore } from "@/store";
 
 
@@ -55,7 +56,14 @@ export const ProductsInCart = () => {
                 <h2 className="hover:text-blue-700 transition-all font-bold text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
                   {product.size} - {product.title}
                 </h2>
-                <p className="text-sm md:text-base font-semibold">${product.price.toLocaleString()}</p>
+
+                <p className="text-sm md:text-base font-semibold">
+                  {currencyFormat({
+                    value: product.price,
+                    country: "Argentina",
+                    minFractionDigis: 0
+                  })}
+                </p>
               </Link>
 
               <QuantitySelector

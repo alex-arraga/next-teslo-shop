@@ -37,17 +37,17 @@ export const SummaryOrderCart = () => {
 
       <span>Subtotal</span>
       <span className="text-right">
-        {currencyFormat(subTotal, "United States")}
+        {currencyFormat({ value: subTotal, country: "United States" })}
       </span>
 
       <span>Impuestos 15%</span>
       <span className="text-right">
-        {currencyFormat(tax, "United States")}
+        {currencyFormat({ value: tax, country: "United States" })}
       </span>
 
       <span className="mt-5 text-lg font-bold">Total</span>
       <span className="mt-5 text-lg font-bold text-right">
-        {currencyFormat(total, "United States")}
+        {currencyFormat({ value: total, country: "United States" })}
       </span>
 
     </div>

@@ -1,6 +1,13 @@
 import { CountriesData, CountriesNames } from "@/interfaces";
 
-export const currencyFormat = (value: number, country: CountriesNames) => {
+interface Parameters {
+  value: number;
+  country: CountriesNames;
+  minFractionDigis?: number;
+  maxFractionDigits?: number;
+}
+
+export const currencyFormat = ({ value, country, minFractionDigis = 2, maxFractionDigits = 2 }: Parameters) => {
 
   const currencyCountry = CountriesData.map((item) => {
 
@@ -9,8 +16,8 @@ export const currencyFormat = (value: number, country: CountriesNames) => {
       return new Intl.NumberFormat(item.numberFormat, {
         style: "currency",
         currency: item.currency,
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: minFractionDigis,
+        maximumFractionDigits: maxFractionDigits
       }).format(value);
     }
 
