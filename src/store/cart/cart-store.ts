@@ -9,7 +9,7 @@ interface CartState {
   addProductToCart: (product: CartProduct) => void,
   getTotalItems: () => number,
   updateProductQuantity: (product: CartProduct, quantity: number) => void,
-  // removeProduct: () => {}
+  removeProduct: (product: CartProduct) => void
 }
 
 
@@ -56,19 +56,28 @@ export const useCartStore = create<CartState>()(
       },
 
       updateProductQuantity: (product: CartProduct, quantity: number) => {
-        const {cart} = get()
+        const { cart } = get()
 
         console.log(product, quantity)
 
         const productWithNewQuantity = cart.map((item) => {
-          if(item.id === product.id && item.size === product.size) {
-            return {...item, quantity: quantity}
+          if (item.id === product.id && item.size === product.size) {
+            return { ...item, quantity: quantity }
           }
 
           return item
         })
 
-        set({cart: productWithNewQuantity})
+        set({ cart: productWithNewQuantity })
+      },
+
+      removeProduct: (product: CartProduct) => {
+        const { cart } = get()
+
+        // Mantener en 'cart' todos los productos cuyo id y size no coincidan con el enviado en la función
+        const updateCart = cart.filter(item => !(item.id === product.id && item.size === product.size));
+
+        set({ cart: updateCart })
       }
 
     })

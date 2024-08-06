@@ -16,6 +16,7 @@ export const ProductsInCart = () => {
   // Store
   const productsInCart = useCartStore(store => store.cart)
   const updateQuantity = useCartStore(store => store.updateProductQuantity)
+  const removeProduct = useCartStore(store => store.removeProduct)
 
   useEffect(() => {
     setloading(true)
@@ -25,7 +26,7 @@ export const ProductsInCart = () => {
     return <p>Loading...</p>
   }
 
-  
+
   return (
     <div className="w-full">
       {
@@ -63,7 +64,10 @@ export const ProductsInCart = () => {
                 onQuantityChanged={quantity => updateQuantity(product, quantity)}
               />
 
-              <button className="flex items-center text-sm md:text-base gap-1 text-gray-500 hover:text-red-400 w-fit hover:font-semibold transition-all">
+              <button
+                onClick={() => removeProduct(product)}
+                className="flex items-center text-sm md:text-base gap-1 text-gray-500 hover:text-red-400 w-fit hover:font-semibold transition-all"
+              >
                 <IoTrashOutline size={20} />
                 Remover
               </button>
