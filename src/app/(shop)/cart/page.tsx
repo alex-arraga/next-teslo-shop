@@ -26,7 +26,7 @@ export default function CartPage() {
             title="Carrito de compra"
           />
 
-          <Link href='/cart' className="flex items-center gap-1 rounded-md mb-2 w-fit transform hover:translate-x-1 hover:text-blue-400 hover:font-semibold transition-all">
+          <Link href='/' className="flex items-center gap-1 rounded-md mb-2 w-fit transform hover:translate-x-1 hover:text-blue-400 hover:font-semibold transition-all">
             <IoChevronForward size={15} />
             Seguir comprando
           </Link>
