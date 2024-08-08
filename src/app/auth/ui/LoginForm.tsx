@@ -1,14 +1,15 @@
 'use client'
 
-import { useFormState } from "react-dom";
 import Link from "next/link"
+import { useFormState, useFormStatus } from "react-dom";
 
+import { IoInformationCircleOutline } from "react-icons/io5";
 import { authenticate } from "@/actions";
+import clsx from "clsx";
 
 export const LoginForm = () => {
   const [state, dispatch] = useFormState(authenticate, undefined);
 
-  console.log({ state })
 
   return (
     <form action={dispatch} className="flex flex-col">
@@ -30,11 +31,20 @@ export const LoginForm = () => {
         placeholder='******'
       />
 
-      <button
-        type="submit"
-        className="btn-primary">
-        Ingresar
-      </button>
+      {
+        state === 'CredentialSignin' && (
+          <div className="flex items-center gap-1 bg-red-100 w-full h-full mb-4 p-1 rounded">
+            <IoInformationCircleOutline
+              size={20}
+              className="text-red-800"
+            />
+            <p className="text-red-800 text-sm">Error en email o contraseña</p>
+          </div>
+        )
+      }
+
+
+      <LoginButton />
 
 
       {/* divisor line */}
@@ -51,5 +61,29 @@ export const LoginForm = () => {
         Crear una nueva cuenta
       </Link>
     </form>
+  )
+}
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      type="submit"
+      className={clsx({
+        "btn-primary": !pending,
+        "btn-disabled": pending
+      })}
+      disabled={pending}
+    >
+      {pending ? (
+        <div className="flex justify-center items-center gap-2">
+          <p>Cargando</p>
+          <div className="loader" />
+        </div>
+      ) : (
+        <p>Ingresar</p>
+      )}
+    </button>
   )
 }
