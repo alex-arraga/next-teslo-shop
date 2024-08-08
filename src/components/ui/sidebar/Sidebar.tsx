@@ -11,7 +11,7 @@ const sidebarOptions = {
   userOptions: [
     {
       title: 'Perfil',
-      href: '/',
+      href: '/profile',
       icon: <IoPersonOutline size={30} />
     },
     {
@@ -107,7 +107,11 @@ export const Sidebar = () => {
         <div>
           {
             sidebarOptions.userOptions.map((item) => (
-              <SidebarOption key={item.title} {...item} />
+              <SidebarOption
+                key={item.title}
+                closeMenu={closeMenu}
+                {...item}
+              />
             ))
           }
 
@@ -115,7 +119,11 @@ export const Sidebar = () => {
 
           {
             sidebarOptions.authOptions.map((item) => (
-              <SidebarOption key={item.title} {...item} />
+              <SidebarOption
+                key={item.title}
+                closeMenu={closeMenu}
+                {...item}
+              />
             ))
           }
         </div>
