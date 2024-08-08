@@ -829,7 +829,7 @@ export const initialData: SeedData = {
             name: "user-A",
             email: "user-A@gmail.com",
             password: bcrypt.hashSync("123456"),
-            role: "ademin",
+            role: "admin",
         },
         {
             name: "user-B",
