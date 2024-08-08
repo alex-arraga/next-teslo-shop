@@ -7,20 +7,30 @@ interface abc {
 
 async function main() {
   // 1. Delete all records
-  await prisma.productImage.deleteMany()
-  await prisma.product.deleteMany()
-  await prisma.category.deleteMany()
+  await prisma.productImage.deleteMany();
+  await prisma.product.deleteMany();
+  await prisma.category.deleteMany();
 
-  // 2. Insert categories
-  const { categories, products } = initialData;
+  await prisma.user.deleteMany();
 
+
+  // 2. Get initial data
+  const { categories, products, users } = initialData;
+
+  // 3. Insert users
+  await prisma.user.createMany({
+    data: users
+  });
+
+  
+  // 4. Insert categories
   const categoryData = categories.map(category => ({ name: category }))
 
   await prisma.category.createMany({
     data: categoryData
   })
 
-  // 2.1 Relation category-product
+  // 4.1 Relation category-product
   const categoriesDB = await prisma.category.findMany()
 
   const categoriesMap = categoriesDB.reduce((map, category) => {
@@ -30,7 +40,7 @@ async function main() {
   }, {} as Record<string, string>); // <string: shirt, string: uuid>
 
 
-  // 3. Insert products and images
+  // 5. Insert products and images
   products.forEach(async (product) => {
 
     const { type, images, ...rest } = product;
