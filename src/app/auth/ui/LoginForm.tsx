@@ -1,7 +1,10 @@
 'use client'
 
-import Link from "next/link"
+import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
+
+import { useRouter } from "next/navigation";
+import Link from "next/link"
 
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { authenticate } from "@/actions";
@@ -9,7 +12,13 @@ import clsx from "clsx";
 
 export const LoginForm = () => {
   const [state, dispatch] = useFormState(authenticate, undefined);
+  const router = useRouter();
 
+  useEffect(() => {
+    if(state === "Auth success") {
+      router.replace('/')
+    }
+  }, [state])
 
   return (
     <form action={dispatch} className="flex flex-col">
@@ -32,7 +41,7 @@ export const LoginForm = () => {
       />
 
       {
-        state === 'CredentialSignin' && (
+        state === 'Invalid credentials' && (
           <div className="flex items-center gap-1 bg-red-100 w-full h-full mb-4 p-1 rounded">
             <IoInformationCircleOutline
               size={20}

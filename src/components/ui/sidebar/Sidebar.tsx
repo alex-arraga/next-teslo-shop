@@ -121,8 +121,8 @@ export const Sidebar = () => {
 
           {/* Auth options */}
           <Link
-            href='/'
-            onClick={console.log}
+            href='/auth/login'
+            onClick={closeMenu}
             className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
           >
             <IoLogInOutline size={30} />
@@ -133,7 +133,7 @@ export const Sidebar = () => {
 
           <button
             onClick={closeSession}
-            className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+            className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
           >
             <IoLogInOutline size={30} className="rotate-180" />
             <span className="ml-3 text-xl">
