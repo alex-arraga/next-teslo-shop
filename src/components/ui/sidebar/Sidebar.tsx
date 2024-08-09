@@ -1,10 +1,21 @@
 'use client'
 
+import Link from "next/link"
 import { SidebarOption } from "./SidebarOption"
-import { IoCloseOutline, IoLogInOutline, IoPeopleOutline, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
 
-import { useUIStore } from "@/store"
-import clsx from "clsx"
+import {
+  IoCloseOutline,
+  IoLogInOutline,
+  IoPeopleOutline,
+  IoPersonOutline,
+  IoSearchOutline,
+  IoShirtOutline,
+  IoTicketOutline
+} from "react-icons/io5";
+
+import clsx from "clsx";
+import { useUIStore } from "@/store";
+import { logout } from "@/actions";
 
 
 const sidebarOptions = {
@@ -31,19 +42,6 @@ const sidebarOptions = {
       icon: <IoPeopleOutline size={30} />
     },
   ],
-
-  authOptions: [
-    {
-      title: 'Ingresar',
-      href: '/',
-      icon: <IoLogInOutline size={30} />
-    },
-    {
-      title: 'Salir',
-      href: '/',
-      icon: <IoLogInOutline size={30} />
-    },
-  ],
 }
 
 
@@ -52,6 +50,10 @@ export const Sidebar = () => {
   const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
   const closeMenu = useUIStore(state => state.closeSideMenu);
 
+  const closeSession = async () => {
+    await logout()
+    closeMenu()
+  }
 
   return (
     <div>
@@ -117,17 +119,29 @@ export const Sidebar = () => {
 
           <div className="rounded h-px bg-gray-300 w-full mt-10" />
 
-          {
-            sidebarOptions.authOptions.map((item) => (
-              <SidebarOption
-                key={item.title}
-                closeMenu={closeMenu}
-                {...item}
-              />
-            ))
-          }
-        </div>
+          {/* Auth options */}
+          <Link
+            href='/'
+            onClick={console.log}
+            className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+          >
+            <IoLogInOutline size={30} />
+            <span className="ml-3 text-xl">
+              Ingresar
+            </span>
+          </Link>
 
+          <button
+            onClick={closeSession}
+            className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+          >
+            <IoLogInOutline size={30} className="rotate-180" />
+            <span className="ml-3 text-xl">
+              Cerrar sesión
+            </span>
+          </button>
+
+        </div>
       </nav>
     </div>
   )
