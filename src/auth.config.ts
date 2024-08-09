@@ -1,13 +1,28 @@
 import NextAuth, { type NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+
+import prisma from './lib/prisma';
+
 import { z } from 'zod';
 import bcryptjs from 'bcryptjs'
-import prisma from './lib/prisma';
 
 export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/auth/login',
     newUser: 'auth/new-account'
+  },
+  callbacks: {
+    jwt({ user, token }) {
+      if(user) {
+        token.data = user
+      }
+
+      return token
+    },
+    session({ session, user, token }) {
+      session.user = token.data as any
+      return session
+    }
   },
   providers: [
     Credentials({
