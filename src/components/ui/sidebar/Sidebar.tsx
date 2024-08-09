@@ -50,13 +50,10 @@ const sidebarOptions = {
 
 export const Sidebar = () => {
   const { data: session } = useSession();
+  const isAuthenticated = !!session?.user;
 
   const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
   const closeMenu = useUIStore(state => state.closeSideMenu);
-
-  useEffect(() => {
-    console.log({session})
-  }, [session])
 
   const closeSession = async () => {
     await logout()
@@ -128,27 +125,31 @@ export const Sidebar = () => {
           <div className="rounded h-px bg-gray-300 w-full mt-10" />
 
           {/* Auth options */}
-          <Link
-            href='/auth/login'
-            onClick={closeMenu}
-            className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
-          >
-            <IoLogInOutline size={30} />
-            <span className="ml-3 text-xl">
-              Ingresar
-            </span>
-          </Link>
+          {
+            !isAuthenticated ? (
+              <Link
+                href='/auth/login'
+                onClick={closeMenu}
+                className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+              >
+                <IoLogInOutline size={30} />
+                <span className="ml-3 text-xl">
+                  Ingresar
+                </span>
+              </Link>
 
-          <button
-            onClick={closeSession}
-            className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
-          >
-            <IoLogInOutline size={30} className="rotate-180" />
-            <span className="ml-3 text-xl">
-              Cerrar sesión
-            </span>
-          </button>
-
+            ) : (
+              <button
+                onClick={closeSession}
+                className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
+              >
+                <IoLogInOutline size={30} className="rotate-180" />
+                <span className="ml-3 text-xl">
+                  Cerrar sesión
+                </span>
+              </button>
+            )
+          }
         </div>
       </nav>
     </div>
