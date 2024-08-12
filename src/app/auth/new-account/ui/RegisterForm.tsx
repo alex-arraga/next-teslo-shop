@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from "clsx"
 import Link from "next/link"
 import { SubmitHandler, useForm } from "react-hook-form"
 
@@ -29,7 +30,12 @@ export const RegisterForm = () => {
 
       <label htmlFor="email">Nombre completo</label>
       <input
-        className="px-5 py-2 border bg-gray-200 rounded mb-5"
+        className={clsx(
+          "px-5 py-2 border bg-gray-200 rounded mb-5",
+          {
+            "border-red-600 border-2": errors.name
+          }
+        )}
         type="text"
         placeholder='John Doe'
         autoFocus
@@ -39,7 +45,12 @@ export const RegisterForm = () => {
 
       <label htmlFor="email">Correo electrónico</label>
       <input
-        className="px-5 py-2 border bg-gray-200 rounded mb-5"
+        className={clsx(
+          "px-5 py-2 border bg-gray-200 rounded mb-5",
+          {
+            "border-red-600 border-2": errors.email
+          }
+        )}
         type="email"
         placeholder='example@gmail.com'
         autoFocus
@@ -49,19 +60,24 @@ export const RegisterForm = () => {
 
       <label htmlFor="email">Contraseña</label>
       <input
-        className="px-5 py-2 border bg-gray-200 rounded mb-5"
+        className={clsx(
+          "px-5 py-2 border bg-gray-200 rounded mb-5",
+          {
+            "border-red-600 border-2": errors.password
+          }
+        )}
         type="password"
         placeholder='******'
         autoFocus
-        {...register("password", { required: true })}
+        {...register("password", { minLength: 6, required: true })}
       />
 
 
-      {
+      {/* {
         errors.name?.type === 'required' && (
           <span className="text-sm text-red-600 bg-red-50 rounded p-1 mb-4">* El nombre es requerido</span>
         )
-      }
+      } */}
 
       <button
         type="submit"
