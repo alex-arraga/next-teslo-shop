@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
-import { useRouter } from "next/navigation";
 import Link from "next/link"
 
 import { IoInformationCircleOutline } from "react-icons/io5";
@@ -12,11 +11,10 @@ import clsx from "clsx";
 
 export const LoginForm = () => {
   const [state, dispatch] = useFormState(authenticate, undefined);
-  const router = useRouter();
 
   useEffect(() => {
     if(state === "Auth success") {
-      router.replace('/')
+      window.location.replace('/')
     }
   }, [state])
 

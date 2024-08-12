@@ -1,10 +1,9 @@
 'use client'
 
-import { SidebarOption } from "./SidebarOption"
-import { useEffect } from "react";
-
 import Link from "next/link"
-import { useSession } from "next-auth/react";
+import { SidebarOption } from "./SidebarOption"
+
+import { signOut, useSession } from "next-auth/react";
 
 import {
   IoCloseOutline,
@@ -18,7 +17,6 @@ import {
 
 import clsx from "clsx";
 import { useUIStore } from "@/store";
-import { logout } from "@/actions";
 
 
 const sidebarOptions = {
@@ -33,7 +31,18 @@ const sidebarOptions = {
       href: '/',
       icon: <IoTicketOutline size={30} />
     },
-
+  ],
+  adminOptions: [
+    {
+      title: 'Perfil',
+      href: '/profile',
+      icon: <IoPersonOutline size={30} />
+    },
+    {
+      title: 'Ordenes',
+      href: '/',
+      icon: <IoTicketOutline size={30} />
+    },
     {
       title: 'Productos',
       href: '/',
@@ -52,13 +61,12 @@ export const Sidebar = () => {
   const { data: session } = useSession();
   const isAuthenticated = !!session?.user;
 
+  const { adminOptions, userOptions } = sidebarOptions;
+  const isAdmin = session?.user.role === "admin";
+
   const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
   const closeMenu = useUIStore(state => state.closeSideMenu);
 
-  const closeSession = async () => {
-    await logout()
-    closeMenu()
-  }
 
   return (
     <div>
@@ -84,7 +92,6 @@ export const Sidebar = () => {
       {/* Sidemenu */}
       <nav
         className={
-
           // Validate if menu is open
           clsx(
             "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
@@ -112,21 +119,63 @@ export const Sidebar = () => {
 
         {/* Menu options */}
         <div>
+          {/* If is Auth and role is User */}
           {
-            sidebarOptions.userOptions.map((item) => (
-              <SidebarOption
-                key={item.title}
-                closeMenu={closeMenu}
-                {...item}
-              />
-            ))
+            isAuthenticated && !isAdmin && (
+              <>
+                {userOptions.map((item) => (
+                  <SidebarOption
+                    key={item.title}
+                    closeMenu={closeMenu}
+                    {...item}
+                  />
+                ))}
+
+                <div className="rounded h-px bg-gray-300 w-full mt-10" />
+
+                <button
+                  onClick={() => signOut()}
+                  className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
+                >
+                  <IoLogInOutline size={30} className="rotate-180" />
+                  <span className="ml-3 text-xl">
+                    Cerrar sesión
+                  </span>
+                </button>
+              </>
+            )
           }
 
-          <div className="rounded h-px bg-gray-300 w-full mt-10" />
-
-          {/* Auth options */}
+          {/* If is Auth and role is Admin */}
           {
-            !isAuthenticated ? (
+            isAuthenticated && isAdmin && (
+              <>
+                {adminOptions.map((item) => (
+                  <SidebarOption
+                    key={item.title}
+                    closeMenu={closeMenu}
+                    {...item}
+                  />
+                ))}
+
+                <div className="rounded h-px bg-gray-300 w-full mt-10" />
+
+                <button
+                  onClick={() => signOut()}
+                  className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
+                >
+                  <IoLogInOutline size={30} className="rotate-180" />
+                  <span className="ml-3 text-xl">
+                    Cerrar sesión
+                  </span>
+                </button>
+              </>
+            )
+          }
+
+          {/* If is not Auth */}
+          {
+            !isAuthenticated && (
               <Link
                 href='/auth/login'
                 onClick={closeMenu}
@@ -137,20 +186,10 @@ export const Sidebar = () => {
                   Ingresar
                 </span>
               </Link>
-
-            ) : (
-              <button
-                onClick={closeSession}
-                className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
-              >
-                <IoLogInOutline size={30} className="rotate-180" />
-                <span className="ml-3 text-xl">
-                  Cerrar sesión
-                </span>
-              </button>
             )
           }
         </div>
+
       </nav>
     </div>
   )
