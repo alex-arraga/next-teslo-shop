@@ -54,7 +54,7 @@ export const RegisterForm = () => {
         type="email"
         placeholder='example@gmail.com'
         autoFocus
-        {...register("email", { required: true })}
+        {...register("email", { required: true, pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ })}
       />
 
 
