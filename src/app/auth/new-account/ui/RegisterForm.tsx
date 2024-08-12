@@ -1,8 +1,12 @@
 'use client'
 
-import clsx from "clsx"
+import { useState } from "react"
 import Link from "next/link"
+
+import clsx from "clsx"
 import { SubmitHandler, useForm } from "react-hook-form"
+
+import { registerUser } from "@/actions"
 
 type FormInputs = {
   name: string
@@ -12,13 +16,24 @@ type FormInputs = {
 
 
 export const RegisterForm = () => {
+  const [errorMessage, setErrorMessage] = useState('')
   const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>();
 
   const onSumbit: SubmitHandler<FormInputs> = async (data) => {
     const { email, name, password } = data;
-    console.log({ email, name, password })
 
     // Server action
+    const res = await registerUser({
+      email: email,
+      name: name,
+      password: password
+    })
+
+    if (!res.ok) {
+      setErrorMessage(res.message)
+    }
+
+    // User signIn
   }
 
 
@@ -72,12 +87,17 @@ export const RegisterForm = () => {
         {...register("password", { minLength: 6, required: true })}
       />
 
-
-      {/* {
-        errors.name?.type === 'required' && (
-          <span className="text-sm text-red-600 bg-red-50 rounded p-1 mb-4">* El nombre es requerido</span>
-        )
-      } */}
+      {/* Error message */}
+      <div className={clsx(
+        "flex justify-center mb-4 rounded p-1",
+        {
+          "bg-red-50": errorMessage.length > 0
+        }
+      )}>
+        <span className="text-sm text-red-600">
+          {errorMessage}
+        </span>
+      </div>
 
       <button
         type="submit"
