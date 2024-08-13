@@ -76,7 +76,7 @@ export const authConfig: NextAuthConfig = {
         const { email, password } = parsedCredentials.data;
 
         // Match email
-        const user = await prisma.user.findUnique({ where: { email: email } });
+        const user = await prisma.user.findUnique({ where: { email: email.toLocaleLowerCase() } });
         if (!user) return null;
 
         // Match password
