@@ -38,10 +38,10 @@ export const authConfig: NextAuthConfig = {
       if (isOnAuthenticatedRoute) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
-      } 
+      }
 
       // Rutas públicas o cualquier otra ruta no protegida
-      if(isOnPublicRoute || !isLoggedIn) {
+      if (isOnPublicRoute || !isLoggedIn) {
         return true
       }
 
