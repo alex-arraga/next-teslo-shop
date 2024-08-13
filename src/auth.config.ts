@@ -27,11 +27,8 @@ export const authConfig: NextAuthConfig = {
     newUser: 'auth/new-account'
   },
   callbacks: {
-  
-
+    // Callback that work with auth middleware
     authorized({ auth, request: { nextUrl } }) {
-      console.log({ auth })
-
       const isLoggedIn = !!auth?.user;
 
       const isOnAuthenticatedRoute = authenticatedRoutes.includes(nextUrl.pathname);
