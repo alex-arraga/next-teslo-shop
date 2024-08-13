@@ -6,23 +6,65 @@ import prisma from './lib/prisma';
 import { z } from 'zod';
 import bcryptjs from 'bcryptjs'
 
+
+const authenticatedRoutes = [
+  '/checkout',
+  '/checkout/address',
+  '/cart',
+  '/profile',
+  '/orders',
+]
+
+const publicRoutes = [
+  '/',
+  '/gender/[gender]',
+  '/product/[slug]',
+]
+
 export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/auth/login',
     newUser: 'auth/new-account'
   },
   callbacks: {
+  
+
+    authorized({ auth, request: { nextUrl } }) {
+      console.log({ auth })
+
+      const isLoggedIn = !!auth?.user;
+
+      const isOnAuthenticatedRoute = authenticatedRoutes.includes(nextUrl.pathname);
+      const isOnPublicRoute = publicRoutes.includes(nextUrl.pathname);
+
+      // Rutas que requieren autenticación
+      if (isOnAuthenticatedRoute) {
+        if (isLoggedIn) return true;
+        return false; // Redirect unauthenticated users to login page
+      } 
+
+      // Rutas públicas o cualquier otra ruta no protegida
+      if(isOnPublicRoute || !isLoggedIn) {
+        return true
+      }
+
+      // Comportamiento por defecto
+      return isLoggedIn
+    },
+
     jwt({ user, token }) {
-      if(user) {
+      if (user) {
         token.data = user
       }
 
       return token
     },
+
     session({ session, user, token }) {
       session.user = token.data as any
       return session
     }
+
   },
   providers: [
     Credentials({
