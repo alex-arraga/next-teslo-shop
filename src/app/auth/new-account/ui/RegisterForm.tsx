@@ -6,7 +6,7 @@ import Link from "next/link"
 import clsx from "clsx"
 import { SubmitHandler, useForm } from "react-hook-form"
 
-import { registerUser } from "@/actions"
+import { login, registerUser } from "@/actions"
 
 type FormInputs = {
   name: string
@@ -22,7 +22,8 @@ export const RegisterForm = () => {
   const onSumbit: SubmitHandler<FormInputs> = async (data) => {
     const { email, name, password } = data;
 
-    // Server action
+    // Server actions
+    // Register
     const res = await registerUser({
       email: email,
       name: name,
@@ -31,9 +32,12 @@ export const RegisterForm = () => {
 
     if (!res.ok) {
       setErrorMessage(res.message)
+      return;
     }
 
-    // User signIn
+    // Login user
+    await login(email.toLocaleLowerCase(), password)
+    window.location.replace('/')
   }
 
 
