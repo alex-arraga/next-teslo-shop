@@ -8,4 +8,7 @@ export { authenticate, login } from './auth/login'
 export { logout } from './auth/logout'
 export { registerUser } from './auth/register'
 
+// Countries
+export { getCountries } from './country/getCountries'
+
 // AC: I Don't export all (export *) cause generate conflicts

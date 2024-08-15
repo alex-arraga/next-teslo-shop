@@ -1,5 +1,8 @@
+export const revalidate = 3600 * 24 * 90 // revalidate every 3 months
+
 import { Title } from "@/components";
 import { AdressForm } from "./ui/AdressForm";
+import { getCountries } from "@/actions";
 
 
 export const metadata = {
@@ -8,7 +11,10 @@ export const metadata = {
 };
 
 
-export default function CheckoutAddressPage() {
+export default async function CheckoutAddressPage() {
+
+  const countries = await getCountries();
+
   return (
     <div className="flex flex-col sm:justify-start sm:items-center min-h-screen">
       <div className="w-full xl:w-[1000px] flex flex-col justify-center text-left">
@@ -19,7 +25,7 @@ export default function CheckoutAddressPage() {
         />
 
         {/* Form */}
-        <AdressForm />
+        <AdressForm countries={countries} />
 
       </div>
     </div>
