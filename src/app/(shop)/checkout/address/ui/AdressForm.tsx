@@ -1,17 +1,53 @@
 'use client'
 
-import Link from "next/link"
+import clsx from "clsx";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+
+type FormInputs = {
+  firstName: string;
+  lastName: string;
+  address: string;
+  address2?: string;
+  postalCode: string;
+  city: string;
+  country: string;
+  phone: string;
+  rememberAddress: boolean;
+}
+
 
 export const AdressForm = () => {
-  return (
 
-    <form className="grid grid-cols-1 gap-2 sm:gap-5 sm:grid-cols-2">
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormInputs>({
+    defaultValues: {
+      // todo: tomar de la db
+    }
+  });
+
+  const onSumbit: SubmitHandler<FormInputs> = (data) => {
+    console.log({ data })
+  }
+
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSumbit)}
+      className="grid grid-cols-1 gap-2 sm:gap-5 sm:grid-cols-2"
+    >
 
       <div className="flex flex-col mb-2">
         <label>Nombres</label>
         <input
           type="text"
-          className="p-2 border rounded-md bg-gray-200"
+          autoFocus
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200",
+            {
+              "border-red-400": errors.firstName
+            }
+          )}
+          {...register("firstName", { required: true })}
         />
       </div>
 
@@ -19,7 +55,14 @@ export const AdressForm = () => {
         <label>Apellidos</label>
         <input
           type="text"
-          className="p-2 border rounded-md bg-gray-200"
+          autoFocus
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200",
+            {
+              "border-red-400": errors.firstName
+            }
+          )}
+          {...register("lastName", { required: true })}
         />
       </div>
 
@@ -27,7 +70,14 @@ export const AdressForm = () => {
         <label>Dirección</label>
         <input
           type="text"
-          className="p-2 border rounded-md bg-gray-200"
+          autoFocus
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200",
+            {
+              "border-red-400": errors.firstName
+            }
+          )}
+          {...register("address", { required: true })}
         />
       </div>
 
@@ -35,7 +85,14 @@ export const AdressForm = () => {
         <label>Dirección 2 (opcional)</label>
         <input
           type="text"
-          className="p-2 border rounded-md bg-gray-200"
+          autoFocus
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200",
+            {
+              "border-red-400": errors.firstName
+            }
+          )}
+          {...register("address2")}
         />
       </div>
 
@@ -43,7 +100,14 @@ export const AdressForm = () => {
         <label>Código postal</label>
         <input
           type="text"
-          className="p-2 border rounded-md bg-gray-200"
+          autoFocus
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200",
+            {
+              "border-red-400": errors.firstName
+            }
+          )}
+          {...register("postalCode", { required: true })}
         />
       </div>
 
@@ -51,14 +115,27 @@ export const AdressForm = () => {
         <label>Ciudad</label>
         <input
           type="text"
-          className="p-2 border rounded-md bg-gray-200"
+          autoFocus
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200",
+            {
+              "border-red-400": errors.firstName
+            }
+          )}
+          {...register("city", { required: true })}
         />
       </div>
 
       <div className="flex flex-col mb-2">
         <label>País</label>
         <select
-          className="p-2 border rounded-md bg-gray-200 cursor-pointer"
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200 cursor-pointer",
+            {
+              "border-red-400": errors.country
+            }
+          )}
+          {...register("country", { required: true })}
         >
           <option value="">[ Seleccione ]</option>
           <option value="ARG">Argentina</option>
@@ -71,7 +148,14 @@ export const AdressForm = () => {
         <label>Teléfono</label>
         <input
           type="text"
-          className="p-2 border rounded-md bg-gray-200"
+          autoFocus
+          className={clsx(
+            "p-2 border rounded-md bg-gray-200",
+            {
+              "border-red-400": errors.firstName
+            }
+          )}
+          {...register("phone", { required: true })}
         />
       </div>
 
@@ -85,7 +169,8 @@ export const AdressForm = () => {
             type="checkbox"
             className="border-gray-500 before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-blue-500 checked:bg-blue-500 checked:before:bg-blue-500 hover:before:opacity-10"
             id="checkbox"
-            // checked
+            {...register("rememberAddress")}
+          // checked
           />
           <div className="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
             <svg
@@ -108,15 +193,21 @@ export const AdressForm = () => {
       </div>
 
       {/* Button checkout */}
-      <div className="flex flex-col mt-4 sm:mt-10">
-        <Link
-          href='/checkout'
-          className="btn-primary flex w-full sm:w-1/2 justify-center ">
-          Siguiente
-        </Link>
-      </div>
+      <button
+        disabled={!isValid}
+        type="submit"
+        className={clsx(
+          "flex mt-4 sm:mt-10 w-full justify-center text-center",
+          {
+            "btn-primary": isValid,
+            "btn-disabled": !isValid
+          })}
+      >
+        Siguiente
+      </button>
 
     </form>
-
   )
 }
+
+// ""
