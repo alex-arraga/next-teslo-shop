@@ -1,8 +1,12 @@
 'use client'
 
+import { useEffect } from "react";
 import { Country } from "@/interfaces";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import clsx from "clsx";
+
+import { useAddressStore } from '@/store';
 
 
 type FormInputs = {
@@ -22,16 +26,25 @@ interface Props {
 }
 
 export const AdressForm = ({ countries }: Props) => {
+  const setAddress = useAddressStore(state => state.setAddress);
+  const address = useAddressStore(state => state.address);
 
-  const { register, handleSubmit, formState: { errors, isValid } } = useForm<FormInputs>({
+  const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormInputs>({
     defaultValues: {
       // todo: tomar de la db
     }
   });
 
+  useEffect(() => {
+    if (address.firstName) {
+      reset(address)
+    }
+  }, [])
+
+
   const onSumbit: SubmitHandler<FormInputs> = (data) => {
-    console.log({ data })
-  }
+    setAddress(data)
+  };
 
 
   return (
@@ -218,5 +231,3 @@ export const AdressForm = ({ countries }: Props) => {
     </form>
   )
 }
-
-// ""
