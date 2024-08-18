@@ -9,14 +9,17 @@ interface abc {
 async function main() {
   try {
     // 1. Delete all records
-    await prisma.productImage.deleteMany()
-    await prisma.product.deleteMany()
-    await prisma.category.deleteMany()
 
-    await prisma.userAddress.deleteMany()
-    await prisma.user.deleteMany()
+    // await Promise.all([]) - not work cause foreign keys relations
+    await prisma.productImage.deleteMany();
+    await prisma.product.deleteMany();
+    await prisma.category.deleteMany();
 
-    await prisma.countries.deleteMany()
+    await prisma.userAddress.deleteMany();
+    await prisma.countries.deleteMany();
+
+    await prisma.user.deleteMany();
+
 
     // 2. Get initial data
     const { categories, products, users } = initialData;
@@ -75,7 +78,7 @@ async function main() {
     console.log('Seed successfully executed')
 
   } catch (error) {
-    
+
     console.log(error)
     throw new Error('Seed error')
   }
