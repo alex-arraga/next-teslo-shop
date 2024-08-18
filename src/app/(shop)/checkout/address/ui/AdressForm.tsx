@@ -3,10 +3,12 @@
 import { useEffect } from "react";
 import { Country } from "@/interfaces";
 
+import { useSession } from "next-auth/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import clsx from "clsx";
 
 import { useAddressStore } from '@/store';
+import { setUserAddress } from "@/actions";
 
 
 type FormInputs = {
@@ -29,21 +31,35 @@ export const AdressForm = ({ countries }: Props) => {
   const setAddress = useAddressStore(state => state.setAddress);
   const address = useAddressStore(state => state.address);
 
+  // Get user id, and if it not exist redirect to login 
+  const { data: session } = useSession({
+    required: true
+  });
+
   const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormInputs>({
     defaultValues: {
       // todo: tomar de la db
     }
   });
 
+  // Persist form data if user writed it
   useEffect(() => {
     if (address.firstName) {
       reset(address)
     }
   }, [])
 
-
-  const onSumbit: SubmitHandler<FormInputs> = (data) => {
+  // Save address data on sumbit form
+  const onSumbit: SubmitHandler<FormInputs> = async (data) => {
     setAddress(data)
+
+    const { rememberAddress, ...restAddress } = data;
+
+    if (rememberAddress) {
+      await setUserAddress(restAddress, session!.user.id)
+    } else {
+      // todo: delete address
+    }
   };
 
 

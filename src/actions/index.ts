@@ -11,4 +11,7 @@ export { registerUser } from './auth/register'
 // Countries
 export { getCountries } from './country/getCountries'
 
+// Address
+export { setUserAddress } from './address/set-user-address'
+
 // AC: I Don't export all (export *) cause generate conflicts
