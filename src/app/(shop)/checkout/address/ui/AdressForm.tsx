@@ -9,6 +9,7 @@ import clsx from "clsx";
 
 import { useAddressStore } from '@/store';
 import { deleteUserAddress, setUserAddress } from "@/actions";
+import { useRouter } from "next/navigation";
 
 
 type FormInputs = {
@@ -29,6 +30,9 @@ interface Props {
 }
 
 export const AdressForm = ({ countries, userAddress = {} }: Props) => {
+  const router = useRouter();
+
+  // Store
   const setAddress = useAddressStore(state => state.setAddress);
   const address = useAddressStore(state => state.address);
 
@@ -38,7 +42,7 @@ export const AdressForm = ({ countries, userAddress = {} }: Props) => {
   });
 
   const userId = session?.user.id!;
-  
+
   const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormInputs>({
     defaultValues: {
       ...userAddress,
@@ -65,6 +69,8 @@ export const AdressForm = ({ countries, userAddress = {} }: Props) => {
     } else {
       await deleteUserAddress(userId);
     }
+
+    router.push('/checkout')
   };
 
 
