@@ -14,5 +14,6 @@ export { getCountries } from './country/getCountries'
 // Address
 export { setUserAddress } from './address/set-user-address'
 export { deleteUserAddress } from './address/delete-user-address'
+export { getUserAddress } from './address/get-user-address'
 
 // AC: I Don't export all (export *) cause generate conflicts

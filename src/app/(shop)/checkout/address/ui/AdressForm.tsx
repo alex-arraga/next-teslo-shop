@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from "react";
-import { Country } from "@/interfaces";
+import { Address, Country } from "@/interfaces";
 
 import { useSession } from "next-auth/react";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -24,10 +24,11 @@ type FormInputs = {
 }
 
 interface Props {
-  countries: Country[]
+  countries: Country[];
+  userAddress?: Partial<Address>
 }
 
-export const AdressForm = ({ countries }: Props) => {
+export const AdressForm = ({ countries, userAddress = {} }: Props) => {
   const setAddress = useAddressStore(state => state.setAddress);
   const address = useAddressStore(state => state.address);
 
@@ -36,9 +37,12 @@ export const AdressForm = ({ countries }: Props) => {
     required: true
   });
 
+  const userId = session?.user.id!;
+console.log({userAddress})
   const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormInputs>({
     defaultValues: {
-      // todo: tomar de la db
+      ...userAddress,
+      rememberAddress: true
     }
   });
 
@@ -56,10 +60,10 @@ export const AdressForm = ({ countries }: Props) => {
     const { rememberAddress, ...restAddress } = data;
 
     if (rememberAddress) {
-      await setUserAddress(restAddress, session!.user.id);
-      
+      await setUserAddress(restAddress, userId);
+
     } else {
-      await deleteUserAddress(session!.user.id);
+      await deleteUserAddress(userId);
     }
   };
 
