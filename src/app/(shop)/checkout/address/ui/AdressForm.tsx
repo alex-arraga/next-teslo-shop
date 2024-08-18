@@ -38,7 +38,7 @@ export const AdressForm = ({ countries, userAddress = {} }: Props) => {
   });
 
   const userId = session?.user.id!;
-console.log({userAddress})
+  
   const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm<FormInputs>({
     defaultValues: {
       ...userAddress,
