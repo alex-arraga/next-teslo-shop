@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Address, Country } from "@/interfaces";
 
 import { useSession } from "next-auth/react";
@@ -9,7 +10,6 @@ import clsx from "clsx";
 
 import { useAddressStore } from '@/store';
 import { deleteUserAddress, setUserAddress } from "@/actions";
-import { useRouter } from "next/navigation";
 
 
 type FormInputs = {
