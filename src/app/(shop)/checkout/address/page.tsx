@@ -24,7 +24,6 @@ export default async function CheckoutAddressPage() {
   const countries = await getCountries();
   const userAddress = await getUserAddress(session.user.id) ?? undefined;
 
-console.log({userAddress})
   return (
     <div className="flex flex-col sm:justify-start sm:items-center min-h-screen">
       <div className="w-full xl:w-[1000px] flex flex-col justify-center text-left">
