@@ -8,7 +8,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import clsx from "clsx";
 
 import { useAddressStore } from '@/store';
-import { setUserAddress } from "@/actions";
+import { deleteUserAddress, setUserAddress } from "@/actions";
 
 
 type FormInputs = {
@@ -56,9 +56,10 @@ export const AdressForm = ({ countries }: Props) => {
     const { rememberAddress, ...restAddress } = data;
 
     if (rememberAddress) {
-      await setUserAddress(restAddress, session!.user.id)
+      await setUserAddress(restAddress, session!.user.id);
+      
     } else {
-      // todo: delete address
+      await deleteUserAddress(session!.user.id);
     }
   };
 

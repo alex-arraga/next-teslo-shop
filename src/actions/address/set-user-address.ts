@@ -20,7 +20,6 @@ export const setUserAddress = async (address: Address, userId: string) => {
 
 const createOrUpdateAddress = async (address: Address, userId: string) => {
   try {
-    console.log('💸', {userId})
     const getUserAddress = await prisma.userAddress.findUnique({
       where: { userId }
     })
