@@ -1,8 +1,8 @@
 'use client'
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Title } from "@/components";
+import clsx from "clsx";
 
 import { currencyFormat } from '@/utils';
 import { useAddressStore, useCartStore } from "@/store";
@@ -10,6 +10,7 @@ import { useAddressStore, useCartStore } from "@/store";
 
 export const SummaryCheckoutOrder = () => {
   const [loading, setloading] = useState(false);
+  const [sendingOrder, setSendingOrder] = useState(false);
 
   // Store
   const userAddress = useAddressStore(state => state.address);
@@ -22,6 +23,16 @@ export const SummaryCheckoutOrder = () => {
 
   if (!loading) {
     return <p>Loading...</p>
+  }
+
+
+  const onSendingOrder = async () => {
+    setSendingOrder(true)
+
+    // todo: server action to save order
+    // await sleep(2)
+
+    setSendingOrder(false)
   }
 
 
@@ -109,14 +120,33 @@ export const SummaryCheckoutOrder = () => {
         </span>
 
 
-        <button className="w-full mt-4 btn-primary">
-          <Link
-            href='' // todo: redirigir a order
-            className="text-center block"
+        <div className="w-full mt-4">
+          <button
+            // todo: redirigir a order
+            onClick={onSendingOrder}
+            disabled={sendingOrder}
+            className={clsx(
+              "text-center w-full",
+              {
+                "btn-primary": !sendingOrder,
+                "btn-disabled": sendingOrder
+              }
+            )}
           >
-            Confirmar orden
-          </Link>
-        </button>
+            {
+              sendingOrder ? (
+                <div className="flex items-center justify-center gap-2">
+                  <div className="loader" />
+                  <p>Confirmando orden...</p>
+                </div>
+              ) : (
+                <>
+                  Confirmar order
+                </>
+              )
+            }
+          </button>
+        </div>
       </div>
 
     </div>

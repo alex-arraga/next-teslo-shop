@@ -59,9 +59,9 @@ export const AdressForm = ({ countries, userAddress = {} }: Props) => {
 
   // Save address data on sumbit form
   const onSumbit: SubmitHandler<FormInputs> = async (data) => {
-    setAddress(data)
-
     const { rememberAddress, ...restAddress } = data;
+    
+    setAddress(restAddress)
 
     if (rememberAddress) {
       await setUserAddress(restAddress, userId);
