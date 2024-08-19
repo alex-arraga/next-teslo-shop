@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { currencyFormat } from '@/utils';
 import { useAddressStore, useCartStore } from "@/store";
+import { placeOrder } from "@/actions";
 
 
 export const SummaryCheckoutOrder = () => {
@@ -13,6 +14,7 @@ export const SummaryCheckoutOrder = () => {
   const [sendingOrder, setSendingOrder] = useState(false);
 
   // Store
+  const cart = useCartStore(state => state.cart);
   const userAddress = useAddressStore(state => state.address);
   const { subTotal, tax, total, totalItems } = useCartStore(state => state.getSummaryInformation());
 
@@ -29,8 +31,17 @@ export const SummaryCheckoutOrder = () => {
   const onSendingOrder = async () => {
     setSendingOrder(true)
 
-    // todo: server action to save order
-    // await sleep(2)
+    const productsToOrder = cart.map((product) => ({
+      productId: product.id,
+      quantity: product.quantity,
+      size: product.size
+    }))
+
+    console.log({ productsToOrder, userAddress })
+
+    // Server Action to place Order
+    const res = await placeOrder(productsToOrder, userAddress)
+    console.log({ res })
 
     setSendingOrder(false)
   }

@@ -16,4 +16,7 @@ export { setUserAddress } from './address/set-user-address'
 export { deleteUserAddress } from './address/delete-user-address'
 export { getUserAddress } from './address/get-user-address'
 
+// Order
+export { placeOrder } from './order/place-order'
+
 // AC: I Don't export all (export *) cause generate conflicts
