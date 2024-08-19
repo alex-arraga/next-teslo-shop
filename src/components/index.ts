@@ -29,3 +29,4 @@ export * from './cart/summary-order/SummaryOrderCart'
 
 // Checkout
 export * from './checkout/products-in-checkout/ProductsInCheckout'
+export * from './checkout/summary/SummaryCheckoutOrder'
