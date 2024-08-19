@@ -1,8 +1,30 @@
-import Link from "next/link"
-import { Title } from "@/components/ui/title/Title"
+'use client'
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Title } from "@/components";
+
+import { currencyFormat } from '@/utils';
+import { useAddressStore, useCartStore } from "@/store";
 
 
 export const SummaryCheckoutOrder = () => {
+  const [loading, setloading] = useState(false);
+
+  // Store
+  const userAddress = useAddressStore(state => state.address);
+  const { subTotal, tax, total, totalItems } = useCartStore(state => state.getSummaryInformation());
+
+
+  useEffect(() => {
+    setloading(true)
+  }, [])
+
+  if (!loading) {
+    return <p>Loading...</p>
+  }
+
+
   return (
     <div className="mb-28 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 xl:p-6">
 
@@ -14,19 +36,24 @@ export const SummaryCheckoutOrder = () => {
       <h2 className="text-xl font-semibold text-gray-700 mb-6">Dirección de entrega</h2>
       <div className="grid grid-cols-2">
         <p>Cliente</p>
-        <p className="text-right font-medium">Alex Arraga</p>
+        <p className="text-right font-medium">
+          {userAddress.firstName} {userAddress.lastName}
+        </p>
 
-        <p>Ciudad</p>
-        <p className="text-right">Reconquista</p>
+        <p>Ciudad y país</p>
+        <p className="text-right">
+          {userAddress.city + ' - ' + userAddress.country}
+        </p>
 
-        <p>Provincia / Estado</p>
-        <p className="text-right">Santa Fe</p>
+        {/* <p>Provincia / Estado</p>
+        <p className="text-right">
+          {userAddress.state}
+        </p> */}
 
         <p>Codigo postal</p>
-        <p className="text-right">S3560</p>
-
-        <p>País</p>
-        <p className="text-right">Argentina</p>
+        <p className="text-right">
+          {userAddress.postalCode}
+        </p>
       </div>
 
 
@@ -39,16 +66,39 @@ export const SummaryCheckoutOrder = () => {
       <div className="grid grid-cols-2">
 
         <span>N° Productos</span>
-        <span className="text-right">3 articulos</span>
+        <span className="text-right">
+          {totalItems + ' artículos'}
+        </span>
 
         <span>Subtotal</span>
-        <span className="text-right">$100</span>
+        <span className="text-right">
+          {
+            currencyFormat({
+              country: "United States",
+              value: subTotal,
+            })
+          }
+        </span>
 
         <span>Impuestos (15%)</span>
-        <span className="text-right">$15</span>
+        <span className="text-right">
+          {
+            currencyFormat({
+              country: "United States",
+              value: tax,
+            })
+          }
+        </span>
 
         <span className="mt-8 text-lg font-bold">Total</span>
-        <span className="mt-8 text-lg font-bold text-right">$115</span>
+        <span className="mt-8 text-lg font-bold text-right">
+          {
+            currencyFormat({
+              country: "United States",
+              value: total,
+            })
+          }
+        </span>
 
       </div>
 
@@ -60,7 +110,10 @@ export const SummaryCheckoutOrder = () => {
 
 
         <button className="w-full mt-4 btn-primary">
-          <Link href='/orders/123' className="text-center block">
+          <Link
+            href='' // todo: redirigir a order
+            className="text-center block"
+          >
             Confirmar orden
           </Link>
         </button>

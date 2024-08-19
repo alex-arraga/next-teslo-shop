@@ -51,7 +51,6 @@ export const ProductsInCheckout = () => {
                 {currencyFormat({
                   value: product.price,
                   country: "United States",
-                  minFractionDigis: 0
                 })}
               </p>
 
@@ -59,8 +58,20 @@ export const ProductsInCheckout = () => {
                 <p>
                   Unidades: <span className="font-semibold">{product.quantity}</span>
                 </p>
+
                 <p className="mr-2 font-bold">
-                  Total: <span>{product.quantity * product.price}</span>
+
+                  {'Total: '}
+
+                  <span>
+                    {
+                      currencyFormat({
+                        country: 'United States',
+                        value: product.quantity * product.price
+                      })
+                    }
+                  </span>
+
                 </p>
               </div>
             </div>
