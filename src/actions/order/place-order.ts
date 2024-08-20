@@ -57,7 +57,43 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
       total += itemSubTotal * 1.15;
     }
 
-    console.log({ subTotal, tax, total });
+
+    // Crear la transacción de base de datos
+    const prismaTx = await prisma.$transaction(async (tx) => {
+      // 1. Actualizar el stock de los productos
+
+      // 2. Crear la orden
+      const newOrder = await prisma.order.create({
+        data: {
+          userId: userId,
+          itemsInOrder: itemsInOrder,
+          tax: tax,
+          subTotal: subTotal,
+          total: total,
+
+          OrderItem: {
+            createMany: {
+              data: productsInOrder.map((p) => ({
+                productId: p.productId,
+                quantity: p.quantity,
+                size: p.size,
+                price: products.find((product) => product.id === p.productId)?.price ?? 0
+              }))
+            }
+          }
+        }
+      })
+
+      // 3. Crear la dirección de la orden
+
+      console.log({ newOrder })
+
+      return {
+        order: newOrder,
+        updatedProducts: [],
+        orderAddress: {}
+      }
+    })
 
 
 
@@ -65,6 +101,7 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
 
 
   } catch (error) {
+    console.log(error)
     return {
       ok: false,
       message: 'Error placing order'
