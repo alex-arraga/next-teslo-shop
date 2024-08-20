@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma"
 import { auth } from "@/auth.config"
-import type { Address, Size } from "@/interfaces"
+import type { Address, Order, Size } from "@/interfaces"
 
 interface ProductToOrder {
   productId: string,
@@ -63,7 +63,7 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
       // 1. Actualizar el stock de los productos
 
       // 2. Crear la orden
-      const newOrder = await prisma.order.create({
+      const newOrder = await tx.order.create({
         data: {
           userId: userId,
           itemsInOrder: itemsInOrder,
@@ -84,14 +84,35 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
         }
       })
 
+      if (!newOrder) throw new Error('Error creating new order');
+
+
       // 3. Crear la dirección de la orden
 
-      console.log({ newOrder })
+      // ? Warn - type Order: I can't use spread operator due to an error of propagation
+      // const { country, ...restAddress } = address;
+
+      const orderAddress = await tx.orderAddress.create({
+        data: {
+          firstName: address.firstName,
+          lastName: address.lastName,
+          address: address.address,
+          address2: address.address2,
+          city: address.city,
+          postalCode: address.postalCode,
+          countryId: address.country,
+          phone: address.phone,
+
+          orderId: newOrder.id
+        }
+      })
+
+      if (!orderAddress) throw new Error('Error creating order address')
 
       return {
         order: newOrder,
         updatedProducts: [],
-        orderAddress: {}
+        orderAddress: orderAddress
       }
     })
 
