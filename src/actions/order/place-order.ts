@@ -59,8 +59,38 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
 
 
     // Crear la transacción de base de datos
+    // ? AC: Si ocurre un error dentro de la transaction, automaticamente hace rollback
     const prismaTx = await prisma.$transaction(async (tx) => {
+
       // 1. Actualizar el stock de los productos
+      const updatedProductPromises = products.map((product) => {
+
+        // Acumular valores
+        const productQuantity = productsInOrder.filter(p => p.productId === product.id)
+          .reduce((quantity, p) => p.quantity + quantity, 0);
+
+
+        if (productQuantity <= 0) throw new Error(`${product.id} no tiene una cantidad definida`);
+
+        return tx.product.update({
+          where: { id: product.id },
+          data: {
+            inStock: {
+              decrement: productQuantity
+            }
+          }
+        });
+      })
+
+      const updatedProducts = await Promise.all(updatedProductPromises)
+
+      // Verificar valores negativos, es decir, no hay stock
+      updatedProducts.forEach((product) => {
+        if (product.price < 0) {
+          throw new Error(`No hay stock del producto: ${product.title}`)
+        }
+      })
+
 
       // 2. Crear la orden
       const newOrder = await tx.order.create({
@@ -111,21 +141,26 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
 
       return {
         order: newOrder,
-        updatedProducts: [],
+        updatedProducts: updatedProducts,
         orderAddress: orderAddress
       }
     })
 
 
 
-    return 'Todo ok'
+    return {
+      ok: true,
+      message: 'New order created',
+      order: prismaTx.order,
+      prismaTx: prismaTx
+    }
 
 
-  } catch (error) {
+  } catch (error: any) {
     console.log(error)
     return {
       ok: false,
-      message: 'Error placing order'
+      message: error?.message
     }
   }
 }
