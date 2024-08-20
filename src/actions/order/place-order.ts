@@ -89,7 +89,7 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
 
       // 3. Crear la dirección de la orden
 
-      // ? Warn - type Order: I can't use spread operator due to an error of propagation
+      // ? Warn: I can't use spread operator due to an error of propagation
       // const { country, ...restAddress } = address;
 
       const orderAddress = await tx.orderAddress.create({
