@@ -42,11 +42,14 @@ export default function CartPage() {
 
           <SummaryOrderCart />
 
-          <button className="w-full mt-4 btn-primary">
-            <Link href='/checkout/address' className="text-center block">
-              Continuar
-            </Link>
-          </button>
+          <Link
+            replace
+            href='/checkout/address'
+            className="block text-center mt-4 btn-primary"
+          >
+            Continuar
+          </Link>
+
         </div>
 
       </div>
