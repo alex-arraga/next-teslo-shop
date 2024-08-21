@@ -2,7 +2,7 @@ export const revalidate = 3600 * 24 * 90 // revalidate every 3 months
 
 import { redirect } from "next/navigation";
 import { Title } from "@/components";
-import { AdressForm } from "./ui/AdressForm";
+import { AddressForm } from "./ui/AddressForm";
 
 import { getCountries, getUserAddress } from "@/actions";
 import { auth } from "@/auth.config";
@@ -34,7 +34,7 @@ export default async function CheckoutAddressPage() {
         />
 
         {/* Form */}
-        <AdressForm countries={countries} userAddress={userAddress} />
+        <AddressForm countries={countries} userAddress={userAddress} />
 
       </div>
     </div>

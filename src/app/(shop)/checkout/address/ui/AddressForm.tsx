@@ -29,7 +29,7 @@ interface Props {
   userAddress?: Partial<Address>
 }
 
-export const AdressForm = ({ countries, userAddress = {} }: Props) => {
+export const AddressForm = ({ countries, userAddress = {} }: Props) => {
   const router = useRouter();
 
   // Store
@@ -70,7 +70,7 @@ export const AdressForm = ({ countries, userAddress = {} }: Props) => {
       await deleteUserAddress(userId);
     }
 
-    router.push('/checkout')
+    router.replace('/checkout')
   };
 
 
