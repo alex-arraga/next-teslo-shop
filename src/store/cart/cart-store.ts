@@ -16,7 +16,8 @@ interface CartState {
 
   addProductToCart: (product: CartProduct) => void,
   updateProductQuantity: (product: CartProduct, quantity: number) => void,
-  removeProduct: (product: CartProduct) => void
+  removeProduct: (product: CartProduct) => void,
+  cleanCart: () => void
 }
 
 
@@ -54,7 +55,7 @@ export const useCartStore = create<CartState>()(
         set({ cart: updatedCartProducts })
       },
 
-      
+
 
       getTotalItems: () => {
         const { cart } = get();
@@ -66,7 +67,7 @@ export const useCartStore = create<CartState>()(
       getSummaryInformation: () => {
         const { cart } = get()
 
-        const totalItems = cart.reduce((total, item) => 
+        const totalItems = cart.reduce((total, item) =>
           total + item.quantity, 0);
 
         const subTotal = cart.reduce((subTotal, product) =>
@@ -108,7 +109,13 @@ export const useCartStore = create<CartState>()(
         const updateCart = cart.filter(item => !(item.id === product.id && item.size === product.size));
 
         set({ cart: updateCart })
+      },
+
+
+      cleanCart: () => {
+        set({ cart: [] })
       }
+
 
     })
     , {

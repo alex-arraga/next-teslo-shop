@@ -65,3 +65,7 @@ body {
 .loader {
   @apply w-4 h-4 border-2 border-blue-400 border-t-transparent border-solid rounded-full animate-spin;
 }
+
+.error-msg {
+  @apply p-2 bg-red-50 text-sm text-red-600 text-center rounded-md my-4 fade-in transition-all;
+}

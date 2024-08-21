@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Title } from "@/components";
+import { useRouter } from "next/navigation";
 import clsx from "clsx";
 
 import { currencyFormat } from '@/utils';
@@ -10,11 +11,15 @@ import { placeOrder } from "@/actions";
 
 
 export const SummaryCheckoutOrder = () => {
+  const router = useRouter();
+  
   const [loading, setloading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [sendingOrder, setSendingOrder] = useState(false);
 
   // Store
   const cart = useCartStore(state => state.cart);
+  const cleanCart = useCartStore(state => state.cleanCart);
   const userAddress = useAddressStore(state => state.address);
   const { subTotal, tax, total, totalItems } = useCartStore(state => state.getSummaryInformation());
 
@@ -37,13 +42,18 @@ export const SummaryCheckoutOrder = () => {
       size: product.size
     }))
 
-    console.log({ productsToOrder, userAddress })
-
-    // Server Action to place Order
+    //! Server Action to place Order
     const res = await placeOrder(productsToOrder, userAddress)
-    console.log({ res })
 
-    setSendingOrder(false)
+    if (!res.ok) {
+      setSendingOrder(false)
+      setErrorMessage(res.message)
+    }
+
+    setSendingOrder(false);
+    cleanCart();
+
+    router.replace('/orders/' + res.order?.id)
   }
 
 
@@ -131,9 +141,16 @@ export const SummaryCheckoutOrder = () => {
         </span>
 
 
+        <span className={clsx({
+          "error-msg": errorMessage,
+          "hidden": !errorMessage
+        })}>
+          {errorMessage}
+        </span>
+
+
         <div className="w-full mt-4">
           <button
-            // todo: redirigir a order
             onClick={onSendingOrder}
             disabled={sendingOrder}
             className={clsx(

@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma"
 import { auth } from "@/auth.config"
-import type { Address, Order, Size } from "@/interfaces"
+import type { Address, Size } from "@/interfaces"
 
 interface ProductToOrder {
   productId: string,
@@ -66,11 +66,12 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
       const updatedProductPromises = products.map((product) => {
 
         // Acumular valores
-        const productQuantity = productsInOrder.filter(p => p.productId === product.id)
-          .reduce((quantity, p) => p.quantity + quantity, 0);
+        const productQuantity = productsInOrder
+          .filter((p) => p.productId === product.id)
+          .reduce((acc, p) => p.quantity + acc, 0);
 
 
-        if (productQuantity <= 0) throw new Error(`${product.id} no tiene una cantidad definida`);
+        if (productQuantity < 0) throw new Error(`${product.id} no tiene una cantidad definida`);
 
         return tx.product.update({
           where: { id: product.id },
@@ -84,9 +85,9 @@ export const placeOrder = async (productsInOrder: ProductToOrder[], address: Add
 
       const updatedProducts = await Promise.all(updatedProductPromises)
 
-      // Verificar valores negativos, es decir, no hay stock
+      // Verificar valores negativos de inventario, es decir, no hay stock
       updatedProducts.forEach((product) => {
-        if (product.price < 0) {
+        if (product.inStock < 0) {
           throw new Error(`No hay stock del producto: ${product.title}`)
         }
       })
