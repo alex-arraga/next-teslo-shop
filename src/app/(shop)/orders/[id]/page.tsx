@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import { ResolvingMetadata, Metadata } from "next";
 
 import { Title } from "@/components";
@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { IoCardOutline } from "react-icons/io5";
 
 import { currencyFormat } from "@/utils";
-import { getProductsByOrderId, getOrderById, getAddressByOrderId } from "@/actions";
+import { getOrderById } from "@/actions";
 
 interface Props {
   params: {
@@ -46,18 +46,13 @@ export default async function OrdersByIdPage({ params }: Props) {
   const { id } = params;
 
   // Verify if the order exist
-  const { order } = await getOrderById(id);
-  const { address } = await getAddressByOrderId(id);
+  const { order, ok } = await getOrderById(id);
 
-  if (!order || !address) {
-    notFound();
+  if (!ok) {
+    redirect('/');
   }
 
-  const { products } = await getProductsByOrderId(id)
-
-  if (!products) {
-    notFound()
-  }
+  const { OrderAddress, OrderItem } = order!;
 
   return (
     <section className="flex justify-center w-full min-h-screen">
@@ -65,13 +60,12 @@ export default async function OrdersByIdPage({ params }: Props) {
 
         <div className="flex flex-col col-span-2 xl:col-span-1 bg-white h-fit rounded-md p-4 sm:p-6">
           <Title
-            title={`Order #${id.split('-').at(0)?.slice(0, -3) }`}
+            title={`Order #${id.split('-').at(0)?.slice(0, -3)}`}
           />
 
-          {/* Products */}
-          {products.map((product) => (
-            <OrderedProducts products={products} key={product.slug} />
-          ))}
+          {/* Products in order */}
+          <OrderedProducts orderItem={OrderItem} />
+
         </div>
 
         {/* Order details */}
@@ -87,12 +81,12 @@ export default async function OrdersByIdPage({ params }: Props) {
 
             <p>Cliente</p>
             <p className="text-right font-medium">
-              {address.firstName} {address.lastName}
+              {OrderAddress!.firstName} {OrderAddress!.lastName}
             </p>
 
             <p>Ciudad</p>
             <p className="text-right">
-              {address.city}
+              {OrderAddress!.city}
             </p>
 
             {/* <p>Provincia / Estado</p>
@@ -100,12 +94,12 @@ export default async function OrdersByIdPage({ params }: Props) {
 
             <p>Codigo postal</p>
             <p className="text-right">
-              {address.postalCode}
+              {OrderAddress!.postalCode}
             </p>
 
             <p>País</p>
             <p className="text-right">
-              {address.countryId}
+              {OrderAddress!.countryId}
             </p>
 
           </div>
@@ -121,14 +115,14 @@ export default async function OrdersByIdPage({ params }: Props) {
 
             <span>N° Productos</span>
             <span className="text-right">
-              {order.itemsInOrder} artículos
+              {order!.itemsInOrder} artículos
             </span>
 
             <span>Subtotal</span>
             <span className="text-right">
               {
                 currencyFormat({
-                  value: order.subTotal,
+                  value: order!.subTotal,
                   country: "United States"
                 })
               }
@@ -138,7 +132,7 @@ export default async function OrdersByIdPage({ params }: Props) {
             <span className="text-right">
               {
                 currencyFormat({
-                  value: order.tax,
+                  value: order!.tax,
                   country: "United States"
                 })
               }
@@ -148,7 +142,7 @@ export default async function OrdersByIdPage({ params }: Props) {
             <span className="mt-8 text-lg font-bold text-right">
               {
                 currencyFormat({
-                  value: order.total,
+                  value: order!.total,
                   country: "United States"
                 })
               }

@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import Image from "next/image"
 
 import { currencyFormat, labels } from "@/utils";
-import { OrderedProduct } from "@/interfaces";
+import type { OrderedItems } from "@/interfaces";
 
 interface Props {
-  products: OrderedProduct[]
+  orderItem: OrderedItems[]
 }
 
 
-export const OrderedProducts = ({ products }: Props) => {
+export const OrderedProducts = ({ orderItem }: Props) => {
   const [loading, setloading] = useState(false)
 
   useEffect(() => {
@@ -26,14 +26,14 @@ export const OrderedProducts = ({ products }: Props) => {
   return (
     <div className="w-full">
       {
-        products.map((product) => (
+        orderItem.map((item) => (
           <div
-            key={`${product.id}-${product.size}`}
+            key={`${item.productId}-${item.size}`}
             className="flex p-4 items-center bg-gray-100 rounded-lg mt-4"
           >
             <Image
-              src={`/products/${product.images[0]}`}
-              alt={product.title}
+              src={`/products/${item.product.ProductImage[0].url}`}
+              alt={item.product.title}
               width={120}
               height={120}
               className="rounded object-contain mr-4"
@@ -46,18 +46,22 @@ export const OrderedProducts = ({ products }: Props) => {
             <div className="flex flex-col w-full">
 
               <p className="capitalize">
-                {labels[product.gender]}
+                {labels[item.product.gender]}
               </p>
 
               <h2 className="font-semibold text-blue-900 text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
-                {product.size} - {product.title}
+                {item.size} - {item.product.title}
               </h2>
 
               <p className="text-sm md:text-base font-bold">
-                {currencyFormat({
-                  value: product.price,
-                  country: "United States",
-                })}
+                {
+                  currencyFormat({
+                    value: item.price,
+                    country: "United States"
+                  })
+                }
+
+                <span className="font-medium"> x {item.quantity} art.</span>
               </p>
 
             </div>

@@ -20,6 +20,7 @@ export const getOrderById = async (id: string) => {
             productId: true,
             quantity: true,
             price: true,
+            size: true,
 
             // Relation: OrderItem - Product
             product: {
