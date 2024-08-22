@@ -1,12 +1,13 @@
 export const revalidate = 120 // revalidate every 2 minutes
 
 import { ResolvingMetadata, Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 
 import { Pagination, ProductGrid, Title } from "@/components";
 import { Gender } from '@/interfaces';
 
-import { getPaginatedProductWithImages, getProductBySlug } from "@/actions";
+import { labels } from "@/utils";
+import { getPaginatedProductWithImages } from "@/actions";
 
 
 interface Props {
@@ -54,13 +55,6 @@ export default async function ProductsByGenderPage({ params, searchParams }: Pro
     redirect(`/gender/${gender}`)
   }
 
-  const labels: Record<Gender, string> = {
-    'men': 'Hombres',
-    'women': 'Mujeres',
-    'kid': 'Niños',
-    'unisex': 'Unisex'
-  }
-
   // todo: validate query params
   // if (id === 'kids') {
   //   notFound()
@@ -69,7 +63,7 @@ export default async function ProductsByGenderPage({ params, searchParams }: Pro
   return (
     <>
       <Title
-        title={`Artículos de ${(labels)[gender]}`}
+        title={`Artículos de ${labels[gender]}`}
         subtitle="Todos los artículos"
       />
 

@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image"
 
-import { currencyFormat } from "@/utils";
+import { currencyFormat, labels } from "@/utils";
 import { OrderedProduct } from "@/interfaces";
-
 
 interface Props {
   products: OrderedProduct[]
@@ -45,6 +44,11 @@ export const OrderedProducts = ({ products }: Props) => {
             />
 
             <div className="flex flex-col w-full">
+
+              <p className="capitalize">
+                {labels[product.gender]}
+              </p>
+
               <h2 className="font-semibold text-blue-900 text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
                 {product.size} - {product.title}
               </h2>
