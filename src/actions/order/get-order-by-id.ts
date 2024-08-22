@@ -4,15 +4,15 @@ import prisma from "@/lib/prisma"
 
 export const getOrderById = async (id: string) => {
   try {
-    const hasOrder = await prisma.order.findUnique({
+    const order = await prisma.order.findUnique({
       where: { id }
     })
 
-    if(!hasOrder) throw new Error(`The order: ${id} not exist`)
+    if(!order) throw new Error(`The order: ${id} not exist`)
 
     return {
       ok: true,
-      message: 'Order is ok'
+      order
     }
     
   } catch (error) {

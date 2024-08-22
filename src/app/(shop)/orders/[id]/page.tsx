@@ -7,7 +7,8 @@ import { OrderedProducts } from "./ui/OrderedProducts";
 import clsx from "clsx";
 import { IoCardOutline } from "react-icons/io5";
 
-import { getProductsByOrderId, getOrderById } from "@/actions";
+import { currencyFormat } from "@/utils";
+import { getProductsByOrderId, getOrderById, getAddressByOrderId } from "@/actions";
 
 interface Props {
   params: {
@@ -45,9 +46,10 @@ export default async function OrdersByIdPage({ params }: Props) {
   const { id } = params;
 
   // Verify if the order exist
-  const hasOrder = await getOrderById(id);
+  const { order } = await getOrderById(id);
+  const { address } = await getAddressByOrderId(id);
 
-  if (!hasOrder) {
+  if (!order || !address) {
     notFound();
   }
 
@@ -59,10 +61,11 @@ export default async function OrdersByIdPage({ params }: Props) {
 
   return (
     <section className="flex justify-center w-full min-h-screen">
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
-        <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md xl:p-6">
+      <div className="grid grid-cols-1 w-full sm:max-w-[calc(90vw)] xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
+
+        <div className="flex flex-col col-span-2 xl:col-span-1 bg-white rounded-md p-4 xl:p-6">
           <Title
-            title={`Order #${id.split('-').at(-4)}`}
+            title={`Order #${id.split('-').at(0)}`}
           />
 
           {/* Products */}
@@ -80,20 +83,30 @@ export default async function OrdersByIdPage({ params }: Props) {
           {/* Shipping address */}
           <h2 className="text-xl font-semibold text-gray-700 mb-6">Dirección de entrega</h2>
           <div className="grid grid-cols-2">
+
             <p>Cliente</p>
-            <p className="text-right font-medium">Alex Arraga</p>
+            <p className="text-right font-medium">
+              {address.firstName} {address.lastName}
+            </p>
 
             <p>Ciudad</p>
-            <p className="text-right">Reconquista</p>
+            <p className="text-right">
+              {address.city}
+            </p>
 
-            <p>Provincia / Estado</p>
-            <p className="text-right">Santa Fe</p>
+            {/* <p>Provincia / Estado</p>
+            <p className="text-right">Santa Fe</p> */}
 
             <p>Codigo postal</p>
-            <p className="text-right">S3560</p>
+            <p className="text-right">
+              {address.postalCode}
+            </p>
 
             <p>País</p>
-            <p className="text-right">Argentina</p>
+            <p className="text-right">
+              {address.countryId}
+            </p>
+
           </div>
 
 
@@ -104,17 +117,42 @@ export default async function OrdersByIdPage({ params }: Props) {
           {/* Summary products */}
           <h2 className="text-xl font-semibold text-gray-700 my-6">Productos</h2>
           <div className="grid grid-cols-2">
+
             <span>N° Productos</span>
-            <span className="text-right">3 articulos</span>
+            <span className="text-right">
+              {order.itemsInOrder} artículos
+            </span>
 
             <span>Subtotal</span>
-            <span className="text-right">$100</span>
+            <span className="text-right">
+              {
+                currencyFormat({
+                  value: order.subTotal,
+                  country: "United States"
+                })
+              }
+            </span>
 
             <span>Impuestos (15%)</span>
-            <span className="text-right">$15</span>
+            <span className="text-right">
+              {
+                currencyFormat({
+                  value: order.tax,
+                  country: "United States"
+                })
+              }
+            </span>
 
             <span className="mt-8 text-lg font-bold">Total</span>
-            <span className="mt-8 text-lg font-bold text-right">$115</span>
+            <span className="mt-8 text-lg font-bold text-right">
+              {
+                currencyFormat({
+                  value: order.total,
+                  country: "United States"
+                })
+              }
+            </span>
+
           </div>
 
           {/* Details */}
