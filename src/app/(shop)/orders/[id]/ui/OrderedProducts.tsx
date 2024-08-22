@@ -30,7 +30,7 @@ export const OrderedProducts = ({ products }: Props) => {
         products.map((product) => (
           <div
             key={`${product.id}-${product.size}`}
-            className="flex p-4 items-center bg-gray-50 rounded-lg my-2"
+            className="flex p-4 items-center bg-gray-100 rounded-lg mt-4"
           >
             <Image
               src={`/products/${product.images[0]}`}

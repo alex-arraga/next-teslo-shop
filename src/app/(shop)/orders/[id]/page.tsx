@@ -31,11 +31,11 @@ export async function generateMetadata(
   // const previousImages = (await parent).openGraph?.images || []
 
   return {
-    title: `Order #${orderId}`,
-    description: `Order #${orderId}`,
+    title: `Order #${orderId.split('-').at(0)?.slice(0, -3)}`,
+    description: `Order #${orderId.split('-').at(0)?.slice(0, -3)}`,
     openGraph: {
-      title: `Order #${orderId}`,
-      description: `Order #${orderId}`,
+      title: `Order #${orderId.split('-').at(0)?.slice(0, -3)}`,
+      description: `Order #${orderId.split('-').at(0)?.slice(0, -3)}`,
       // images: [`/products/${product?.images[1]}`],
     },
   }
@@ -63,9 +63,9 @@ export default async function OrdersByIdPage({ params }: Props) {
     <section className="flex justify-center w-full min-h-screen">
       <div className="grid grid-cols-1 w-full sm:max-w-[calc(90vw)] xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
 
-        <div className="flex flex-col col-span-2 xl:col-span-1 bg-white rounded-md p-4 xl:p-6">
+        <div className="flex flex-col col-span-2 xl:col-span-1 bg-white rounded-md p-4 sm:p-6">
           <Title
-            title={`Order #${id.split('-').at(0)}`}
+            title={`Order #${id.split('-').at(0)?.slice(0, -3) }`}
           />
 
           {/* Products */}
@@ -75,9 +75,10 @@ export default async function OrdersByIdPage({ params }: Props) {
         </div>
 
         {/* Order details */}
-        <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 xl:p-6">
+        <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 sm:p-6">
           <Title
             title="Detalles"
+            className="mt-0"
           />
 
           {/* Shipping address */}
