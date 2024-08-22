@@ -18,5 +18,7 @@ export { getUserAddress } from './address/get-user-address'
 
 // Order
 export { placeOrder } from './order/place-order'
+export { getOrderById } from './order/get-order-by-id'
+export { getProductsByOrderId } from './order/get-products-by-order-id'
 
 // AC: I Don't export all (export *) cause generate conflicts

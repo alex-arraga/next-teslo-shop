@@ -1,17 +1,13 @@
+import { notFound } from "next/navigation";
 import { ResolvingMetadata, Metadata } from "next";
 
-import { ProductsInCheckout, Title } from "@/components";
-import { initialData } from "@/seed/seed";
+import { Title } from "@/components";
+import { OrderedProducts } from "./ui/OrderedProducts";
 
-import { IoCardOutline } from "react-icons/io5";
 import clsx from "clsx";
+import { IoCardOutline } from "react-icons/io5";
 
-// todo: replace for products in cookies
-const productsInCart = [
-  initialData.products[0],
-  initialData.products[1],
-  initialData.products[2],
-]
+import { getProductsByOrderId, getOrderById } from "@/actions";
 
 interface Props {
   params: {
@@ -45,28 +41,33 @@ export async function generateMetadata(
 }
 
 
-export default function OrdersByIdPage({ params }: Props) {
+export default async function OrdersByIdPage({ params }: Props) {
   const { id } = params;
 
-  // todo: realizar verificaciones de la orden
-  // redirect
+  // Verify if the order exist
+  const hasOrder = await getOrderById(id);
 
+  if (!hasOrder) {
+    notFound();
+  }
 
+  const { products } = await getProductsByOrderId(id)
+
+  if (!products) {
+    notFound()
+  }
 
   return (
     <section className="flex justify-center w-full min-h-screen">
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md xl:p-6">
           <Title
-            title={`Orden #${id}`}
+            title={`Order #${id.split('-').at(-4)}`}
           />
 
           {/* Products */}
-          {productsInCart.map((product) => (
-            <ProductsInCheckout
-              key={product.slug}
-              product={product}
-            />
+          {products.map((product) => (
+            <OrderedProducts products={products} key={product.slug} />
           ))}
         </div>
 
