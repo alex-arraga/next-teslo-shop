@@ -63,7 +63,7 @@ export default async function OrdersByIdPage({ params }: Props) {
     <section className="flex justify-center w-full min-h-screen">
       <div className="grid grid-cols-1 w-full sm:max-w-[calc(90vw)] xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
 
-        <div className="flex flex-col col-span-2 xl:col-span-1 bg-white rounded-md p-4 sm:p-6">
+        <div className="flex flex-col col-span-2 xl:col-span-1 bg-white h-fit rounded-md p-4 sm:p-6">
           <Title
             title={`Order #${id.split('-').at(0)?.slice(0, -3) }`}
           />
