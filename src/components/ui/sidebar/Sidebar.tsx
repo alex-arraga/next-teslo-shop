@@ -28,7 +28,7 @@ const sidebarOptions = {
     },
     {
       title: 'Ordenes',
-      href: '/',
+      href: '/orders',
       icon: <IoTicketOutline size={30} />
     },
   ],
@@ -40,7 +40,7 @@ const sidebarOptions = {
     },
     {
       title: 'Ordenes',
-      href: '/',
+      href: '/orders',
       icon: <IoTicketOutline size={30} />
     },
     {

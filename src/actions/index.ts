@@ -21,5 +21,6 @@ export { placeOrder } from './order/place-order'
 export { getOrderById } from './order/get-order-by-id'
 export { getProductsByOrderId } from './order/get-products-by-order-id'
 export { getAddressByOrderId } from './order/get-address-by-id'
+export { getOrdersBySessionUser } from './order/get-orders-by-user'
 
 // AC: I Don't export all (export *) cause generate conflicts
