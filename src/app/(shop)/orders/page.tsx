@@ -1,3 +1,5 @@
+export const revalidate = 0;
+
 // https://tailwindcomponents.com/component/hoverable-table
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
