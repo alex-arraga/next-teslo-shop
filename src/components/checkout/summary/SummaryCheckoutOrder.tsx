@@ -48,6 +48,7 @@ export const SummaryCheckoutOrder = () => {
     if (!res.ok) {
       setSendingOrder(false)
       setErrorMessage(res.message)
+      return;
     }
 
     setSendingOrder(false);
