@@ -99,7 +99,7 @@ export default async function OrdersByIdPage({ params }: Props) {
 
             <p>País</p>
             <p className="text-right">
-              {OrderAddress!.countryId}
+              {OrderAddress!.country.name} - {OrderAddress!.countryId}
             </p>
 
           </div>
