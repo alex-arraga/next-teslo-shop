@@ -1,11 +1,8 @@
 import { redirect } from "next/navigation";
 import { ResolvingMetadata, Metadata } from "next";
 
-import { Title } from "@/components";
+import { Title, PayPalButton } from "@/components";
 import { OrderedProducts } from "./ui/OrderedProducts";
-
-import clsx from "clsx";
-import { IoCardOutline } from "react-icons/io5";
 
 import { currencyFormat } from "@/utils";
 import { getOrderById } from "@/actions";
@@ -150,24 +147,9 @@ export default async function OrdersByIdPage({ params }: Props) {
 
           </div>
 
-          {/* Details */}
-          <div className="flex flex-col mt-6">
-
-            {/* Pay: paid or pending */}
-            <div className={
-              clsx(
-                "flex items-center py-2 px-3.5 text-sm font-medium text-white w-full rounded-lg",
-                {
-                  "bg-red-600": true,
-                  // "bg-green-600": true
-                }
-              )
-            }>
-              <IoCardOutline size={25} />
-              <p className="mx-2">Pendiente de pago</p>
-              {/* <p className="mx-2">Pagada</p> */}
-            </div>
-
+          {/* Paypal btn */}
+          <div className="mt-6">
+            <PayPalButton />
           </div>
         </div>
 

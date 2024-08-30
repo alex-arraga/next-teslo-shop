@@ -32,6 +32,7 @@ export const OrderedProducts = ({ orderItem }: Props) => {
             className="flex p-4 items-center bg-gray-100 rounded-lg mt-4"
           >
             <Image
+              priority
               src={`/products/${item.product.ProductImage[0].url}`}
               alt={item.product.title}
               width={120}

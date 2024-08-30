@@ -1,5 +1,5 @@
-// Provider
-export * from './provider/Providers'
+// Providers
+export * from './providers/Providers'
 
 // UI
 export * from './ui/top-menu/TopMenu'
@@ -33,3 +33,6 @@ export * from './checkout/summary/SummaryCheckoutOrder'
 
 // Payment
 export * from './payment/PaymentStatus'
+
+// PayPal
+export * from './paypal/PayPalButton'
