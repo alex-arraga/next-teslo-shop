@@ -1,48 +1,56 @@
 'use server'
 
-import { PayPalPayment, PayPalPaymentSchema } from '@/interfaces'
+import prisma from '@/lib/prisma';
+import { PayPalPayment, PayPalPaymentSchema } from '@/interfaces';
 
 export const paypalCheckPayment = async (transactionId: string) => {
+  // 1. Get auth token from paypal
+  const authToken = await getPayPalBearerToken();
+
+  if (!authToken) {
+    return {
+      ok: false,
+      message: 'No se pudo obtener el token'
+    }
+  }
+
+  // 2. Verify if payment exist
+  const payment = await verifyPayPalPayment(transactionId, authToken)
+
+  if (!payment) {
+    return {
+      ok: false,
+      message: 'Error verificando el pago en PayPal'
+    }
+  }
+
+  const { status, purchase_units } = payment;
+
+  // 3. Check if payment has been made
+  if (status !== "COMPLETED") {
+    return {
+      ok: false,
+      message: 'Aún no se ha pagado en PayPal'
+    }
+  }
+
   try {
-    // 1. Get auth token from paypal
-    const authToken = await getPayPalBearerToken();
-
-    if (!authToken) {
-      return {
-        ok: false,
-        message: 'No se pudo obtener el token'
+    // 4. Updated the order in db
+    await prisma.order.update({
+      where: { id: '9b232ab8-0cf8-48f8-99b6-ea2db0ceecf0' },
+      data: {
+        isPaid: true,
+        paidAt: new Date()
       }
-    }
+    })
 
-    // 2. Verify if payment exist
-    const payment = await verifyPayPalPayment(transactionId, authToken)
-
-    if (!payment) {
-      return {
-        ok: false,
-        message: 'Error verificando el pago en PayPal'
-      }
-    }
-
-    const { status, purchase_units } = payment;
-
-    // 3. Check if payment has been made
-    if(status !== "COMPLETED") {
-      return {
-        ok: false,
-        message: 'Aún no se ha pagado en PayPal'
-      }
-    }
-
-    // TODO: Actualizar nuestra db para que figure como pagado
-
-    console.log({ status, purchase_units })
+    console.log('Orden pagada 💰')
 
   } catch (error) {
     console.log(error)
     return {
       ok: false,
-      message: `No se pudo chequear el pago ${transactionId}`
+      message: `500 - Error al actualizar el pago de la transacción: ${transactionId}`
     }
   }
 }
@@ -77,7 +85,11 @@ const getPayPalBearerToken = async (): Promise<string | null> => {
 
 
   try {
-    const result = await fetch(paypalOAuthURL, requestOptions).then(res => res.json())
+    const result = await fetch(paypalOAuthURL, {
+      ...requestOptions,
+      cache: 'no-store'
+    }).then(res => res.json())
+
     return result.access_token
 
   } catch (error) {
@@ -102,7 +114,12 @@ const verifyPayPalPayment = async (transactionId: string, authToken: string): Pr
   };
 
   try {
-    const result: PayPalPayment = await fetch(paypalOrderUrl, requestOptions).then(res => res.json());
+    // Not save in cache
+    const result: PayPalPayment = await fetch(paypalOrderUrl, {
+      ...requestOptions,
+      cache: 'no-store'
+    }).then(res => res.json());
+
     const check = PayPalPaymentSchema.safeParse(result);
 
     if (!check.success) {
