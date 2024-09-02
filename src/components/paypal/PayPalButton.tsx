@@ -42,8 +42,6 @@ export const PayPalButton = ({ amount, orderId, maxWith = true }: Props) => {
       ]
     });
 
-    console.log({ transactionId })
-
     const { ok, message } = await setTransactionId(transactionId, orderId)
 
     if (!ok) {
