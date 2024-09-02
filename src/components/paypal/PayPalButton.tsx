@@ -53,10 +53,8 @@ export const PayPalButton = ({ amount, orderId, maxWith = true }: Props) => {
 
 
   const onApproved = async (data: OnApproveData, actions: OnApproveActions): Promise<void> => {
-    
-    console.log('onApproved')
-    const details = await actions.order?.capture();
 
+    const details = await actions.order?.capture();
     if (!details?.id) return;
 
     await paypalCheckPayment(details.id)
