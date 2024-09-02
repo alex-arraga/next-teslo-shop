@@ -23,6 +23,7 @@ export { getAddressByOrderId } from './order/get-address-by-id'
 export { getOrdersBySessionUser } from './order/get-orders-by-user'
 
 // Payment
-export { setTransactionId } from './payments/setTransactionId'
+export { setTransactionId } from './payments/set-transaction-id'
+export { paypalCheckPayment } from './payments/paypal-check-payment'
 
 // AC: I Don't export all (export *) cause generate conflicts
