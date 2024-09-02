@@ -22,4 +22,7 @@ export { getOrderById } from './order/get-order-by-id'
 export { getAddressByOrderId } from './order/get-address-by-id'
 export { getOrdersBySessionUser } from './order/get-orders-by-user'
 
+// Payment
+export { setTransactionId } from './payments/setTransactionId'
+
 // AC: I Don't export all (export *) cause generate conflicts
