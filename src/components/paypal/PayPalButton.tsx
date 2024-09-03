@@ -33,7 +33,7 @@ export const PayPalButton = ({ amount, orderId, maxWith = true }: Props) => {
       intent: "CAPTURE",
       purchase_units: [
         {
-          invoice_id: orderId, // -> A unique number that identifies a transaction made with PayPal
+          invoice_id: orderId, // -> A unique number that identifies our order with transaction made with PayPal
           amount: {
             currency_code: "USD",
             value: roundedAmount.toString()

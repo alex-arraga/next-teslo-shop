@@ -24,9 +24,11 @@ export const paypalCheckPayment = async (transactionId: string) => {
     }
   }
 
+  // 3. The PayPal order identifier is obtained to check if payment has been made
   const { status, purchase_units } = payment;
+  const { invoice_id: orderId } = purchase_units[0];
 
-  // 3. Check if payment has been made
+  // 4. Check if payment has been made
   if (status !== "COMPLETED") {
     return {
       ok: false,
@@ -35,9 +37,9 @@ export const paypalCheckPayment = async (transactionId: string) => {
   }
 
   try {
-    // 4. Updated the order in db
+    // 5. Updated the order in db
     await prisma.order.update({
-      where: { id: '9b232ab8-0cf8-48f8-99b6-ea2db0ceecf0' },
+      where: { id: orderId },
       data: {
         isPaid: true,
         paidAt: new Date()
@@ -45,6 +47,9 @@ export const paypalCheckPayment = async (transactionId: string) => {
     })
 
     console.log('Orden pagada 💰')
+    return {
+      ok: true
+    }
 
   } catch (error) {
     console.log(error)
