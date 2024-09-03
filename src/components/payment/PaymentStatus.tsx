@@ -3,11 +3,18 @@ import { IoCardOutline } from "react-icons/io5"
 
 interface Props {
   paid: boolean
+  withBg?: boolean
 }
 
-export const PaymentStatus = ({ paid }: Props) => {
+export const PaymentStatus = ({ paid, withBg = false }: Props) => {
   return (
-    <div className="flex justify-center items-center w-full">
+    <div className={clsx(
+      "flex justify-center items-center w-full",
+      {
+        "bg-red-200 p-2 rounded": !paid && withBg,
+        "bg-green-200 p-2 rounded": paid && withBg
+      }
+    )}>
       <IoCardOutline className={
         clsx({
           "text-red-800": !paid,

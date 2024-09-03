@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { ResolvingMetadata, Metadata } from "next";
 
-import { Title, PayPalButton } from "@/components";
+import { Title, PayPalButton, PaymentStatus } from "@/components";
 import { OrderedProducts } from "./ui/OrderedProducts";
 
 import { currencyFormat } from "@/utils";
@@ -144,15 +144,37 @@ export default async function OrdersByIdPage({ params }: Props) {
                 })
               }
             </span>
-
           </div>
 
-          {/* Paypal btn */}
+          {/* Paypal btn and Payment status */}
           <div className="mt-6">
-            <PayPalButton
-              orderId={order!.id}
-              amount={order!.total}
-            />
+            {
+              order?.isPaid === false ? (
+                <>
+                  <div className="mb-6">
+                    <PaymentStatus
+                      withBg
+                      paid={order!.isPaid}
+                    />
+
+                    {/* Divisor */}
+                    <div className="w-full h-0.5 rounded bg-gray-200 mt-6" />
+                  </div>
+
+                  <PayPalButton
+                    orderId={order!.id}
+                    amount={order!.total}
+                  />
+                </>
+              )
+
+                : (
+                  <PaymentStatus
+                    withBg
+                    paid={order!.isPaid}
+                  />
+                )
+            }
           </div>
         </div>
 
