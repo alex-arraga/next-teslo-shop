@@ -2,6 +2,7 @@
 
 import prisma from '@/lib/prisma';
 import { PayPalPayment, PayPalPaymentSchema } from '@/interfaces';
+import { revalidatePath } from 'next/cache';
 
 export const paypalCheckPayment = async (transactionId: string) => {
   // 1. Get auth token from paypal
@@ -46,7 +47,10 @@ export const paypalCheckPayment = async (transactionId: string) => {
       }
     })
 
-    console.log('Orden pagada 💰')
+
+    // 6. Revalidate path to update data
+    revalidatePath(`/orders/${orderId}`)
+
     return {
       ok: true
     }
