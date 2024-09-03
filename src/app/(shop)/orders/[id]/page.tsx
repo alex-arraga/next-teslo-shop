@@ -149,7 +149,7 @@ export default async function OrdersByIdPage({ params }: Props) {
           {/* Paypal btn and Payment status */}
           <div className="mt-6">
             {
-              order?.isPaid === false ? (
+              order!.isPaid === false ? (
                 <>
                   <div className="mb-6">
                     <PaymentStatus
