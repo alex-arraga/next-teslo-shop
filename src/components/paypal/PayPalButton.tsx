@@ -6,13 +6,13 @@ import { setTransactionId, paypalCheckPayment } from "@/actions"
 
 
 interface Props {
-  maxWith?: boolean,
+  maxWidth?: boolean,
   orderId: string,
   amount: number
 }
 
 
-export const PayPalButton = ({ amount, orderId, maxWith = true }: Props) => {
+export const PayPalButton = ({ amount, orderId, maxWidth = true }: Props) => {
   const [{ isPending }] = usePayPalScriptReducer();
 
   const roundedAmount = Math.round(amount * 100) / 100;
@@ -68,7 +68,7 @@ export const PayPalButton = ({ amount, orderId, maxWith = true }: Props) => {
       style={{
         color: "blue",
         height: 45,
-        disableMaxWidth: maxWith,
+        disableMaxWidth: maxWidth,
       }}
     />
   )
