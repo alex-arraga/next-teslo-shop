@@ -61,15 +61,17 @@ export const PayPalButton = ({ amount, orderId, maxWidth = true }: Props) => {
   }
 
   return (
-    <PayPalButtons
-      createOrder={createOrder}
-      onApprove={onApproved}
+    <div className="relative z-0">
+      <PayPalButtons
+        createOrder={createOrder}
+        onApprove={onApproved}
 
-      style={{
-        color: "blue",
-        height: 45,
-        disableMaxWidth: maxWidth,
-      }}
-    />
+        style={{
+          color: "blue",
+          height: 45,
+          disableMaxWidth: maxWidth,
+        }}
+      />
+    </div>
   )
 }
