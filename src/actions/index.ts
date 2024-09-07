@@ -16,11 +16,12 @@ export { setUserAddress } from './address/set-user-address'
 export { deleteUserAddress } from './address/delete-user-address'
 export { getUserAddress } from './address/get-user-address'
 
-// Order
-export { placeOrder } from './order/place-order'
-export { getOrderById } from './order/get-order-by-id'
-export { getAddressByOrderId } from './order/get-address-by-id'
-export { getOrdersBySessionUser } from './order/get-orders-by-user'
+// Orders
+export { placeOrder } from './orders/place-order'
+export { getOrderById } from './orders/get-order-by-id'
+export { getAddressByOrderId } from './orders/get-address-by-id'
+export { getOrdersBySessionUser } from './orders/get-orders-by-user'
+export { getPaginatedOrders } from './orders/get-paginated-orders'
 
 // Payment
 export { setTransactionId } from './payments/set-transaction-id'
