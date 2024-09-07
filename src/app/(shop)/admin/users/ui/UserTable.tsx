@@ -50,10 +50,10 @@ export const UserTable = ({ users }: Props) => {
             </td>
 
             <td className="text-sm text-center text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-              {user.address?.country.name}
+              {user.address?.country.name ?? '-'}
             </td>
 
-            <td className="flex items-center text-sm text-center  text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+            <td className="flex items-center justify-center text-sm text-center text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
               {user.address?.phone}
             </td>
 

@@ -1,13 +1,11 @@
 export const revalidate = 0;
 
 // https://tailwindcomponents.com/component/hoverable-table
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { PaymentStatus, Title } from '@/components';
-
-import { currencyFormat } from '@/utils';
-import { getPaginatedUsers } from '@/actions';
 import { UserTable } from './ui/UserTable';
+import { redirect } from 'next/navigation';
+import { Title } from '@/components';
+
+import { getPaginatedUsers } from '@/actions';
 
 
 export const metadata = {
