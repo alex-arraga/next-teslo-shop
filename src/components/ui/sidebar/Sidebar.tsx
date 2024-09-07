@@ -50,7 +50,7 @@ const sidebarOptions = {
     },
     {
       title: 'Usuarios',
-      href: '/',
+      href: '/admin/users',
       icon: <IoPeopleOutline size={30} />
     },
   ],

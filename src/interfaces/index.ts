@@ -7,3 +7,6 @@ export * from './ordered-item.interface'
 
 // API
 export * from './api/payment/paypal-payment.interface'
+
+// Admin
+export * from './admin/users'

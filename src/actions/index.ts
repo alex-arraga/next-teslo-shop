@@ -1,3 +1,5 @@
+// ! AC: I Don't export all (export *) cause generate conflicts
+
 // Products
 export { getPaginatedProductWithImages } from './products/products-pagination';
 export { getProductBySlug } from './products/get-product-by-slug';
@@ -7,6 +9,10 @@ export { getStockBySlug } from './products/get-stock-by-slug';
 export { authenticate, login } from './auth/login'
 export { logout } from './auth/logout'
 export { registerUser } from './auth/register'
+
+// Users
+export { getPaginatedUsers } from './users/get-paginated-users'
+
 
 // Countries
 export { getCountries } from './country/getCountries'
@@ -26,5 +32,3 @@ export { getPaginatedOrders } from './orders/get-paginated-orders'
 // Payment
 export { setTransactionId } from './payments/set-transaction-id'
 export { paypalCheckPayment } from './payments/paypal-check-payment'
-
-// AC: I Don't export all (export *) cause generate conflicts
