@@ -2,6 +2,7 @@
 
 import { Product, Category } from "@/interfaces";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 interface Props {
   product: Product;
@@ -10,26 +11,67 @@ interface Props {
 
 const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
 
+
+interface FormInputs {
+  title: string,
+  slug: string,
+  description: string,
+  price: number,
+  inStock: number,
+  sizes: string[],
+  tags: string,
+  gender: 'men' | 'women' | 'kid' | 'unisex',
+  categoryId: string
+}
+
 export const EditProductForm = ({ product, categories }: Props) => {
   const [category, setCategory] = useState('');
 
+  const { register, handleSubmit, formState: { isValid } } = useForm<FormInputs>({
+    defaultValues: {
+      ...product,
+      tags: product.tags.join(' - '),
+      sizes: product.sizes,
+
+      // TODO: Images
+    }
+  });
+
+
+  const onSumbit = async (data: FormInputs) => {
+    console.log({ data })
+  }
+
+
   return (
-    <form className="grid px-5 mb-16 grid-cols-1 sm:px-0 sm:grid-cols-2 gap-3">
+    <form
+      onSubmit={handleSubmit(onSumbit)}
+      className="grid px-5 mb-16 grid-cols-1 sm:px-0 sm:grid-cols-2 gap-3"
+    >
       {/* Textos */}
       <div className="w-full">
         <div className="flex flex-col mb-2">
           <span>Título</span>
-          <input type="text" className="p-2 border rounded-md bg-gray-200" />
+          <input
+            {...register('title', { required: true })}
+            type="text"
+            className="p-2 border rounded-md bg-gray-200"
+          />
         </div>
 
         <div className="flex flex-col mb-2">
           <span>Slug</span>
-          <input type="text" className="p-2 border rounded-md bg-gray-200" />
+          <input
+            {...register('slug', { required: true })}
+            type="text"
+            className="p-2 border rounded-md bg-gray-200"
+          />
         </div>
 
         <div className="flex flex-col mb-2">
           <span>Descripción</span>
           <textarea
+            {...register('description', { required: true })}
             rows={5}
             className="p-2 border rounded-md bg-gray-200"
           ></textarea>
@@ -37,17 +79,28 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
         <div className="flex flex-col mb-2">
           <span>Price</span>
-          <input type="number" className="p-2 border rounded-md bg-gray-200" />
+          <input
+            {...register('price', { required: true, min: 0 })}
+            type="number"
+            className="p-2 border rounded-md bg-gray-200"
+          />
         </div>
 
         <div className="flex flex-col mb-2">
           <span>Tags</span>
-          <input type="text" className="p-2 border rounded-md bg-gray-200" />
+          <input
+            {...register('tags', { required: true })}
+            type="text"
+            className="p-2 border rounded-md bg-gray-200"
+          />
         </div>
 
         <div className="flex flex-col mb-2">
           <span>Gender</span>
-          <select className="p-2 border rounded-md bg-gray-200">
+          <select
+            {...register('gender', { required: true })}
+            className="p-2 border rounded-md bg-gray-200"
+          >
             <option value="">[Seleccione]</option>
             <option value="men">Men</option>
             <option value="women">Women</option>
@@ -60,6 +113,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <span>Categoria</span>
 
           <select
+            {...register('categoryId', { required: true })}
             className="p-2 border rounded-md bg-gray-200 capitalize"
             value={category}
             onChange={e => setCategory(e.target.value)}
@@ -67,8 +121,10 @@ export const EditProductForm = ({ product, categories }: Props) => {
             <option value="">[Seleccione]</option>
             {categories.map(c => (
               <option
+                key={c.id}
                 className="capitalize"
-                value={c.id}>
+                value={c.id}
+              >
                 {c.name}
               </option>
             ))}
