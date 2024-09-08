@@ -12,6 +12,11 @@ export interface Product {
   gender: Gender
 }
 
+export type ProductImage = {
+  id: number;
+  url: string;
+  productId?: string;
+}
 
 export interface CartProduct {
   id: string,
