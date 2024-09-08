@@ -1,5 +1,6 @@
 'use client'
 
+import { changeUserRole } from "@/actions"
 import { Users } from "@/interfaces"
 
 interface Props {
@@ -8,6 +9,8 @@ interface Props {
 
 export const UserTable = ({ users }: Props) => {
   return (
+    // TODO: Execute pop-up when the admin want change user role
+    
     <table className="min-w-full">
 
       <thead className="bg-gray-200 border-b">
@@ -61,10 +64,10 @@ export const UserTable = ({ users }: Props) => {
               <select
                 className="w-full p-1 bg-gray-100 rounded"
                 value={user.role}
-                onChange={e => console.log(e.target.value)}
+                onChange={e => changeUserRole(user.id, e.target.value)}
               >
-                <option value="admin">admin</option>
-                <option value="user">user</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
               </select>
             </td>
 

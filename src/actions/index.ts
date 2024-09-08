@@ -12,7 +12,7 @@ export { registerUser } from './auth/register'
 
 // Users
 export { getPaginatedUsers } from './users/get-paginated-users'
-
+export { changeUserRole } from './users/change-user-role'
 
 // Countries
 export { getCountries } from './country/getCountries'
