@@ -45,7 +45,7 @@ const sidebarOptions = {
     },
     {
       title: 'Productos',
-      href: '/',
+      href: '/admin/products',
       icon: <IoShirtOutline size={30} />
     },
     {
