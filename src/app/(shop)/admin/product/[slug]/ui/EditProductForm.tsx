@@ -1,6 +1,7 @@
 'use client';
 
 import { Product, Category, ProductImage } from "@/interfaces";
+import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,7 +29,7 @@ interface FormInputs {
 export const EditProductForm = ({ product, categories }: Props) => {
   const [category, setCategory] = useState('');
 
-  const { register, handleSubmit, formState: { isValid } } = useForm<FormInputs>({
+  const { register, handleSubmit, formState: { isValid }, getValues, setValue, watch } = useForm<FormInputs>({
     defaultValues: {
       ...product,
       tags: product.tags.join(' - '),
@@ -37,6 +38,17 @@ export const EditProductForm = ({ product, categories }: Props) => {
       // TODO: Images
     }
   });
+
+
+  watch('sizes')
+
+  const onSizeChange = (newSize: string) => {
+    // Size it's like an Array but not allow duplicate values
+    const sizes = new Set(getValues('sizes'));
+    sizes.has(newSize) ? sizes.delete(newSize) : sizes.add(newSize)
+
+    setValue('sizes', Array.from(sizes))
+  }
 
 
   const onSumbit = async (data: FormInputs) => {
@@ -149,8 +161,12 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
             {
               sizes.map(size => (
-                // bg-blue-500 text-white <--- si está seleccionado
-                <div key={size} className="flex  items-center justify-center w-10 h-10 mr-2 border rounded-md">
+                <div onClick={() => onSizeChange(size)} key={size} className={clsx(
+                  "flex items-center justify-center w-10 h-10 mr-2 border rounded-md cursor-pointer",
+                  {
+                    "bg-blue-500 text-white": getValues('sizes').includes(size)
+                  }
+                )}>
                   <span>{size}</span>
                 </div>
               ))
