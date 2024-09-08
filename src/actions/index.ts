@@ -32,3 +32,6 @@ export { getPaginatedOrders } from './orders/get-paginated-orders'
 // Payment
 export { setTransactionId } from './payments/set-transaction-id'
 export { paypalCheckPayment } from './payments/paypal-check-payment'
+
+// Categories
+export { getCategories } from './categories/get-categories'
