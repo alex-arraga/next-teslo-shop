@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 interface Props {
-  product: Product & { ProductImage?: ProductImage[] };
+  product: Partial<Product> & { ProductImage?: ProductImage[] };
   categories: Category[]
 }
 
@@ -33,8 +33,8 @@ export const EditProductForm = ({ product, categories }: Props) => {
   const { register, handleSubmit, formState: { isValid }, getValues, setValue, watch } = useForm<FormInputs>({
     defaultValues: {
       ...product,
-      tags: product.tags.join(' - '),
-      sizes: product.sizes,
+      tags: product?.tags?.join(' - '),
+      sizes: product.sizes ?? [],
 
       // TODO: Images
     }
@@ -206,27 +206,38 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
           </div>
 
-          <div className="grid grid-cols-1 bg-rose-200 p-4 mt-4 rounded-md sm:grid-cols-3 gap-3">
-            {product.ProductImage?.map(img => (
-              <div key={img.id}>
-                <Image
-                  priority
-                  src={`/products/${img.url}`}
-                  alt={product.title}
-                  width={350}
-                  height={350}
-                  className="rounded-t-md shadow-lg"
-                />
+          <div className="grid grid-cols-1 p-4 mt-4 bg-slate-200 rounded-md sm:grid-cols-3 gap-3">
+            {
+              product.ProductImage !== undefined ?
+                (product.ProductImage?.map(img => (
+                  <div key={img.id}>
+                    <Image
+                      priority
+                      src={`/products/${img.url}`}
+                      alt={product.title ?? img.id.toString()}
+                      width={350}
+                      height={350}
+                      className="rounded-t-md shadow-lg"
+                    />
 
-                <button
-                  type="button"
-                  onClick={() => console.log(img.id, img.url)}
-                  className="w-full rounded-b-md text-sm btn-delete"
-                >
-                  Eliminar
-                </button>
-              </div>
-            ))}
+                    <button
+                      type="button"
+                      onClick={() => console.log(img.id, img.url)}
+                      className="w-full rounded-b-md text-sm btn-delete"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                )))
+
+                : (
+                  <div className="col-span-1 sm:col-span-3">
+                    <h1 className="text-center font-medium">
+                      No hay imagenes
+                    </h1>
+                  </div>
+                )
+            }
           </div>
 
 

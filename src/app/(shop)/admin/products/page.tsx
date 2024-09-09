@@ -36,7 +36,7 @@ export default async function AdminProductsPage({ searchParams }: Props) {
       <div className='flex justify-start mb-5'>
         <Link
           className='btn-primary'
-          href='/admin/products/new'
+          href='/admin/product/new'
         >
           Crear nuevo producto
         </Link>

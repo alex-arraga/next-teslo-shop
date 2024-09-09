@@ -47,20 +47,20 @@ export default async function AdminProductBySlugPage({ params }: Props) {
     getCategories()
   ])
 
-  const categories = allCategories.categories ?? []
+  const categories = allCategories.categories;
 
-  if (!product) {
+  if (!product && slug !== 'new') {
     redirect('/admin/products')
   }
 
-  const title = (slug === 'new') ? 'Nuevo product' : `Editar - ${product.title}`
+  const title = (slug === 'new') ? 'Nuevo product' : `Editar - ${product?.title}`
   
 
   return (
     <section className="min-h-screen">
       <Title title={title} />
 
-      <EditProductForm product={product} categories={categories} />
+      <EditProductForm product={product ?? {}} categories={categories ?? []} />
     </section>
   );
 }
