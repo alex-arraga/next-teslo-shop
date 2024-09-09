@@ -39,13 +39,13 @@ export const EditProductForm = ({ product, categories }: Props) => {
     }
   });
 
-
+  // If sizes data change, re-rendering
   watch('sizes')
 
-  const onSizeChange = (newSize: string) => {
+  const onSizeChange = (size: string) => {
     // Size it's like an Array but not allow duplicate values
     const sizes = new Set(getValues('sizes'));
-    sizes.has(newSize) ? sizes.delete(newSize) : sizes.add(newSize)
+    sizes.has(size) ? sizes.delete(size) : sizes.add(size)
 
     setValue('sizes', Array.from(sizes))
   }
