@@ -1,5 +1,6 @@
 'use client';
 
+import { createOrUpdateProduct } from "@/actions";
 import { Product, Category, ProductImage } from "@/interfaces";
 import clsx from "clsx";
 import Image from "next/image";
@@ -52,7 +53,25 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
 
   const onSumbit = async (data: FormInputs) => {
-    console.log({ data })
+    const formData = new FormData();
+
+    const { ...productToSave } = data;
+
+    formData.append('id', product.id ?? '');
+    formData.append('title', productToSave.title);
+    formData.append('slug', productToSave.slug);
+    formData.append('description', productToSave.description);
+    formData.append('price', productToSave.price.toString());
+    formData.append('inStock', productToSave.inStock.toString());
+    formData.append('sizes', productToSave.sizes.toString());
+    formData.append('tags', productToSave.tags);
+    formData.append('categoryId', productToSave.categoryId);
+    formData.append('gender', productToSave.gender);
+
+
+    const { ok } = await createOrUpdateProduct(formData)
+
+    console.log(ok)
   }
 
 

@@ -4,6 +4,7 @@
 export { getPaginatedProductWithImages } from './products/products-pagination';
 export { getProductBySlug } from './products/get-product-by-slug';
 export { getStockBySlug } from './products/get-stock-by-slug';
+export { createOrUpdateProduct } from './products/create-or-update-product';
 
 // Auth
 export { authenticate, login } from './auth/login'
