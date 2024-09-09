@@ -191,6 +191,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
             {product.ProductImage?.map(img => (
               <div key={img.id}>
                 <Image
+                  priority
                   src={`/products/${img.url}`}
                   alt={product.title}
                   width={350}
