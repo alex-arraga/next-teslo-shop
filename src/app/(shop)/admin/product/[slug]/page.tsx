@@ -1,9 +1,9 @@
-import { Metadata, ResolvingMetadata } from "next"
-import { Title } from "@/components"
-
-import { getCategories, getProductBySlug } from "@/actions"
-import { redirect } from "next/navigation"
 import { EditProductForm } from "./ui/EditProductForm"
+import { Metadata, ResolvingMetadata } from "next"
+import { redirect } from "next/navigation"
+
+import { Title } from "@/components"
+import { getCategories, getProductBySlug } from "@/actions"
 
 
 interface Props {
@@ -53,7 +53,7 @@ export default async function AdminProductBySlugPage({ params }: Props) {
     redirect('/admin/products')
   }
 
-  const title = (slug === 'new') ? 'Nuevo product' : `Editar - ${product?.title}`
+  const title = (slug === 'new') ? 'Añadir nuevo producto' : `Editar - ${product?.title}`
   
 
   return (

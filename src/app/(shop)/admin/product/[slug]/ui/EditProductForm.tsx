@@ -1,11 +1,13 @@
 'use client';
 
-import { createOrUpdateProduct } from "@/actions";
-import { Product, Category, ProductImage } from "@/interfaces";
-import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+
+import clsx from "clsx";
+import { Product, Category, ProductImage } from "@/interfaces";
+
+import { createOrUpdateProduct } from "@/actions";
 
 interface Props {
   product: Partial<Product> & { ProductImage?: ProductImage[] };
@@ -57,7 +59,10 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
     const { ...productToSave } = data;
 
-    formData.append('id', product.id ?? '');
+    if (product.id) {
+      formData.append('id', product.id ?? '');
+    }
+
     formData.append('title', productToSave.title);
     formData.append('slug', productToSave.slug);
     formData.append('description', productToSave.description);
@@ -172,6 +177,16 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
       {/* Selector de tallas y fotos */}
       <div className="w-full">
+
+        <div className="flex flex-col mb-2">
+          <span>Unidades en stock</span>
+          <input
+            {...register('inStock', { required: true, min: 0 })}
+            type="number"
+            className="p-2 border rounded-md bg-gray-200"
+          />
+        </div>
+
         {/* As checkboxes */}
         <div className="flex flex-col">
 
