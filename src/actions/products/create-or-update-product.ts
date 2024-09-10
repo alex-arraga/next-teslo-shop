@@ -85,25 +85,26 @@ export const createOrUpdateProduct = async (formData: FormData) => {
       }
 
 
-
       // Load and save images
       if (formData.getAll('images')) {
         const images = await uploadImages(formData.getAll('images') as File[])
-        console.log({ images })
+
+        if (!images) throw new Error('No se obtuvieron las imagenes, rollback');
+
+        await tx.productImage.createMany({
+          data: images.map(img => ({
+            url: img!,
+            productId: product.id
+          }))
+        })
       }
-
-
-
-      // Revalidate affected paths
-      // TODO: revalidatePath(`/admin/products/${product.slug}`)
-
-      revalidatePath(`/admin/product/${product.slug}`);
-      revalidatePath('/admin/products');
-
 
       return { product }
     })
 
+    // Revalidate affected paths
+    revalidatePath(`/admin/product/${prismaTx.product.slug}`);
+    revalidatePath('/admin/products');
 
     return {
       ok: true,

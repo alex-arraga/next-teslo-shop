@@ -86,7 +86,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
       alert(message)
     }
 
-    // router.replace('/admin/products')
+    router.replace('/admin/products')
   }
 
 
