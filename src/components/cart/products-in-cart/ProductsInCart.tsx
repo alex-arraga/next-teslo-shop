@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import Image from "next/image"
 import Link from "next/link";
-import { QuantitySelector } from '@/components';
+import { ProductImage, QuantitySelector } from '@/components';
 
 import { IoTrashOutline } from "react-icons/io5";
 import { currencyFormat } from "@/utils";
@@ -36,7 +35,7 @@ export const ProductsInCart = () => {
             key={`${product.slug}-${product.size}`}
             className="flex p-4 bg-gray-50 rounded-lg my-2"
           >
-            <Image
+            <ProductImage
               src={`/products/${product.images}`}
               alt={product.title}
               width={120}
