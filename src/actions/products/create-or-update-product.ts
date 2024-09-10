@@ -6,6 +6,7 @@ import { Gender, Product, Size } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 
+import { v2 as cloudinary } from 'cloudinary';
 
 const productSchema = z.object({
   id: z.string().uuid().optional().nullable(),
@@ -83,14 +84,22 @@ export const createOrUpdateProduct = async (formData: FormData) => {
         })
       }
 
+
+
       // Load and save images
-      console.log(formData.getAll('images'))
+      if (formData.getAll('images')) {
+        const images = await uploadImages(formData.getAll('images') as File[])
+        console.log({ images })
+      }
+
+
 
       // Revalidate affected paths
+      // TODO: revalidatePath(`/admin/products/${product.slug}`)
+
       revalidatePath(`/admin/product/${product.slug}`);
       revalidatePath('/admin/products');
 
-      // TODO: revalidatePath(`/admin/products/${product.slug}`)
 
       return { product }
     })
@@ -107,5 +116,34 @@ export const createOrUpdateProduct = async (formData: FormData) => {
       ok: false,
       message: '500 - Error creando/actualizando un producto'
     }
+  }
+}
+
+
+const uploadImages = async (images: File[]) => {
+  cloudinary.config(process.env.CLOUDINARY_URL ?? '')
+
+  try {
+    const uploadPromises = images.map(async (img) => {
+      try {
+        const buffer = await img.arrayBuffer();
+        const base64Image = Buffer.from(buffer).toString('base64');
+
+        return cloudinary.uploader.upload(`data:image/png;base64,${base64Image}`)
+          .then(res => res.secure_url)
+
+      } catch (error) {
+        console.log(error)
+        return null
+      }
+    })
+
+    const uploadedImages = await Promise.all(uploadPromises)
+
+    return uploadedImages
+
+  } catch (error) {
+    console.log(error)
+    return null
   }
 }
