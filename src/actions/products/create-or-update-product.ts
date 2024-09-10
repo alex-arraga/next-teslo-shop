@@ -83,6 +83,9 @@ export const createOrUpdateProduct = async (formData: FormData) => {
         })
       }
 
+      // Load and save images
+      console.log(formData.getAll('images'))
+
       // Revalidate affected paths
       revalidatePath(`/admin/product/${product.slug}`);
       revalidatePath('/admin/products');

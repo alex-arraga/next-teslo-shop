@@ -26,7 +26,8 @@ interface FormInputs {
   sizes: string[],
   tags: string,
   gender: 'men' | 'women' | 'kid' | 'unisex',
-  categoryId: string
+  categoryId: string,
+  images?: FileList,
 }
 
 export const EditProductForm = ({ product, categories }: Props) => {
@@ -38,7 +39,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
       tags: product?.tags?.join(' - '),
       sizes: product.sizes ?? [],
 
-      // TODO: Images
+      images: undefined
     }
   });
 
@@ -57,7 +58,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
   const onSumbit = async (data: FormInputs) => {
     const formData = new FormData();
 
-    const { ...productToSave } = data;
+    const { images, ...productToSave } = data;
 
     if (product.id) {
       formData.append('id', product.id ?? '');
@@ -73,6 +74,11 @@ export const EditProductForm = ({ product, categories }: Props) => {
     formData.append('categoryId', productToSave.categoryId);
     formData.append('gender', productToSave.gender);
 
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images', images[i])
+      }
+    }
 
     const { ok, message } = await createOrUpdateProduct(formData)
 
@@ -80,7 +86,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
       alert(message)
     }
 
-    router.replace('/admin/products')
+    // router.replace('/admin/products')
   }
 
 
@@ -215,10 +221,11 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
             <span>Fotos</span>
             <input
+              {...register('images', { required: true })}
               type="file"
               multiple
               className="p-2 border rounded-md bg-gray-200"
-              accept="image/png, image/jpeg"
+              accept="image/png, image/jpg, image/jpeg, image/avif"
             />
 
           </div>
@@ -259,7 +266,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
         </div>
       </div>
-      
+
     </form>
   );
 };
