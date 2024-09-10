@@ -1,7 +1,7 @@
 'use client'
 
-import React, { useRef, useState } from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
+import { ProductImage } from '@/components';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -16,6 +16,7 @@ import './slideshow.css';
 import { Swiper as SwiperObject } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { useRouter } from 'next/navigation';
 
 
 interface Props {
@@ -27,6 +28,11 @@ interface Props {
 
 export const ProductSlideshow = ({ images, title, className }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperObject>();
+  const router = useRouter();
+
+  if (images.length === 0) {
+    router.replace('/')
+  }
 
   return (
     <div className={className}>
@@ -47,9 +53,9 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         {
           images.map((image) => (
             <SwiperSlide key={image}>
-              <Image
+              <ProductImage
                 priority
-                src={`/products/${image}`}
+                src={image}
                 alt={title}
                 width={1024}
                 height={800}
@@ -73,9 +79,9 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         {
           images.map((image) => (
             <SwiperSlide key={image}>
-              <Image
+              <ProductImage
                 priority
-                src={`/products/${image}`}
+                src={image}
                 alt={title}
                 width={300}
                 height={300}

@@ -2,11 +2,10 @@ export const revalidate = 0;
 
 // https://tailwindcomponents.com/component/hoverable-table
 import Link from 'next/link';
-import { Pagination, Title } from '@/components';
+import { Pagination, ProductImage, Title } from '@/components';
 
 import { currencyFormat, labels } from '@/utils';
 import { getPaginatedProductWithImages } from '@/actions';
-import Image from 'next/image';
 
 
 export const metadata = {
@@ -79,9 +78,9 @@ export default async function AdminProductsPage({ searchParams }: Props) {
                     href={`/product/${product.slug}`}
                     className='cursor-pointer hover:scale-110 hover:shadow-md hover:shadow-gray-300 rounded-md transition-all'
                   >
-                    <Image
-                      className='rounded-md'
-                      src={`/products/${product.images[0]}`}
+                    <ProductImage
+                      className='rounded-md object-cover'
+                      src={product.images[0]}
                       alt={product.title}
                       width={80}
                       height={80}

@@ -1,16 +1,16 @@
 'use client';
 
-import Image from "next/image";
+import { ProductImage } from "@/components";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import clsx from "clsx";
-import { Product, Category, ProductImage } from "@/interfaces";
+import type { Product, Category, ProductImage as ProductImageInterface } from "@/interfaces";
 
 import { createOrUpdateProduct } from "@/actions";
 
 interface Props {
-  product: Partial<Product> & { ProductImage?: ProductImage[] };
+  product: Partial<Product> & { ProductImage?: ProductImageInterface[] };
   categories: Category[]
 }
 
@@ -226,9 +226,9 @@ export const EditProductForm = ({ product, categories }: Props) => {
               product.ProductImage !== undefined ?
                 (product.ProductImage?.map(img => (
                   <div key={img.id}>
-                    <Image
+                    <ProductImage
                       priority
-                      src={`/products/${img.url}`}
+                      src={img.url}
                       alt={product.title ?? img.id.toString()}
                       width={350}
                       height={350}
