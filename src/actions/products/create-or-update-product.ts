@@ -2,6 +2,8 @@
 
 import prisma from '@/lib/prisma'
 import { Gender, Product, Size } from '@prisma/client'
+
+import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 
 
@@ -43,50 +45,64 @@ export const createOrUpdateProduct = async (formData: FormData) => {
 
   const { id, ...rest } = dataProduct;
 
-  // If throw an error, rollback changes
-  const prismaTx = await prisma.$transaction(async (tx) => {
+  try {
 
-    let product: Product;
-    const tagsArray = rest.tags.split(',').map(t => t.trim().toLowerCase());
+    // ? If throw an error, rollback changes
+    const prismaTx = await prisma.$transaction(async (tx) => {
+      let product: Product;
 
-    if (id) {
-      // Update product data
-      product = await tx.product.update({
-        where: { id: id },
-        data: {
-          ...rest,
-          tags: {
-            set: tagsArray
-          },
-          sizes: {
-            set: rest.sizes as Size[]
+      const tagsArray = rest.tags.split(',').map(t => t.trim().toLowerCase());
+
+      if (id) {
+        // Update product data
+        product = await tx.product.update({
+          where: { id: id },
+          data: {
+            ...rest,
+            tags: {
+              set: tagsArray
+            },
+            sizes: {
+              set: rest.sizes as Size[]
+            }
           }
-        }
-      })
+        })
 
-    } else {
-      // Create new product
-      product = await tx.product.create({
-        data: {
-          ...rest,
-          tags: {
-            set: tagsArray
-          },
-          sizes: {
-            set: rest.sizes as Size[]
+      } else {
+        // Create new product
+        product = await tx.product.create({
+          data: {
+            ...rest,
+            tags: {
+              set: tagsArray
+            },
+            sizes: {
+              set: rest.sizes as Size[]
+            }
           }
-        }
-      })
+        })
+      }
+
+      // Revalidate affected paths
+      revalidatePath(`/admin/product/${product.slug}`);
+      revalidatePath('/admin/products');
+
+      // TODO: revalidatePath(`/admin/products/${product.slug}`)
+
+      return { product }
+    })
+
+
+    return {
+      ok: true,
+      product: prismaTx.product
     }
 
-    return product
-  })
-
-
-  // TODO: Revalidate paths
-
-  return {
-    ok: true,
-    product: prismaTx
+  } catch (error) {
+    console.log(error)
+    return {
+      ok: false,
+      message: '500 - Error creando/actualizando un producto'
+    }
   }
 }

@@ -71,7 +71,7 @@ export default async function AdminProductsPage({ searchParams }: Props) {
 
           <tbody>
             {products?.map((product) => (
-              <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-slate-50">
+              <tr key={product.id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-slate-50">
 
                 <td className="flex justify-center text-sm text-center text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
                   <Link

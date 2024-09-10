@@ -1,7 +1,7 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import { ProductImage } from "@/components";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import clsx from "clsx";
@@ -30,7 +30,7 @@ interface FormInputs {
 }
 
 export const EditProductForm = ({ product, categories }: Props) => {
-  const [category, setCategory] = useState('');
+  const router = useRouter();
 
   const { register, handleSubmit, formState: { isValid }, getValues, setValue, watch } = useForm<FormInputs>({
     defaultValues: {
@@ -74,9 +74,13 @@ export const EditProductForm = ({ product, categories }: Props) => {
     formData.append('gender', productToSave.gender);
 
 
-    const { ok } = await createOrUpdateProduct(formData)
+    const { ok, message } = await createOrUpdateProduct(formData)
 
-    console.log(ok)
+    if (!ok) {
+      alert(message)
+    }
+
+    router.replace('/admin/products')
   }
 
 
@@ -152,8 +156,6 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <select
             {...register('categoryId', { required: true })}
             className="p-2 border rounded-md bg-gray-200 capitalize"
-            value={category}
-            onChange={e => setCategory(e.target.value)}
           >
             <option value="">[Seleccione]</option>
             {categories.map(c => (
@@ -255,10 +257,9 @@ export const EditProductForm = ({ product, categories }: Props) => {
             }
           </div>
 
-
-
         </div>
       </div>
+      
     </form>
   );
 };
