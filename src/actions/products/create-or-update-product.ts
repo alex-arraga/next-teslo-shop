@@ -50,8 +50,8 @@ export const createOrUpdateProduct = async (formData: FormData) => {
 
     // ? If throw an error, rollback changes
     const prismaTx = await prisma.$transaction(async (tx) => {
-      let product: Product;
 
+      let product: Product;
       const tagsArray = rest.tags.split(',').map(t => t.trim().toLowerCase());
 
       if (id) {
@@ -100,11 +100,22 @@ export const createOrUpdateProduct = async (formData: FormData) => {
       }
 
       return { product }
+
+    }, {
+      maxWait: 5000, // default: 2000 ms - 2 seg
+      timeout: 25000 // default: 5000 ms - 5 seg
     })
 
+    const { slug } = prismaTx.product;
+
     // Revalidate affected paths
-    revalidatePath(`/admin/product/${prismaTx.product.slug}`);
-    revalidatePath('/admin/products');
+    const pathsToRevalidate = [
+      `/product/${slug}`,
+      `/admin/product/${slug}`,
+      '/admin/products'
+    ];
+
+    await Promise.all(pathsToRevalidate.map(path => revalidatePath(path)));
 
     return {
       ok: true,

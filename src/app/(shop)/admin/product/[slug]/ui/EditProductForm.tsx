@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import clsx from "clsx";
 import type { Product, Category, ProductImage as ProductImageInterface } from "@/interfaces";
 
-import { createOrUpdateProduct } from "@/actions";
+import { createOrUpdateProduct, deleteImage } from "@/actions";
 
 interface Props {
   product: Partial<Product> & { ProductImage?: ProductImageInterface[] };
@@ -45,6 +45,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
   // If sizes data change, re-rendering
   watch('sizes')
+  watch('images')
 
   const onSizeChange = (size: string) => {
     // Size it's like an Array but not allow duplicate values
@@ -246,7 +247,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
                     <button
                       type="button"
-                      onClick={() => console.log(img.id, img.url)}
+                      onClick={() => deleteImage(img.id, img.url)}
                       className="w-full rounded-b-md text-sm btn-delete"
                     >
                       Eliminar
