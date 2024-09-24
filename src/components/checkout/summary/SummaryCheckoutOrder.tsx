@@ -138,7 +138,7 @@ export const SummaryCheckoutOrder = () => {
       {/* Terms and conditions */}
       <div className="flex flex-col mt-6">
         <span className="text-sm text-wrap">
-          Al hacer click en "confirmar orden" acepta nuestros <a href="#" className="underline font-medium hover:text-blue-700 transition-all">terminos y condiciones</a> de uso y <a href="#" className="underline font-medium hover:text-blue-700 transition-all">politicas de privacidad</a>
+          Al hacer click en `&quot;`confirmar orden`&quot;` acepta nuestros <a href="#" className="underline font-medium hover:text-blue-700 transition-all">terminos y condiciones</a> de uso y <a href="#" className="underline font-medium hover:text-blue-700 transition-all">politicas de privacidad</a>
         </span>
 
 

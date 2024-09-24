@@ -55,7 +55,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
     if (address.firstName) {
       reset(address)
     }
-  }, [])
+  }, [address, reset])
 
   // Save address data on sumbit form
   const onSumbit: SubmitHandler<FormInputs> = async (data) => {

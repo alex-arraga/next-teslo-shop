@@ -55,7 +55,9 @@ export default async function OrdersPage() {
 
           <tbody>
             {orders?.map((order) => (
-              <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+              <tr
+                key={order.id}
+                className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
 
                 <td className="text-sm text-center text-gray-900  font-semibold px-6 py-4 whitespace-nowrap">
                   #{order.id.split('-').at(0)?.slice(0, -3)}

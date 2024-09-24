@@ -20,7 +20,7 @@ export const ProductsInCart = () => {
 
   useEffect(() => {
     setloading(true)
-  }, [])
+  }, [setloading])
 
   if (!loading) {
     return <p>Loading...</p>
@@ -36,7 +36,7 @@ export const ProductsInCart = () => {
             className="flex p-4 bg-gray-50 rounded-lg my-2"
           >
             <ProductImage
-              src={`/products/${product.images}`}
+              src={product.images}
               alt={product.title}
               width={120}
               height={120}

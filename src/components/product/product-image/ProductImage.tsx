@@ -20,6 +20,8 @@ export const ProductImage = ({
   style
 }: Props) => {
 
+  console.log('ProductImage: ',src);
+
   const customSrc = (src) ? src.startsWith('http') ? src
     : `/products/${src}`
     : '/imgs/placeholder.jpg';

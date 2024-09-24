@@ -10,7 +10,7 @@ interface Props {
 export const UserTable = ({ users }: Props) => {
   return (
     // TODO: Execute pop-up when the admin want change user role
-    
+
     <table className="min-w-full">
 
       <thead className="bg-gray-200 border-b">
@@ -38,7 +38,9 @@ export const UserTable = ({ users }: Props) => {
 
       <tbody>
         {users?.map((user) => (
-          <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+          <tr
+            key={user.id}
+            className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
 
             <td className="text-sm text-center text-gray-900  font-semibold px-6 py-4 whitespace-nowrap">
               #{user.id.split('-').at(0)?.slice(0, -3)}
