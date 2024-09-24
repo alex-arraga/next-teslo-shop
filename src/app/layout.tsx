@@ -4,13 +4,19 @@ import "./globals.css";
 import { inter } from "@/config/fonts";
 import { Providers } from "@/components";
 
+const titleMetadata = {
+  template: '%s - Teslo | Shop',
+  default: 'Home - Teslo | Shop'
+}
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s - Teslo | Shop',
-    default: 'Home - Teslo | Shop'
-  },
+  title: titleMetadata,
   description: "Un proyecto de eccommerce online",
+  openGraph: {
+    title: titleMetadata,
+    description: "Un proyecto de eccommerce online",
+    images: [`/imgs/logo.png`]
+  }
 };
 
 export default function RootLayout({ children, }: Readonly<{
