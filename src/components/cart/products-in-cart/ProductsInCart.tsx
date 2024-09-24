@@ -20,7 +20,7 @@ export const ProductsInCart = () => {
 
   useEffect(() => {
     setloading(true)
-  }, [setloading])
+  }, [])
 
   if (!loading) {
     return <p>Loading...</p>
