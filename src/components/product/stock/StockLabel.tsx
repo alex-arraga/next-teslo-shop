@@ -31,13 +31,13 @@ export const StockLabel = ({ slug }: Props) => {
       {
         loading
           ? (
-            <div className="w-full max-w-20 rounded-md bg-gray-200 animate-pulse" >
+            <div className="w-full max-w-20 rounded-md bg-gray-200 dark:bg-gray-600 animate-pulse" >
               &nbsp;
             </div >
           )
 
           : (
-            <h1 className={`${titleFont.className} text-xl text-blue-800 font-bold`}>
+            <h1 className={`${titleFont.className} text-xl text-blue-800 dark:text-blue-300 font-bold`}>
               Stock: {stock}
             </h1 >
           )

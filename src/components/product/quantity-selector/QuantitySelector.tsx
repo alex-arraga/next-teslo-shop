@@ -23,15 +23,15 @@ export const QuantitySelector = ({ quantity, className, onQuantityChanged }: Pro
       <div className="flex items-center">
         <button
           onClick={() => onValueChange(-1)}
-          className="hover:text-blue-600 transition-all rounded-full">
+          className="hover:text-blue-600 dark:hover:text-blue-300 transition-all rounded-full">
           <IoRemoveCircleOutline size={25} />
         </button>
 
-        <span className="bg-blue-100 rounded w-20 text-center mx-2">{quantity}</span>
+        <span className="bg-blue-100 dark:bg-gray-700 rounded w-20 text-center mx-2">{quantity}</span>
 
         <button
           onClick={() => onValueChange(+1)}
-          className="hover:text-blue-600 transition-all rounded-full">
+          className="hover:text-blue-600 dark:hover:text-blue-300 transition-all rounded-full">
           <IoAddCircleOutline size={25} />
         </button>
       </div>
