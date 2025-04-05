@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-300 h-16 sm:h-24 flex justify-end items-end">
+    <footer className="bg-gray-300 dark:bg-neutral-900 h-16 sm:h-24 flex justify-end items-end">
       <div className="flex justify-center items-center w-full h-full text-xs">
         <Link
           href='/'
