@@ -46,12 +46,12 @@ export const Pagination = ({ totalPages }: Props) => {
   return (
     <div className="flex text-center justify-center mt-10 mb-32">
       <nav aria-label="Page navigation example">
-        <ul className="flex list-style-none">
+        <ul className="flex list-style-none gap-2">
 
           <li>
             <Link
               href={createPageUrl(currentPage - 1)}
-              className="relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+              className="relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 dark:text-white focus:shadow-none"
             >
               <IoChevronBackOutline size={30} />
             </Link>
@@ -63,7 +63,7 @@ export const Pagination = ({ totalPages }: Props) => {
                 <Link
                   href={createPageUrl(page)}
                   className={
-                    clsx("relative block py-1.5 px-3 rounded border-0 outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none",
+                    clsx("relative block py-1.5 px-3 rounded border-0 outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-blue-200 dark:text-white focus:shadow-none",
                       {
                         "bg-blue-500 text-white hover:bg-blue-700 hover:text-white": page === currentPage
                       }
@@ -79,7 +79,7 @@ export const Pagination = ({ totalPages }: Props) => {
           <li>
             <Link
               href={createPageUrl(currentPage + 1)}
-              className="relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+              className="relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 text-gray-800 hover:text-gray-800 hover:bg-gray-200 dark:text-white focus:shadow-none"
             >
               <IoChevronForwardOutline size={30} />
             </Link>
