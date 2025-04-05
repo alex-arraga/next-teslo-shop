@@ -40,9 +40,9 @@ export const TopMenu = () => {
         <Link
           href="/gender/men"
           className={
-            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100",
+            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-blue-100 dark:hover:text-gray-950",
               {
-                "bg-blue-500 text-white hover:bg-blue-600 hover:text-white": params.gender === 'men'
+                "bg-blue-500 text-white dark:hover:text-white hover:bg-blue-600 dark:hover:bg-blue-600": params.gender === 'men'
               }
             )
           }
@@ -53,9 +53,9 @@ export const TopMenu = () => {
         <Link
           href="/gender/women"
           className={
-            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100",
+            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-blue-100 dark:hover:text-gray-950",
               {
-                "bg-blue-500 text-white hover:bg-blue-600 hover:text-white": params.gender === 'women'
+                "bg-blue-500 text-white dark:hover:text-white hover:bg-blue-600 dark:hover:bg-blue-600": params.gender === 'women'
               }
             )
           }
@@ -66,9 +66,9 @@ export const TopMenu = () => {
         <Link
           href="/gender/kid"
           className={
-            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100",
+            clsx("m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-blue-100 dark:hover:text-gray-950",
               {
-                "bg-blue-500 text-white hover:bg-blue-600 hover:text-white": params.gender === 'kid'
+                "bg-blue-500 text-white dark:hover:text-white hover:bg-blue-600 dark:hover:bg-blue-600": params.gender === 'kid'
               }
             )
           }
