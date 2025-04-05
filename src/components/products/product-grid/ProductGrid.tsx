@@ -8,7 +8,7 @@ interface Props {
 
 export const ProductGrid = ({ products }: Props) => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 pb-28">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 pb-28">
       {products.map((product) => (
         // If a product don't have images, no render item
         product.images.length === 0 ? '' :
