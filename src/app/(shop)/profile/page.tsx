@@ -13,10 +13,14 @@ export default async function ProfilePage() {
   return (
     <section className="min-h-screen">
       <Title title="Perfil" />
-      <pre>
-        {JSON.stringify(session, null, 2)}
-        <h2 className="text-3xl">{session.user.role}</h2>
-      </pre>
+
+      <div className="bg-white dark:bg-neutral-900 p-4 xl:p-6 rounded-lg max-w-xl">
+        <h2 className="mb-4 font-medium text-sm md:text-lg">User data</h2>
+        <pre className="text-blue-900 dark:text-blue-100">
+          {JSON.stringify(session, null, 2)}
+        </pre>
+      </div>
+
     </section>
   );
 }
