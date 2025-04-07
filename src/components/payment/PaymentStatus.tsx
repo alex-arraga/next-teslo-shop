@@ -17,16 +17,16 @@ export const PaymentStatus = ({ paid, withBg = false }: Props) => {
     )}>
       <IoCardOutline className={
         clsx({
-          "text-red-800": !paid,
-          "text-green-800": paid
+          "text-red-800 dark:text-red-400": !paid,
+          "text-green-800 dark:text-green-400": paid
         })}
       />
       <span className={
         clsx(
           'mx-2',
           {
-            "text-red-800": !paid,
-            "text-green-800": paid
+            "text-red-800 dark:text-red-400": !paid,
+            "text-green-800 dark:text-green-400": paid
           }
         )}
       >

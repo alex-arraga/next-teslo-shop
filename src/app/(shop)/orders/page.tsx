@@ -32,22 +32,22 @@ export default async function OrdersPage() {
 
           <thead className="bg-gray-200 border-b">
             <tr className=''>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 #ID
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 Nombre completo
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 Entrega
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 Total
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 Estado
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 Opciones
               </th>
             </tr>
@@ -57,21 +57,21 @@ export default async function OrdersPage() {
             {orders?.map((order) => (
               <tr
                 key={order.id}
-                className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 dark:bg-neutral-700 dark:hover:bg-zinc-800 dark:border-neutral-800">
 
-                <td className="text-sm text-center text-gray-900  font-semibold px-6 py-4 whitespace-nowrap">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-semibold px-6 py-4 whitespace-nowrap">
                   #{order.id.split('-').at(0)?.slice(0, -3)}
                 </td>
 
-                <td className="text-sm text-center text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-medium px-6 py-4 whitespace-nowrap">
                   {order.OrderAddress!.firstName + ' ' + order.OrderAddress!.lastName}
                 </td>
 
-                <td className="text-sm text-center text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-medium px-6 py-4 whitespace-nowrap">
                   {order.OrderAddress?.address + ' - ' + order.OrderAddress?.city}
                 </td>
 
-                <td className="text-sm text-center text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-medium px-6 py-4 whitespace-nowrap">
                   {currencyFormat({
                     value: order.total,
                     country: 'United States'
@@ -84,7 +84,7 @@ export default async function OrdersPage() {
                   }
                 </td>
 
-                <td className="text-sm text-center text-gray-900 font-medium px-6 ">
+                <td className="text-sm text-center text-gray-900 dark:text-blue-200 font-medium px-6 ">
                   <Link href={`/orders/${order.id}`} className="hover:underline">
                     Ver orden
                   </Link>
