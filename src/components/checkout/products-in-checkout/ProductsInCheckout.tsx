@@ -55,7 +55,7 @@ export const ProductsInCheckout = () => {
                   </p>
                 </div>
 
-                <div className="flex justify-between items-center mt-2 bg-blue-50 dark:bg-gray-500 dark:text-gray-300 rounded p-1">
+                <div className="flex justify-between items-center mt-2 bg-blue-50 dark:bg-gray-800 dark:text-gray-300 rounded p-1">
                   <p className="text-xs sm:text-sm md:text-base">
                     Unidades: <span className="font-semibold">{product.quantity}</span>
                   </p>
