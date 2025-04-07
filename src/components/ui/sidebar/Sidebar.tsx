@@ -94,7 +94,7 @@ export const Sidebar = () => {
         className={
           // Validate if menu is open
           clsx(
-            "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300",
+            "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white dark:bg-neutral-800 z-20 shadow-2xl transform transition-all duration-300",
             {
               "translate-x-full": !isSideMenuOpen
             }
@@ -113,7 +113,7 @@ export const Sidebar = () => {
           <input
             type="text"
             placeholder="Buscar"
-            className="w-full bg-gray-50 rounded pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-500 transition-all"
+            className="w-full bg-gray-50 dark:bg-neutral-700 dark:border-neutral-600 rounded pl-10 py-1 pr-10 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-500 transition-all"
           />
         </div>
 
@@ -131,11 +131,12 @@ export const Sidebar = () => {
                   />
                 ))}
 
-                <div className="rounded h-px bg-gray-300 w-full mt-10" />
+                {/* Separator */}
+                <div className="rounded h-px bg-gray-300 dark:bg-neutral-700 w-full mt-10" />
 
                 <button
                   onClick={() => signOut()}
-                  className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
+                  className="flex items-center mt-10 p-2 w-full hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-all"
                 >
                   <IoLogInOutline size={30} className="rotate-180" />
                   <span className="ml-3 text-xl">

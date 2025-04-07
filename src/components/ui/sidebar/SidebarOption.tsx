@@ -12,7 +12,7 @@ export const SidebarOption = ({ href, icon, title, closeMenu }: Props) => {
     <Link
       href={href}
       onClick={closeMenu}
-      className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+      className="flex items-center mt-10 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-all"
     >
       {icon}
       <span className="ml-3 text-xl">{title}</span>

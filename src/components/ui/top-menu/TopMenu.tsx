@@ -79,9 +79,9 @@ export const TopMenu = () => {
 
       {/* Right options: Menu, cart */}
       <div className="flex items-center">
-        <Link className="mx-2" href="/search">
+        <div className="mx-2">
           <IoSearchOutline size={20} className="w-5 h-5" />
-        </Link>
+        </div>
 
         <Link
           href={((totalCartProducts === 0) && loaded) ? '/empty' : '/cart'}
@@ -101,7 +101,7 @@ export const TopMenu = () => {
 
         <button
           onClick={openSideMenu}
-          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100">
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 dark:hover:bg-gray-700">
           Menu
         </button>
       </div>
