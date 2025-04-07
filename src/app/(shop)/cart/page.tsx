@@ -12,13 +12,8 @@ export const metadata = {
 
 
 export default function CartPage() {
-  // todo: redirect to empty if the user hasn't any product
-  // redirect('/empty')
-
-
   return (
     <section className="flex justify-center w-full min-h-screen">
-
       <div className="grid grid-cols-1 xl:grid-cols-2 xl:p-6 gap-6 xl:max-w-[calc(60vw)] h-fit">
 
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md">
@@ -35,7 +30,7 @@ export default function CartPage() {
         </div>
 
         {/* Checkout */}
-        <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 xl:p-6">
+        <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 shadow-xl dark:shadow-neutral-950 rounded-md h-fit p-4 xl:p-6">
           <Title
             title="Resumen"
           />
@@ -45,15 +40,13 @@ export default function CartPage() {
           <Link
             replace
             href='/checkout/address'
-            className="block text-center mt-4 btn-primary"
+            className="block text-center mt-4 btn-primary dark:bg-blue-400 dark:hover:bg-blue-600"
           >
             Continuar
           </Link>
-
         </div>
 
       </div>
-
     </section>
   );
 }

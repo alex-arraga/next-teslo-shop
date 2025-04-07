@@ -27,7 +27,7 @@ export const QuantitySelector = ({ quantity, className, onQuantityChanged }: Pro
           <IoRemoveCircleOutline size={25} />
         </button>
 
-        <span className="bg-blue-100 dark:bg-gray-700 rounded w-20 text-center mx-2">{quantity}</span>
+        <span className="bg-blue-100 dark:bg-gray-600 rounded w-20 text-center mx-2">{quantity}</span>
 
         <button
           onClick={() => onValueChange(+1)}

@@ -33,7 +33,7 @@ export const ProductsInCart = () => {
         productsInCart.map((product) => (
           <div
             key={`${product.slug}-${product.size}`}
-            className="flex p-4 bg-gray-50 rounded-lg my-2"
+            className="flex p-4 bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-950 rounded-lg my-2"
           >
             <ProductImage
               src={product.images}
@@ -52,7 +52,7 @@ export const ProductsInCart = () => {
                 href={`/product/${product.slug}`}
                 className="flex flex-col md:flex-row justify-between"
               >
-                <h2 className="hover:text-blue-700 transition-all font-bold text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
+                <h2 className="hover:text-blue-700 dark:hover:text-blue-300 transition-all font-bold text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
                   {product.size} - {product.title}
                 </h2>
 
@@ -73,7 +73,7 @@ export const ProductsInCart = () => {
 
               <button
                 onClick={() => removeProduct(product)}
-                className="flex items-center text-sm md:text-base gap-1 text-gray-500 hover:text-red-400 w-fit hover:font-semibold transition-all"
+                className="flex items-center text-sm md:text-base gap-1 text-gray-500 dark:text-gray-300 hover:text-red-400 w-fit hover:font-semibold transition-all"
               >
                 <IoTrashOutline size={20} />
                 Remover
