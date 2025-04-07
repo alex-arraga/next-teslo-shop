@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ThemeProvider from "./theme/theme_provider";
 
 import { inter } from "@/config/fonts";
 import { Providers } from "@/components";
@@ -27,17 +26,12 @@ export default function RootLayout({ children, }: Readonly<{
   return (
     <html lang="en">
       <head>
-        <script 
-          dangerouslySetInnerHTML={{
-            __html: initColorSchemeScript(),
-          }}
-        />
+        {/* Applies the colour theme before the app will be rendering */}
+        <script dangerouslySetInnerHTML={{ __html: initColorSchemeScript() }} />
       </head>
       <body className={inter.className}>
         <Providers>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          {children}
         </Providers>
       </body>
     </html>
