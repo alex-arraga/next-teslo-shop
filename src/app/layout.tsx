@@ -4,6 +4,7 @@ import ThemeProvider from "./theme/theme_provider";
 
 import { inter } from "@/config/fonts";
 import { Providers } from "@/components";
+import { initColorSchemeScript } from "./theme/initColorSchemaScript";
 
 const titleMetadata = {
   template: '%s - Teslo | Shop',
@@ -25,6 +26,13 @@ export default function RootLayout({ children, }: Readonly<{
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script 
+          dangerouslySetInnerHTML={{
+            __html: initColorSchemeScript(),
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <Providers>
           <ThemeProvider>
