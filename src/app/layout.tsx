@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ThemeProvider from "./theme/theme_provider";
 
 import { inter } from "@/config/fonts";
 import { Providers } from "@/components";
@@ -26,7 +27,9 @@ export default function RootLayout({ children, }: Readonly<{
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </Providers>
       </body>
     </html>
