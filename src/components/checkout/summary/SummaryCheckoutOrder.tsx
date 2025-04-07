@@ -59,14 +59,14 @@ export const SummaryCheckoutOrder = () => {
 
 
   return (
-    <div className="mb-28 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 xl:p-6">
+    <div className="mb-28 col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 shadow-xl dark:shadow-neutral-950 rounded-md h-fit p-4 xl:p-6">
 
       <Title
         title="Orden de compra"
       />
 
       {/* Shipping address */}
-      <h2 className="text-xl font-semibold text-gray-700 mb-6">Dirección de entrega</h2>
+      <h2 className="text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Dirección de entrega</h2>
       <div className="grid grid-cols-2">
         <p>Cliente</p>
         <p className="text-right font-medium">
@@ -95,7 +95,7 @@ export const SummaryCheckoutOrder = () => {
 
 
       {/* Summary products */}
-      <h2 className="text-xl font-semibold text-gray-700 my-6">Productos</h2>
+      <h2 className="text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Productos</h2>
       <div className="grid grid-cols-2">
 
         <span>N° Productos</span>
@@ -138,7 +138,7 @@ export const SummaryCheckoutOrder = () => {
       {/* Terms and conditions */}
       <div className="flex flex-col mt-6">
         <span className="text-sm text-wrap">
-          Al hacer click en `&quot;`confirmar orden`&quot;` acepta nuestros <a href="#" className="underline font-medium hover:text-blue-700 transition-all">terminos y condiciones</a> de uso y <a href="#" className="underline font-medium hover:text-blue-700 transition-all">politicas de privacidad</a>
+          Al hacer click en <b>confirmar orden</b> acepta nuestros <a href="#" className="underline font-medium hover:text-blue-700 transition-all">terminos y condiciones</a> de uso y <a href="#" className="underline font-medium hover:text-blue-700 transition-all">politicas de privacidad</a>
         </span>
 
 
