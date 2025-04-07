@@ -20,8 +20,6 @@ body {
   background-color: var(--background-color);
 }
 
-
-
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
@@ -42,16 +40,10 @@ body {
   animation-name: fadeIn;
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
-  }
-  
-  .dark .btn-primary {
-    @apply bg-red-300 hover:bg-red-500 text-white py-2 px-4 rounded transition-all;
-  }
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
 }
-
+  
 .btn-secondary {
   @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
 }
