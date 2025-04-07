@@ -11,22 +11,22 @@ export const PaymentStatus = ({ paid, withBg = false }: Props) => {
     <div className={clsx(
       "flex justify-center items-center w-full",
       {
-        "bg-red-200 p-2 rounded": !paid && withBg,
-        "bg-green-200 p-2 rounded": paid && withBg
+        "bg-red-200 dark:bg-red-400 p-2 rounded": !paid && withBg,
+        "bg-green-200 dark:bg-green-400 dark:text-green-700 p-2 rounded": paid && withBg
       }
     )}>
       <IoCardOutline className={
         clsx({
-          "text-red-800 dark:text-red-400": !paid,
-          "text-green-800 dark:text-green-400": paid
+          "text-red-800": !paid,
+          "text-green-800": paid
         })}
       />
       <span className={
         clsx(
           'mx-2',
           {
-            "text-red-800 dark:text-red-400": !paid,
-            "text-green-800 dark:text-green-400": paid
+            "text-red-800": !paid,
+            "text-green-800": paid
           }
         )}
       >

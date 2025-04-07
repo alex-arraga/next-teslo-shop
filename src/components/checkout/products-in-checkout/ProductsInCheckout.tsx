@@ -35,7 +35,7 @@ export const ProductsInCheckout = () => {
               alt={product.title}
               width={100}
               height={100}
-              className="rounded object-contain w-24 h-24 sm:h-28 sm:w-28 mr-2 md:mr-4"
+              className="rounded object-contain w-20 h-20 sm:h-28 sm:w-28 mr-2 md:mr-4"
             />
 
             <div className="flex flex-col w-full gap-2">

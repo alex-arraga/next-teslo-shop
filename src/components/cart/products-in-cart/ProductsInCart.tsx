@@ -38,13 +38,9 @@ export const ProductsInCart = () => {
             <ProductImage
               src={product.images}
               alt={product.title}
-              width={120}
-              height={120}
-              className="rounded object-contain mr-4"
-              style={{
-                width: '100px',
-                height: '100px'
-              }}
+              width={100}
+              height={100}
+              className="rounded object-contain w-20 h-20 sm:h-28 sm:w-28 mr-2 md:mr-4"
             />
 
             <div className="flex flex-col w-full">

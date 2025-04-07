@@ -29,19 +29,15 @@ export const OrderedProducts = ({ orderItem }: Props) => {
         orderItem.map((item) => (
           <div
             key={`${item.productId}-${item.size}`}
-            className="flex p-4 items-center bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-900 rounded-lg mt-4"
+            className="flex p-4 items-center bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-900 rounded-lg mb-4"
           >
             <Image
               priority
               src={`/products/${item.product.ProductImage[0].url}`}
               alt={item.product.title}
-              width={120}
-              height={120}
-              className="rounded object-contain mr-4"
-              style={{
-                width: '100px',
-                height: '100px'
-              }}
+              width={100}
+              height={100}
+              className="rounded object-contain w-20 h-20 sm:h-28 sm:w-28 mr-2 md:mr-4"
             />
 
             <div className="flex flex-col w-full">
