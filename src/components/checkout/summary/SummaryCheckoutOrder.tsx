@@ -66,15 +66,15 @@ export const SummaryCheckoutOrder = () => {
       />
 
       {/* Shipping address */}
-      <h2 className="text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Dirección de entrega</h2>
+      <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Dirección de entrega</h2>
       <div className="grid grid-cols-2">
-        <p>Cliente</p>
-        <p className="text-right font-medium">
+        <p className="text-sm md:text-base">Cliente</p>
+        <p className="text-sm md:text-base text-right font-medium">
           {userAddress.firstName} {userAddress.lastName}
         </p>
 
-        <p>Ciudad y país</p>
-        <p className="text-right">
+        <p className="text-sm md:text-base">Ciudad y país</p>
+        <p className="text-sm md:text-base text-right">
           {userAddress.city + ' - ' + userAddress.country}
         </p>
 
@@ -83,28 +83,28 @@ export const SummaryCheckoutOrder = () => {
           {userAddress.state}
         </p> */}
 
-        <p>Codigo postal</p>
-        <p className="text-right">
+        <p className="text-sm md:text-base">Codigo postal</p>
+        <p className="text-sm md:text-base text-right">
           {userAddress.postalCode}
         </p>
       </div>
 
 
       {/* Divisor */}
-      <div className="rounded bg-gray-200 mt-6 h-0.5 w-full" />
+      <div className="rounded bg-gray-200 dark:bg-neutral-600 mt-6 h-0.5 w-full" />
 
 
       {/* Summary products */}
-      <h2 className="text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Productos</h2>
+      <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Productos</h2>
       <div className="grid grid-cols-2">
 
-        <span>N° Productos</span>
-        <span className="text-right">
+        <span className="text-sm md:text-base">N° Productos</span>
+        <span className="text-right text-sm md:text-base">
           {totalItems + ' artículos'}
         </span>
 
-        <span>Subtotal</span>
-        <span className="text-right">
+        <span className="text-sm md:text-base">Subtotal</span>
+        <span className="text-right text-sm md:text-base">
           {
             currencyFormat({
               country: "United States",
@@ -113,8 +113,8 @@ export const SummaryCheckoutOrder = () => {
           }
         </span>
 
-        <span>Impuestos (15%)</span>
-        <span className="text-right">
+        <span className="text-sm md:text-base">Impuestos (15%)</span>
+        <span className="text-right text-sm md:text-base">
           {
             currencyFormat({
               country: "United States",
@@ -123,8 +123,8 @@ export const SummaryCheckoutOrder = () => {
           }
         </span>
 
-        <span className="mt-8 text-lg font-bold">Total</span>
-        <span className="mt-8 text-lg font-bold text-right">
+        <span className="mt-8 text-sm md:text-base font-bold">Total</span>
+        <span className="mt-8 font-bold text-right text-sm md:text-base">
           {
             currencyFormat({
               country: "United States",
@@ -137,7 +137,7 @@ export const SummaryCheckoutOrder = () => {
 
       {/* Terms and conditions */}
       <div className="flex flex-col mt-6">
-        <span className="text-sm text-wrap">
+        <span className="text-xs sm:text-sm text-wrap">
           Al hacer click en <b>confirmar orden</b> acepta nuestros <a href="#" className="underline font-medium hover:text-blue-700 transition-all">terminos y condiciones</a> de uso y <a href="#" className="underline font-medium hover:text-blue-700 transition-all">politicas de privacidad</a>
         </span>
 
@@ -155,7 +155,7 @@ export const SummaryCheckoutOrder = () => {
             onClick={onSendingOrder}
             disabled={sendingOrder}
             className={clsx(
-              "text-center w-full",
+              "mt-4 sm:mt-0 text-center w-full",
               {
                 "btn-primary": !sendingOrder,
                 "btn-disabled": sendingOrder
