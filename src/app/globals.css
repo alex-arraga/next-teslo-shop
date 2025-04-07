@@ -42,9 +42,14 @@ body {
   animation-name: fadeIn;
 }
 
-
-.btn-primary {
-  @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
+  }
+  
+  .dark .btn-primary {
+    @apply bg-red-300 hover:bg-red-500 text-white py-2 px-4 rounded transition-all;
+  }
 }
 
 .btn-secondary {
