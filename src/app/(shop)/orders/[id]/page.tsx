@@ -55,7 +55,7 @@ export default async function OrdersByIdPage({ params }: Props) {
     <section className="flex justify-center w-full min-h-screen">
       <div className="grid grid-cols-1 w-full sm:max-w-[calc(90vw)] xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
 
-        <div className="flex flex-col col-span-2 xl:col-span-1 bg-white h-fit rounded-md p-4 sm:p-6">
+        <div className="flex flex-col col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 h-fit rounded-md p-4 sm:p-6">
           <Title
             title={`Order #${id.split('-').at(0)?.slice(0, -3)}`}
           />
@@ -66,14 +66,14 @@ export default async function OrdersByIdPage({ params }: Props) {
         </div>
 
         {/* Order details */}
-        <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white rounded-md shadow-xl h-fit p-4 sm:p-6">
+        <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 rounded-md shadow-xl h-fit p-4 sm:p-6">
           <Title
             title="Detalles"
             className="mt-0"
           />
 
           {/* Shipping address */}
-          <h2 className="text-xl font-semibold text-gray-700 mb-6">Dirección de entrega</h2>
+          <h2 className="text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Dirección de entrega</h2>
           <div className="grid grid-cols-2">
 
             <p>Cliente</p>
@@ -103,11 +103,11 @@ export default async function OrdersByIdPage({ params }: Props) {
 
 
           {/* Divisor */}
-          <div className="rounded bg-gray-200 mt-6 h-0.5 w-full" />
+          <div className="rounded bg-gray-200 dark:bg-neutral-600 mt-6 h-0.5 w-full" />
 
 
           {/* Summary products */}
-          <h2 className="text-xl font-semibold text-gray-700 my-6">Productos</h2>
+          <h2 className="text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Productos</h2>
           <div className="grid grid-cols-2">
 
             <span>N° Productos</span>
@@ -158,7 +158,7 @@ export default async function OrdersByIdPage({ params }: Props) {
                     />
 
                     {/* Divisor */}
-                    <div className="w-full h-0.5 rounded bg-gray-200 mt-6" />
+                    <div className="w-full h-0.5 rounded bg-gray-200 dark:bg-neutral-600 mt-6" />
                   </div>
 
                   <PayPalButton

@@ -29,7 +29,7 @@ export const OrderedProducts = ({ orderItem }: Props) => {
         orderItem.map((item) => (
           <div
             key={`${item.productId}-${item.size}`}
-            className="flex p-4 items-center bg-gray-100 rounded-lg mt-4"
+            className="flex p-4 items-center bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-900 rounded-lg mt-4"
           >
             <Image
               priority
@@ -50,7 +50,7 @@ export const OrderedProducts = ({ orderItem }: Props) => {
                 {labels[item.product.gender]}
               </p>
 
-              <h2 className="font-semibold text-blue-900 text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
+              <h2 className="font-semibold text-blue-900 dark:text-blue-300 text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
                 {item.size} - {item.product.title}
               </h2>
 
