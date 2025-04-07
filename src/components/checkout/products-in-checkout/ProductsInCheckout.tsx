@@ -28,51 +28,51 @@ export const ProductsInCheckout = () => {
         productsInCart.map((product) => (
           <div
             key={`${product.slug}-${product.size}`}
-            className="flex p-4 items-center bg-gray-50 rounded-lg my-2"
+            className="flex p-2 md:p-4 items-center bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-950 rounded-lg my-2"
           >
             <Image
               src={`/products/${product.images}`}
               alt={product.title}
-              width={120}
-              height={120}
-              className="rounded object-contain mr-4"
-              style={{
-                width: '100px',
-                height: '100px'
-              }}
+              width={100}
+              height={100}
+              className="rounded object-contain w-24 h-24 sm:h-28 sm:w-28 mr-2 md:mr-4"
             />
 
-            <div className="flex flex-col w-full">
-              <h2 className="font-semibold text-blue-900 text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
-                {product.size} - {product.title}
+            <div className="flex flex-col w-full gap-2">
+              <h2 className="font-semibold text-blue-900 dark:text-blue-200 text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
+                {product.title}
               </h2>
 
-              <p className="text-sm md:text-base font-bold">
-                {currencyFormat({
-                  value: product.price,
-                  country: "United States",
-                })}
-              </p>
+              <div>
+                <div className="flex gap-6 text-xs sm:text-sm md:text-base">
+                  <p className="font-normal text-gray-300">Size: {product.size}</p>
 
-              <div className="flex justify-between items-center mt-2 bg-blue-50 rounded p-1">
-                <p>
-                  Unidades: <span className="font-semibold">{product.quantity}</span>
-                </p>
+                  <p className="text-xs sm:text-sm md:text-base font-bold">
+                    {currencyFormat({
+                      value: product.price,
+                      country: "United States",
+                    })}
+                  </p>
+                </div>
 
-                <p className="mr-2 font-bold">
+                <div className="flex justify-between items-center mt-2 bg-blue-50 dark:bg-blue-100 dark:text-black rounded p-1">
+                  <p className="text-xs sm:text-sm md:text-base">
+                    Unidades: <span className="font-semibold">{product.quantity}</span>
+                  </p>
 
-                  {'Total: '}
+                  <p className="mr-2 font-bold text-xs sm:text-sm md:text-base">
+                    {'Total: '}
+                    <span>
+                      {
+                        currencyFormat({
+                          country: 'United States',
+                          value: product.quantity * product.price
+                        })
+                      }
+                    </span>
+                  </p>
 
-                  <span>
-                    {
-                      currencyFormat({
-                        country: 'United States',
-                        value: product.quantity * product.price
-                      })
-                    }
-                  </span>
-
-                </p>
+                </div>
               </div>
             </div>
           </div>
