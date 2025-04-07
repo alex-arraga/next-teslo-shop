@@ -248,7 +248,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
         className={clsx(
           "flex mt-4 sm:mt-10 w-full justify-center items-center text-center",
           {
-            "btn-primary dark:bg-blue-400 dark:hover:bg-blue-600": isValid,
+            "btn-primary": isValid,
             "btn-disabled": !isValid
           })}
       >
