@@ -81,12 +81,12 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
     >
 
       <div className="flex flex-col mb-2">
-        <label>Nombres</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Nombre</label>
         <input
           type="text"
           autoFocus
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200",
             {
               "border-red-400": errors.firstName
             }
@@ -96,12 +96,12 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label>Apellidos</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Apellido</label>
         <input
           type="text"
           autoFocus
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200",
             {
               "border-red-400": errors.firstName
             }
@@ -111,12 +111,12 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label>Dirección</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Dirección</label>
         <input
           type="text"
           autoFocus
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200",
             {
               "border-red-400": errors.firstName
             }
@@ -126,12 +126,12 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label>Dirección 2 (opcional)</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Dirección 2 (opcional)</label>
         <input
           type="text"
           autoFocus
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200",
             {
               "border-red-400": errors.firstName
             }
@@ -141,12 +141,12 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label>Código postal</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Código postal</label>
         <input
           type="text"
           autoFocus
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200",
             {
               "border-red-400": errors.firstName
             }
@@ -156,12 +156,12 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label>Ciudad</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Ciudad</label>
         <input
           type="text"
           autoFocus
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200",
             {
               "border-red-400": errors.firstName
             }
@@ -171,10 +171,10 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label>País</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">País</label>
         <select
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200 cursor-pointer",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200 cursor-pointer",
             {
               "border-red-400": errors.country
             }
@@ -194,12 +194,12 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label>Teléfono</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Teléfono</label>
         <input
           type="text"
           autoFocus
           className={clsx(
-            "p-2 border rounded-md bg-gray-200 dark:bg-gray-300 text-black border-gray-200",
+            "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200",
             {
               "border-red-400": errors.firstName
             }
@@ -246,7 +246,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
         disabled={!isValid}
         type="submit"
         className={clsx(
-          "flex mt-4 sm:mt-10 w-full justify-center items-center text-center",
+          "flex mt-4 mb-20 sm:mt-10 w-full justify-center items-center text-center",
           {
             "btn-primary": isValid,
             "btn-disabled": !isValid
