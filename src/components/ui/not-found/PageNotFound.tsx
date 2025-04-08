@@ -15,7 +15,7 @@ export const PageNotFound = () => {
           href='/'
           className="font-normal hover:font-medium"
         >
-          <p className="mt-4 bg-white hover:bg-blue-500 hover:text-white transition-all duration-300 cursor-pointer p-4 rounded-md">
+          <p className="mt-4 bg-white hover:bg-blue-500 hover:text-white dark:bg-slate-700 dark:hover:bg-blue-800  transition-all duration-300 cursor-pointer p-4 rounded-md">
             <span>Regresar al inicio</span>
           </p>
         </Link>
