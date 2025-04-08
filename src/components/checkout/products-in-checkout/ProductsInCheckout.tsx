@@ -45,7 +45,7 @@ export const ProductsInCheckout = () => {
 
               <div>
                 <div className="flex gap-6 text-xs sm:text-sm md:text-base">
-                  <p className="font-normal text-gray-300">Size: {product.size}</p>
+                  <p className="font-normal text-gray-300">Talla: {product.size}</p>
 
                   <p className="text-xs sm:text-sm md:text-base font-bold">
                     {currencyFormat({

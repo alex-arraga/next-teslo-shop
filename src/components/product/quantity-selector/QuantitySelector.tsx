@@ -18,21 +18,23 @@ export const QuantitySelector = ({ quantity, className, onQuantityChanged }: Pro
 
   return (
     <div className={className}>
-      <h3 className="mb-2 font-medium">Cantidad</h3>
+      <h3 className="hidden sm:block sm:text-sm md:text-base my-2 font-medium">Cantidad</h3>
 
-      <div className="flex items-center">
+      <div className="mt-4 sm:mt-0 flex items-center">
         <button
           onClick={() => onValueChange(-1)}
           className="hover:text-blue-600 dark:hover:text-blue-300 transition-all rounded-full">
-          <IoRemoveCircleOutline size={25} />
+          <IoRemoveCircleOutline size={24} className="dark:text-gray-200 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
         </button>
 
-        <span className="bg-blue-100 dark:bg-gray-600 rounded w-20 text-center mx-2">{quantity}</span>
+        <span className="text-xs sm:text-sm md:text-base bg-blue-100 dark:bg-gray-600 rounded w-10 sm:w-14 md:w-20 text-center mx-2">
+          {quantity}
+        </span>
 
         <button
           onClick={() => onValueChange(+1)}
           className="hover:text-blue-600 dark:hover:text-blue-300 transition-all rounded-full">
-          <IoAddCircleOutline size={25} />
+          <IoAddCircleOutline size={24} className="dark:text-gray-200 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
         </button>
       </div>
     </div>
