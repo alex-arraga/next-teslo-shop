@@ -23,8 +23,8 @@ export default async function HomePage({ searchParams }: Props) {
   return (
     <div>
       <Title
-        title="Ropa deportiva"
-        subtitle="Todos los productos"
+        title="Sportswear"
+        subtitle="All products"
       />
 
       <ProductGrid products={products} />
