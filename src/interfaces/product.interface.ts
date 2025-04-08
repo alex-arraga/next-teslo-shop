@@ -30,7 +30,7 @@ export interface CartProduct {
 }
 
 
-export type Gender = 'men' | 'women' | 'kid' | 'unisex'
+export type Gender = 'men' | 'women' | 'kids' | 'unisex'
 export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
 export type Type = 'shirts' | 'pants' | 'hoodies' | 'hats';
 
