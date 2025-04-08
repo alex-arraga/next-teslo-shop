@@ -14,7 +14,7 @@ export const metadata = {
 export default function CartPage() {
   return (
     <section className="flex justify-center min-h-screen">
-      <div className="grid grid-cols-1 w-full xl:grid-cols-2 xl:p-6 gap-4 md:gap-6 max-w-none xl:max-w-[calc(60vw)] h-fit">
+      <div className="grid grid-cols-1 w-full xl:grid-cols-2 xl:p-6 gap-4 md:gap-6 max-w-none xl:max-w-[calc(70vw)] h-fit">
 
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md">
           <Title

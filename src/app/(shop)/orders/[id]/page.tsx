@@ -53,7 +53,7 @@ export default async function OrdersByIdPage({ params }: Props) {
 
   return (
     <section className="flex justify-center w-full min-h-screen">
-      <div className="grid grid-cols-1 w-full sm:max-w-[calc(90vw)] xl:grid-cols-2 gap-6 xl:max-w-[calc(60vw)]">
+      <div className="grid grid-cols-1 w-full sm:max-w-[calc(90vw)] xl:grid-cols-2 gap-6 xl:max-w-[calc(70vw)]">
 
         <div className="flex flex-col col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 h-fit rounded-md p-4 sm:p-6">
           <Title
