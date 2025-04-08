@@ -46,19 +46,19 @@ export const ProductsInCart = () => {
             <div className="flex flex-col w-full">
               <Link
                 href={`/product/${product.slug}`}
-                className="flex flex-col md:flex-row justify-between"
+                className="flex flex-col justify-between cursor-default"
               >
-                <h2 className="text-sm md:text-lg hover:text-blue-700 dark:hover:text-blue-300 transition-all font-bold overflow-auto max-w-sm md:mr-10 w-full">
+                <h2 className="text-sm md:text-lg hover:text-blue-700 cursor-pointer dark:hover:text-blue-300 transition-all font-bold overflow-auto max-w-sm md:mr-10 w-fit">
                   {product.title}
                 </h2>
 
-                <div className="mt-2 flex items-center w-full h-fit">
-                  <p className="text-xs sm:text-sm font-normal text-gray-300">
-                    Talla: {product.size}
+                <div className="mt-2 flex items-center w-full h-fi cursor-default">
+                  <p className="text-xs sm:text-sm font-normal text-gray-800 dark:text-gray-300">
+                    Talla: <span className="font-medium">{product.size}</span>
                   </p>
 
-                  <p className="ml-4 sm:ml-6 text-xs sm:text-sm md:text-base font-normal text-gray-300">
-                    Precio: {currencyFormat({ value: product.price, country: "United States", minFractionDigis: 0 })}
+                  <p className="ml-4 sm:ml-6 text-xs sm:text-sm font-normal text-gray-800 dark:text-gray-300">
+                    Precio: <span className="font-medium">{currencyFormat({ value: product.price, country: "United States", minFractionDigis: 0 })}</span>
                   </p>
                 </div>
               </Link>
@@ -68,21 +68,15 @@ export const ProductsInCart = () => {
                 onQuantityChanged={quantity => updateQuantity(product, quantity)}
               />
 
-              {/* Delete button on tablets or laptops */}
+              {/* Delete button */}
               <button
                 onClick={() => removeProduct(product)}
-                className="hidden sm:flex items-center text-xs sm:text-sm md:text-base gap-1 text-gray-500 dark:text-gray-300 hover:text-red-400 w-fit hover:font-semibold transition-all"
+                className="block"
               >
-                <IoTrashOutline size={20} className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
-                Remover
-              </button>
-
-              {/* Delete button on mobile */}
-              <button
-                onClick={() => removeProduct(product)}
-                className="block sm:hidden"
-              >
-                <IoCloseCircleOutline size={20} className="absolute h-4 w-4 sm:hidden cursor-pointer top-2 right-2 font-bold" />
+                <IoCloseCircleOutline
+                  size={20}
+                  className="absolute dark:hover:text-red-400 hover:text-red-500 h-4 w-4 sm:h-5 sm:w-5 cursor-pointer top-2 right-2 sm:top-4 sm:right-4 dark:font-black"
+                />
               </button>
             </div>
           </div>
