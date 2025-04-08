@@ -6,8 +6,8 @@ import { Providers } from "@/components";
 import { initColorSchemeScript } from "./theme/initColorSchemaScript";
 
 const titleMetadata = {
-  template: '%s - Teslo | Shop',
-  default: 'Home - Teslo | Shop'
+  template: 'Teslo | Shop - %s',
+  default: 'Teslo | Shop - Home'
 }
 
 export const metadata: Metadata = {
