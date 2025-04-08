@@ -23,7 +23,7 @@ export default async function HomePage({ searchParams }: Props) {
   return (
     <div>
       <Title
-        title="Tienda"
+        title="Ropa deportiva"
         subtitle="Todos los productos"
       />
 

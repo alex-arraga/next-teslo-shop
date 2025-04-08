@@ -21,9 +21,9 @@ export const ProductGridItem = ({ product }: Props) => {
         <Image
           src={validImg}
           alt={product.title}
-          className="object-cover w-full rounded"
-          width={500}
-          height={500}
+          className="object-cover w-full max-h-72 sm:max-h-64 md:max-h-96 xl:max-h-[450px]"
+          width={450}
+          height={450}
           priority
           onMouseEnter={() => setDisplayImage(product.images[1])}
           onMouseLeave={() => setDisplayImage(product.images[0])}
@@ -31,14 +31,14 @@ export const ProductGridItem = ({ product }: Props) => {
       </Link>
 
 
-      <div className="p-4 flex flex-col">
+      <div className="p-2 sm:p-4 flex flex-col">
         <Link
-          className="font-light hover:font-normal duration-300"
+          className="text-sm xl:text-base font-light hover:font-normal duration-300"
           href={`/product/${product.slug}`}
         >
           {product.title}
         </Link>
-        <span className="font-bold">$ {product.price}</span>
+        <span className="text-sm xl:text-base font-bold">$ {product.price}</span>
       </div>
 
 
