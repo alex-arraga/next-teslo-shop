@@ -23,7 +23,7 @@ const topMenuOptions = [
   },
   {
     gender: "kids",
-    href: "/gender/kid",
+    href: "/gender/kids",
   },
 ]
 
