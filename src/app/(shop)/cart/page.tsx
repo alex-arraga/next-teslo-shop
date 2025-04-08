@@ -13,8 +13,8 @@ export const metadata = {
 
 export default function CartPage() {
   return (
-    <section className="flex justify-center w-full min-h-screen">
-      <div className="grid grid-cols-1 xl:grid-cols-2 xl:p-6 gap-6 xl:max-w-[calc(60vw)] h-fit">
+    <section className="flex justify-center min-h-screen">
+      <div className="grid grid-cols-1 w-full xl:grid-cols-2 xl:p-6 gap-4 md:gap-6 max-w-none xl:max-w-[calc(60vw)] h-fit">
 
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md">
           <Title
@@ -40,7 +40,7 @@ export default function CartPage() {
           <Link
             replace
             href='/checkout/address'
-            className="block text-center mt-4 btn-primary dark:bg-blue-400 dark:hover:bg-blue-600"
+            className="btn-primary mt-4"
           >
             Continuar
           </Link>
