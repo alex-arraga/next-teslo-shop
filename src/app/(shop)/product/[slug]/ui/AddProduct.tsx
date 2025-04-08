@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import type { CartProduct, Product, Size } from "@/interfaces"
-import { SizeSelector, QuantitySelector } from "@/components"
+import { SizeSelector, QuantitySelectorProduct } from "@/components"
 
 import { useCartStore } from "@/store"
 
@@ -62,7 +62,7 @@ export const AddProduct = ({ product }: Props) => {
 
 
       {/* Selector de cantidad */}
-      <QuantitySelector
+      <QuantitySelectorProduct
         quantity={quantity}
         className="mb-8"
         onQuantityChanged={setQuantity}

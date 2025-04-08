@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 import Link from "next/link";
-import { ProductImage, QuantitySelector } from '@/components';
+import { ProductImage, QuantitySelectorProductCard } from '@/components';
 
 import { IoCloseCircleOutline, IoCloseOutline, IoTrashOutline } from "react-icons/io5";
 import { currencyFormat } from "@/utils";
@@ -63,7 +63,7 @@ export const ProductsInCart = () => {
                 </div>
               </Link>
 
-              <QuantitySelector
+              <QuantitySelectorProductCard
                 quantity={product.quantity}
                 onQuantityChanged={quantity => updateQuantity(product, quantity)}
               />
