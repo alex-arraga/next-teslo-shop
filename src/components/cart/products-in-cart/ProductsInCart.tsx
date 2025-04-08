@@ -33,7 +33,7 @@ export const ProductsInCart = () => {
         productsInCart.map((product) => (
           <div
             key={`${product.slug}-${product.size}`}
-            className="relative flex p-2 sm:p-4 bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-950 rounded-lg my-2"
+            className="relative flex p-3 sm:p-4 bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-950 rounded-lg my-2"
           >
             <ProductImage
               src={product.images}
@@ -75,7 +75,7 @@ export const ProductsInCart = () => {
               >
                 <IoCloseCircleOutline
                   size={20}
-                  className="absolute dark:hover:text-red-400 hover:text-red-500 h-4 w-4 sm:h-5 sm:w-5 cursor-pointer top-2 right-2 sm:top-4 sm:right-4 dark:font-black"
+                  className="absolute dark:hover:text-red-400 hover:text-red-500 h-4 w-4 sm:h-5 sm:w-5 cursor-pointer top-3 right-3 sm:top-4 sm:right-4 dark:font-black"
                 />
               </button>
             </div>

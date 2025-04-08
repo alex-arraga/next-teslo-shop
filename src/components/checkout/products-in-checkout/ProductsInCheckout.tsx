@@ -28,7 +28,7 @@ export const ProductsInCheckout = () => {
         productsInCart.map((product) => (
           <div
             key={`${product.slug}-${product.size}`}
-            className="flex p-2 md:p-4 items-center bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-950 rounded-lg my-2"
+            className="flex p-3 md:p-4 items-center bg-gray-50 dark:bg-neutral-700 shadow-lg dark:shadow-neutral-950 rounded-lg my-2"
           >
             <Image
               src={`/products/${product.images}`}
@@ -45,13 +45,10 @@ export const ProductsInCheckout = () => {
 
               <div>
                 <div className="flex gap-6 text-xs sm:text-sm md:text-base">
-                  <p className="font-normal text-gray-300">Talla: {product.size}</p>
+                  <p className="font-normal text-gray-800 dark:text-gray-300">Talla: {product.size}</p>
 
                   <p className="text-xs sm:text-sm md:text-base font-bold">
-                    {currencyFormat({
-                      value: product.price,
-                      country: "United States",
-                    })}
+                    Precio: <span className="text-gray-800 dark:text-gray-300">{currencyFormat({ value: product.price, country: "United States", })}</span>
                   </p>
                 </div>
 
