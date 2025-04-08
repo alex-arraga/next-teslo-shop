@@ -11,7 +11,7 @@ interface SeedProduct {
     tags: string[];
     title: string;
     type: ValidTypes;
-    gender: 'men' | 'women' | 'kid' | 'unisex'
+    gender: 'men' | 'women' | 'kids' | 'unisex'
 }
 
 
@@ -671,7 +671,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids Cybertruck Long Sleeve Tee",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "The Kids Scribble T Logo Tee is made from 100% Peruvian cotton and features a Tesla T sketched logo for every young artist to wear.",
@@ -686,7 +686,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids Scribble T Logo Tee",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "The Kids Cybertruck Tee features the iconic Cybertruck graffiti wordmark and is made from 100% Peruvian cotton for maximum comfort.",
@@ -701,7 +701,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids Cybertruck Tee",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "The refreshed Kids Racing Stripe Tee is made from 100% Peruvian cotton, featuring a newly enhanced racing stripe with a brushed Tesla wordmark that's perfect for any speed racer.",
@@ -716,7 +716,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids Racing Stripe Tee",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "Designed for fit, comfort and style, the Tesla T Logo Tee is made from 100% Peruvian cotton and features a silicone-printed T Logo on the left chest.",
@@ -731,7 +731,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids 3D T Logo Tee",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "The checkered tee is made from long grain, GMO free Peruvian cotton. Peru is the only country in the world where cotton is picked by hand on a large scale. The 4,500-year-old tradition prevents damage to the fiber during the picking process and removes the need to use chemicals to open the cotton plants before harvest. This environmentally friendly process results in cotton that is soft, strong, and lustrous – and the tee will get even softer with every wash.",
@@ -746,7 +746,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids Checkered Tee",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "For the future space traveler with discerning taste, a soft, cotton onesie with snap closure bottom. Clear labeling provided in case of contact with a new spacefaring civilization. 100% Cotton. Made in Peru",
@@ -761,7 +761,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Made on Earth by Humans Onesie",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "The Kids Scribble T Logo Onesie is made from 100% Peruvian cotton and features a Tesla T sketched logo for every little artist to wear.",
@@ -776,7 +776,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Scribble T Logo Onesie",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "Show your commitment to sustainable energy with this cheeky onesie for your young one. Note: Does not prevent emissions. 100% Cotton. Made in Peru.",
@@ -791,7 +791,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Zero Emissions (Almost) Onesie",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "Wear your Kids Cyberquad Bomber Jacket during your adventures on Cyberquad for Kids. The bomber jacket features a graffiti-style illustration of our Cyberquad silhouette and wordmark. With three zippered pockets and our signature T logo and Tesla wordmark printed along the sleeves, Kids Cyberquad Bomber Jacket is perfect for wherever the trail takes you. Made from 60% cotton and 40% polyester.",
@@ -806,7 +806,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids Cyberquad Bomber Jacket",
-            gender: 'kid'
+            gender: 'kids'
         },
         {
             description: "Cruise the playground in style with the Kids Corp Jacket. Modeled after the original Tesla Corp Jacket, the Kids Corp Jacket features the same understated style and high-quality materials but at a pint-sized scale.",
@@ -821,7 +821,7 @@ export const initialData: SeedData = {
             type: 'shirts',
             tags: ['shirt'],
             title: "Kids Corp Jacket",
-            gender: 'kid'
+            gender: 'kids'
         },
     ],
     users: [

@@ -55,16 +55,11 @@ export default async function ProductsByGenderPage({ params, searchParams }: Pro
     redirect(`/gender/${gender}`)
   }
 
-  // todo: validate query params
-  // if (id === 'kids') {
-  //   notFound()
-  // }
-
   return (
     <>
       <Title
-        title={`Artículos de ${labels[gender]}`}
-        subtitle="Todos los artículos"
+        title={`Articles of ${gender}`}
+        subtitle="All articles"
       />
 
       <ProductGrid products={products} />
