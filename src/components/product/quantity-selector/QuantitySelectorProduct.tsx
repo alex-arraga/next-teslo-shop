@@ -17,7 +17,7 @@ export const QuantitySelectorProduct = ({ quantity, className, onQuantityChanged
 
   return (
     <div className={className}>
-      <h3 className="text-sm my-2 font-medium">Cantidad</h3>
+      <h3 className="text-sm my-2 font-medium">Quantity</h3>
 
       <div className="mt-4 sm:mt-0 flex items-center">
         <button
@@ -26,7 +26,7 @@ export const QuantitySelectorProduct = ({ quantity, className, onQuantityChanged
           <IoRemoveCircleOutline size={32} className="dark:text-gray-200 h-6 w-6" />
         </button>
 
-        <span className="flex items-center justify-center text-sm md:text-base bg-blue-100 dark:bg-gray-600 rounded align-middle text-center h-7 w-16 sm:w-20 mx-2">
+        <span className="flex items-center justify-center text-sm md:text-base bg-blue-200 dark:bg-gray-600 rounded align-middle text-center h-7 w-16 sm:w-20 mx-2">
           {quantity}
         </span>
 

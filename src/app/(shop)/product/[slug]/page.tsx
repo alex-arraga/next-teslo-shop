@@ -11,6 +11,7 @@ import {
 
 import { getProductBySlug } from "@/actions";
 import { AddProduct } from "./ui/AddProduct";
+import { labels } from "@/utils";
 
 interface Props {
   params: {
@@ -77,24 +78,32 @@ export default async function ProductPage({ params }: Props) {
       {/* Product details */}
       <div className="md:mx-10 md:col-span-2 rounded">
 
-        <div className="flex flex-col mb-6">
+        <div className="flex flex-col mb-2">
+          {/* Title */}
           <h1 className={`${titleFont.className} text-2xl mb-4 font-bold`}>
             {product.title}
           </h1>
 
-          <StockLabel slug={product.slug} />
+          {/* Gender */}
+          <p className="mb-4 text-gray-800 dark:text-gray-400">
+            Gender: <span className="capitalize font-bold text-gray-800 dark:text-gray-200">{product.gender}</span>
+          </p>
 
-          <span className="font-semibold text-lg">
-            ${product.price}
-          </span>
+          {/* Descripción */}
+          <p className="text-sm md:text-base mb-6">{product.description}</p>
+
+          {/* Price */}
+          <p className="bg-neutral-200 dark:bg-neutral-700 p-2 w-fit rounded mb-4 font-semibold text-xl">
+            ${product.price.toFixed(2)} <span className="text-gray-400 font-normal text-base">p/u</span>
+          </p>
+
+          {/* Stock allowed */}
+          <StockLabel slug={product.slug} />
         </div>
 
-
-        <AddProduct product={product} />
-
-        {/* Descripción */}
-        <h3 className="text-sm md:text-base font-bold my-6">Descripción</h3>
-        <p className="text-xs sm:text-sm md:text-base mb-28 md:mb-0">{product.description}</p>
+        <div className="mb-28 md:mb-0">
+          <AddProduct product={product} />
+        </div>
       </div>
 
     </section>
