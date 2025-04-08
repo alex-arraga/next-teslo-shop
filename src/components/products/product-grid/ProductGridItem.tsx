@@ -15,7 +15,7 @@ export const ProductGridItem = ({ product }: Props) => {
   const validImg = displayImage ? `/products/${displayImage}` : '/imgs/placeholder.jpg'
 
   return (
-    <div className="rounded-md overflow-hidden fade-in bg-neutral-200 hover:bg-blue-50 dark:hover:bg-gray-700 shadow-lg shadow-neutral-400 dark:bg-neutral-700 dark:shadow-neutral-950 hover:scale-105 hover:duration-300">
+    <div className="max-w-64 sm:max-w-none rounded-md overflow-hidden fade-in bg-neutral-200 hover:bg-blue-50 dark:hover:bg-gray-700 shadow-lg shadow-neutral-400 dark:bg-neutral-700 dark:shadow-neutral-950 hover:scale-105 hover:duration-300">
 
       <Link href={`/product/${product.slug}`}>
         <Image
@@ -38,7 +38,7 @@ export const ProductGridItem = ({ product }: Props) => {
         >
           {product.title}
         </Link>
-        <span className="text-sm xl:text-base font-bold">$ {product.price}</span>
+        <span className="text-sm xl:text-base font-bold mt-2 xl:mt-1">$ {product.price}</span>
       </div>
 
 
