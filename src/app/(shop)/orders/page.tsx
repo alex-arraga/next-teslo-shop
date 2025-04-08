@@ -80,7 +80,11 @@ export default async function OrdersPage() {
 
                 <td className="flex items-center text-sm text-center  text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                   {
-                    <PaymentStatus paid={order.isPaid} />
+                    <PaymentStatus
+                      colorTxtPayed='text-green-800 dark:text-green-400'
+                      colorTxtNotPayed='text-red-800 dark:text-red-400'
+                      paid={order.isPaid}
+                    />
                   }
                 </td>
 
