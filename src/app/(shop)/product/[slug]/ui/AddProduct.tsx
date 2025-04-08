@@ -48,12 +48,12 @@ export const AddProduct = ({ product }: Props) => {
       {
         posted && !size && (
           <p className="text-red-600 font-medium text-sm fade-in bg-red-50 p-2 mb-4 rounded w-fit">
-            * Seleccione una talla
+            * Select a size
           </p>
         )
       }
 
-      {/* Selector de Tallas */}
+      {/* Sizes selector */}
       <SizeSelector
         availableSizes={product.sizes!}
         selectedSize={size}
@@ -61,7 +61,7 @@ export const AddProduct = ({ product }: Props) => {
       />
 
 
-      {/* Selector de cantidad */}
+      {/* Quantity Selector */}
       <QuantitySelectorProduct
         quantity={quantity}
         className="mb-8"
@@ -74,7 +74,7 @@ export const AddProduct = ({ product }: Props) => {
         className="btn-primary mb-6"
         onClick={addToCart}
       >
-        Agregar al carrito
+        Add to cart
       </button>
 
     </>
