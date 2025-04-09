@@ -103,7 +103,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <input
             {...register('title', { required: true })}
             type="text"
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="input-form"
           />
         </div>
 
@@ -112,7 +112,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <input
             {...register('slug', { required: true })}
             type="text"
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="input-form"
           />
         </div>
 
@@ -121,7 +121,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <textarea
             {...register('description', { required: true })}
             rows={5}
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="input-form"
           ></textarea>
         </div>
 
@@ -130,7 +130,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <input
             {...register('price', { required: true, min: 0 })}
             type="number"
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="input-form"
           />
         </div>
 
@@ -139,7 +139,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <input
             {...register('tags', { required: true })}
             type="text"
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="input-form"
           />
         </div>
 
@@ -147,7 +147,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Gender</span>
           <select
             {...register('gender', { required: true })}
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="input-form"
           >
             <option value="">[Select]</option>
             <option value="men">Men</option>
@@ -162,7 +162,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
           <select
             {...register('categoryId', { required: true })}
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200 capitalize"
+            className="input-form capitalize"
           >
             <option value="">[Select]</option>
             {categories.map(c => (
@@ -188,7 +188,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
           <input
             {...register('inStock', { required: true, min: 0 })}
             type="number"
-            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="input-form"
           />
         </div>
 
@@ -218,7 +218,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
               {...register('images', { required: true })}
               type="file"
               multiple
-              className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+              className="input-form"
               accept="image/png, image/jpg, image/jpeg, image/avif"
             />
           </div>

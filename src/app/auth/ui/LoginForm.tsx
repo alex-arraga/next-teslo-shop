@@ -21,18 +21,18 @@ export const LoginForm = () => {
   return (
     <form action={dispatch} className="flex flex-col">
 
-      <label htmlFor="email">Correo electrónico</label>
+      <label htmlFor="email">Email</label>
       <input
-        className="px-5 py-2 border bg-gray-200 dark:text-black rounded mb-5"
+        className="input-form mb-5"
         type="email"
         name="email"
         placeholder='example@gmail.com'
       />
 
 
-      <label htmlFor="email">Contraseña</label>
+      <label htmlFor="email">Password</label>
       <input
-        className="px-5 py-2 border bg-gray-200 dark:text-black rounded mb-5"
+        className="input-form mb-5"
         type="password"
         name="password"
         placeholder='******'
@@ -45,7 +45,7 @@ export const LoginForm = () => {
               size={20}
               className="text-red-800"
             />
-            <p className="text-red-800 text-sm">Error en email o contraseña</p>
+            <p className="text-red-800 text-sm">Error in email or password</p>
           </div>
         )
       }
@@ -65,7 +65,7 @@ export const LoginForm = () => {
         href="/auth/new-account"
         className="btn-secondary text-center"
       >
-        Crear una nueva cuenta
+        Create an account
       </Link>
     </form>
   )
