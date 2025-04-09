@@ -17,7 +17,7 @@ export const QuantitySelectorProductCard = ({ quantity, className, onQuantityCha
  
   return (
     <div className={className}>
-      <h3 className="hidden sm:block sm:text-sm my-2 font-medium">Cantidad</h3>
+      <h3 className="hidden sm:block sm:text-sm my-2 font-medium">Quantity</h3>
 
       <div className="mt-4 sm:mt-0 flex items-center">
         <button

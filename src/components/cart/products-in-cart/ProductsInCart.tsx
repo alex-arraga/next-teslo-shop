@@ -54,11 +54,11 @@ export const ProductsInCart = () => {
 
                 <div className="mt-2 flex items-center w-full h-fi cursor-default">
                   <p className="text-xs sm:text-sm font-normal text-gray-800 dark:text-gray-300">
-                    Talla: <span className="font-medium">{product.size}</span>
+                    Size: <span className="font-medium">{product.size}</span>
                   </p>
 
                   <p className="ml-4 sm:ml-6 text-xs sm:text-sm font-normal text-gray-800 dark:text-gray-300">
-                    Precio: <span className="font-medium">{currencyFormat({ value: product.price, country: "United States", minFractionDigis: 0 })}</span>
+                    Price: <span className="font-medium">{currencyFormat({ value: product.price, country: "United States", minFractionDigis: 0 })}</span>
                   </p>
                 </div>
               </Link>
