@@ -24,7 +24,7 @@ export const PaymentStatus = ({ paid, withBg = false, colorTxtNotPayed, colorTxt
     >
       <IoCardOutline className={clsx(paid ? baseColorTxtPayed : baseColorTxtNotPayed)} />
       <span className={clsx("mx-2", paid ? baseColorTxtPayed : baseColorTxtNotPayed)}>
-        {paid ? "Pagada" : "No pagada"}
+        {paid ? "Paid" : "Unpaid"}
       </span>
     </div>
   );
