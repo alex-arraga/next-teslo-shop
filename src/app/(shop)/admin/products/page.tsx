@@ -46,32 +46,32 @@ export default async function AdminProductsPage({ searchParams }: Props) {
       <div className="mb-10">
         <table className="min-w-full">
 
-          <thead className="bg-gray-200 border-b">
-            <tr className=''>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
-                Imagen
+          <thead className="bg-gray-200 border-b dark:border-neutral-600">
+            <tr>
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+                Image
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
-                Titulo
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+                Title
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 Stock
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
-                Precios
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+                Price
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
-                Tallas
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+                Size
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 font-semibold text-gray-900 px-6 py-4">
-                Género
+              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+                Gender
               </th>
             </tr>
           </thead>
 
           <tbody>
             {products?.map((product) => (
-              <tr key={product.id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-slate-50">
+              <tr key={product.id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 dark:bg-zinc-700 dark:hover:bg-zinc-800 dark:border-neutral-800">
 
                 <td className="flex justify-center text-sm text-center text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
                   <Link
@@ -88,7 +88,7 @@ export default async function AdminProductsPage({ searchParams }: Props) {
                   </Link>
                 </td>
 
-                <td className="text-sm text-center text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-medium px-6 py-4 whitespace-nowrap">
                   <Link
                     href={`/admin/product/${product.slug}`}
                     className='font-semibold hover:text-blue-600 hover:font-bold transition-all'
@@ -97,25 +97,25 @@ export default async function AdminProductsPage({ searchParams }: Props) {
                   </Link>
                 </td>
 
-                <td className="text-sm text-center border-2 border-gray-100 text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-medium px-6 py-4 whitespace-nowrap">
                   {product.inStock}
                 </td>
 
-                <td className="text-sm text-center border-2 border-gray-100 text-gray-900 font-bold px-6 py-4 whitespace-nowrap">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-bold px-6 py-4 whitespace-nowrap">
                   {currencyFormat({
                     value: product.price,
                     country: 'United States'
                   })}
                 </td>
 
-                <td className="text-sm text-center border-2 border-gray-100 text-gray-900 font-medium px-6">
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-medium px-6">
                   <div className='flex justify-center'>
                     {product.sizes.join(' - ')}
                   </div>
                 </td>
 
-                <td className="text-sm text-center text-gray-900 font-medium px-6">
-                  {labels[product.gender]}
+                <td className="text-sm text-center text-gray-900 dark:text-gray-100 font-medium px-6">
+                  {product.gender}
                 </td>
 
               </tr>
