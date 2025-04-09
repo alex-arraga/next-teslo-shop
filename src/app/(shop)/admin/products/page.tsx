@@ -48,22 +48,22 @@ export default async function AdminProductsPage({ searchParams }: Props) {
 
           <thead className="bg-gray-200 border-b dark:border-neutral-600">
             <tr>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="table-col-style">
                 Image
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="table-col-style">
                 Title
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="table-col-style">
                 Stock
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="table-col-style">
                 Price
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="table-col-style">
                 Size
               </th>
-              <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
+              <th scope="col" className="table-col-style">
                 Gender
               </th>
             </tr>
