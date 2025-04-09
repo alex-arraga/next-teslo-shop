@@ -223,7 +223,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
             />
           </div>
 
-          <div className="grid grid-cols-1 p-4 mt-4 bg-slate-200 dark:bg-slate-700 rounded-md sm:grid-cols-3 gap-3">
+          <div className={`grid grid-cols-1 p-4 mt-4 rounded-md sm:grid-cols-3 gap-3 ${product.ProductImage === undefined ? "bg-slate-200 dark:bg-slate-700" : "bg-transparent"}`}>
             {
               product.ProductImage !== undefined ?
                 (product.ProductImage?.map(img => (
@@ -261,7 +261,7 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
       <div className="flex col-span-1 sm:col-span-2 justify-center mt-10 w-full">
         <button className="btn-primary w-full max-w-sm">
-          Save new product
+          Save
         </button>
       </div>
     </form>
