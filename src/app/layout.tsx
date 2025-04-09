@@ -3,7 +3,7 @@ import "./globals.css";
 
 import { inter } from "@/config/fonts";
 import { Providers } from "@/components";
-import { initColorSchemeScript } from "./theme/initColorSchemaScript";
+import { ThemeProvider } from "next-themes";
 
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
 
@@ -28,14 +28,12 @@ export default function RootLayout({ children, }: Readonly<{
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Applies the colour theme before the app will be rendering */}
-        <script dangerouslySetInnerHTML={{ __html: initColorSchemeScript() }} />
-      </head>
       <body className={inter.className}>
-        <Providers>
-          {children}
-        </Providers>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Providers>
+            {children}
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );

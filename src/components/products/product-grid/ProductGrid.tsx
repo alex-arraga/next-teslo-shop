@@ -1,6 +1,5 @@
 import { Product } from "@/interfaces"
 import { ProductGridItem } from "./ProductGridItem"
-
 interface Props {
   products: Product[]
 }

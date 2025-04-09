@@ -1,9 +1,10 @@
 'use client'
 
-import { Product } from "@/interfaces"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import { Product } from "@/interfaces"
+import clsx from 'clsx';
 
 interface Props {
   product: Product
@@ -11,12 +12,14 @@ interface Props {
 
 export const ProductGridItem = ({ product }: Props) => {
   const [displayImage, setDisplayImage] = useState(product.images[0])
-
   const validImg = displayImage ? `/products/${displayImage}` : '/imgs/placeholder.jpg'
 
   return (
-    <div className="max-w-64 sm:max-w-none rounded-md overflow-hidden fade-in bg-neutral-200 hover:bg-blue-50 dark:hover:bg-gray-700 shadow-lg shadow-neutral-400 dark:bg-neutral-700 dark:shadow-neutral-950 hover:scale-105 hover:duration-300">
-
+    <div className={clsx(
+      "max-w-64 sm:max-w-none rounded-md overflow-hidden fade-in shadow-lg hover:scale-105 duration-300",
+      "bg-neutral-200 hover:bg-blue-50 shadow-neutral-400",
+      "dark:bg-neutral-700 dark:hover:bg-gray-700 dark:shadow-neutral-950"
+    )}>
       <Link href={`/product/${product.slug}`}>
         <Image
           src={validImg}
@@ -30,7 +33,6 @@ export const ProductGridItem = ({ product }: Props) => {
         />
       </Link>
 
-
       <div className="p-3 sm:p-4 flex flex-col">
         <Link
           className="text-sm xl:text-base font-light hover:font-normal duration-300"
@@ -40,8 +42,6 @@ export const ProductGridItem = ({ product }: Props) => {
         </Link>
         <span className="text-sm xl:text-base font-bold mt-2">$ {product.price.toFixed(2)}</span>
       </div>
-
-
     </div>
   )
 }
