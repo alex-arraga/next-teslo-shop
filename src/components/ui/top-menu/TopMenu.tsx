@@ -54,6 +54,7 @@ export const TopMenu = () => {
         {
           topMenuOptions.map(option => (
             <Link
+              key={option.gender}
               href={option.href}
               className={
                 clsx("m-2 py-2 px-4 rounded-md transition-all text-center hover:bg-gray-100 dark:hover:bg-blue-100 dark:hover:text-gray-950",
