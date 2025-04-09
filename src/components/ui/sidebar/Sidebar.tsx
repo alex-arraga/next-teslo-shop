@@ -153,7 +153,7 @@ export const Sidebar = () => {
 
                 <button
                   onClick={() => signOut()}
-                  className="flex items-center mt-6 sm:mt-8 xl:mt-10 p-2 w-full hover:bg-gray-100 rounded transition-all"
+                  className="flex items-center mt-6 sm:mt-8 xl:mt-10 p-2 w-full hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-all"
                 >
                   <IoLogInOutline size={24} className="rotate-180 h-5 w-5 sm:h-6 sm:w-6" />
                   <span className="text-sm md:text-base ml-3">
@@ -170,7 +170,7 @@ export const Sidebar = () => {
               <Link
                 href='/auth/login'
                 onClick={closeMenu}
-                className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+                className="flex items-center mt-10 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-all"
               >
                 <IoLogInOutline size={24} />
                 <span className="text-sm md:text-base ml-3">
