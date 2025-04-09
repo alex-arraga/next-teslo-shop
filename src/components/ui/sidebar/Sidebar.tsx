@@ -149,7 +149,8 @@ export const Sidebar = () => {
                   />
                 ))}
 
-                <div className="rounded h-px bg-gray-300 w-full mt-10" />
+                {/* Separator */}
+                <div className="rounded h-px bg-gray-300 dark:bg-neutral-700 w-full mt-6 sm:mt-8 xl:mt-10" />
 
                 <button
                   onClick={() => signOut()}
@@ -171,7 +172,7 @@ export const Sidebar = () => {
                 <Link
                   href='/auth/login'
                   onClick={closeMenu}
-                  className="flex items-center mt-14 p-2 bg-gray-300 dark:bg-neutral-700 w-full rounded transition-all"
+                  className="flex items-center mt-14 p-2 bg-gray-300 dark:bg-neutral-700 hover:bg-gray-100 dark:hover:bg-gray-700 w-full rounded transition-all"
                 >
                   <IoLogInOutline size={24} />
                   <span className="text-sm md:text-base ml-3">
@@ -180,9 +181,9 @@ export const Sidebar = () => {
                 </Link>
 
                 <Link
-                  href='/auth/register'
+                  href='/auth/new-account'
                   onClick={closeMenu}
-                  className="flex items-center mt-4 p-2 bg-gray-300 dark:bg-neutral-700 w-full rounded transition-all"
+                  className="flex items-center mt-4 p-2 bg-gray-300 dark:bg-neutral-700 hover:bg-gray-100 dark:hover:bg-gray-700 w-full rounded transition-all"
                 >
                   <IoPersonCircleOutline size={24} />
                   <span className="text-sm md:text-base ml-3">
