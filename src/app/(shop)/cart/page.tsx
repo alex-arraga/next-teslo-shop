@@ -18,12 +18,12 @@ export default function CartPage() {
 
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md">
           <Title
-            title="Carrito de compra"
+            title="Shopping cart"
           />
 
           <Link href='/' className="flex items-center gap-1 rounded-md mb-2 w-fit transform hover:translate-x-1 hover:text-blue-400 hover:font-semibold transition-all">
             <IoChevronForward size={15} />
-            Seguir comprando
+            Continue shopping
           </Link>
 
           <ProductsInCart />
@@ -32,7 +32,7 @@ export default function CartPage() {
         {/* Checkout */}
         <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 shadow-xl dark:shadow-neutral-950 rounded-md h-fit p-4 xl:p-6">
           <Title
-            title="Resumen"
+            title="Cart summary"
           />
 
           <SummaryOrderCart />
@@ -42,7 +42,7 @@ export default function CartPage() {
             href='/checkout/address'
             className="btn-primary mt-4"
           >
-            Continuar
+            Continue
           </Link>
         </div>
 
