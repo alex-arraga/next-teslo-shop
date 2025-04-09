@@ -61,26 +61,25 @@ export default async function OrdersByIdPage({ params }: Props) {
 
           {/* Products in order */}
           <OrderedProducts orderItem={OrderItem} />
-
         </div>
 
         {/* Order details */}
         <div className="mb-28 xl:mb-0 col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 rounded-md shadow-xl h-fit p-4 sm:p-6">
           <Title
-            title="Detalles"
+            title="Details"
             className="mt-0"
           />
 
           {/* Shipping address */}
-          <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Dirección de entrega</h2>
+          <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Shipping address</h2>
           <div className="grid grid-cols-2">
 
-            <p className="text-sm md:text-base">Cliente</p>
-            <p className="text-right font-me text-sm md:text-basedium">
+            <p className="text-sm md:text-base">Client</p>
+            <p className="text-right font-me text-sm md:text-base">
               {OrderAddress!.firstName} {OrderAddress!.lastName}
             </p>
 
-            <p className="text-sm md:text-base">Ciudad</p>
+            <p className="text-sm md:text-base">City</p>
             <p className="text-right text-sm md:text-base">
               {OrderAddress!.city}
             </p>
@@ -88,12 +87,12 @@ export default async function OrdersByIdPage({ params }: Props) {
             {/* <p>Provincia / Estado</p>
             <p className="text-right">Santa Fe</p> */}
 
-            <p className="text-sm md:text-base">Codigo postal</p>
+            <p className="text-sm md:text-base">Zip code</p>
             <p className="text-right text-sm md:text-base">
               {OrderAddress!.postalCode}
             </p>
 
-            <p className="text-sm md:text-base">País</p>
+            <p className="text-sm md:text-base">Country</p>
             <p className="text-right text-sm md:text-base">
               {OrderAddress!.country.name} - {OrderAddress!.countryId}
             </p>
@@ -106,12 +105,12 @@ export default async function OrdersByIdPage({ params }: Props) {
 
 
           {/* Summary products */}
-          <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Productos</h2>
+          <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Products</h2>
           <div className="grid grid-cols-2">
 
-            <span className="text-sm md:text-base">N° Productos</span>
+            <span className="text-sm md:text-base">Number of items</span>
             <span className="text-right text-sm md:text-base">
-              {order!.itemsInOrder} artículos
+              {order!.itemsInOrder} items
             </span>
 
             <span className="text-sm md:text-base">Subtotal</span>
@@ -124,7 +123,7 @@ export default async function OrdersByIdPage({ params }: Props) {
               }
             </span>
 
-            <span className="text-sm md:text-base">Impuestos (15%)</span>
+            <span className="text-sm md:text-base">Taxes (15%)</span>
             <span className="text-right text-sm md:text-base">
               {
                 currencyFormat({

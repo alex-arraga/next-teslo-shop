@@ -42,24 +42,22 @@ export const OrderedProducts = ({ orderItem }: Props) => {
 
             <div className="flex flex-col w-full">
 
-              <p className="capitalize">
-                {labels[item.product.gender]}
+              <p className="capitalize font-medium text-gray-700 dark:text-neutral-400">
+                {item.product.gender}
               </p>
 
               <h2 className="font-semibold text-blue-900 dark:text-blue-300 text-sm md:text-lg overflow-auto max-w-sm md:mr-10 w-full">
                 {item.size} - {item.product.title}
               </h2>
 
-              <p className="text-sm md:text-base font-bold">
-                {
-                  currencyFormat({
-                    value: item.price,
-                    country: "United States"
-                  })
-                }
-
-                <span className="font-medium"> x {item.quantity} art.</span>
-              </p>
+              <div className="flex w-full justify-start">
+                <p className="text-sm md:text-base font-light">
+                  Price: <span className="font-medium">{currencyFormat({ value: item.price, country: "United States" })}</span>
+                </p>
+                <p className="ml-6 text-sm md:text-base font-light">
+                  Quantity: <span className="font-medium">{item.quantity} items</span>
+                </p>
+              </div>
 
             </div>
           </div>

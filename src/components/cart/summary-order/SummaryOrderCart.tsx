@@ -40,7 +40,7 @@ export const SummaryOrderCart = () => {
         {currencyFormat({ value: subTotal, country: "United States" })}
       </span>
 
-      <span className="text-sm md:text-base">Taxes 15%</span>
+      <span className="text-sm md:text-base">Taxes (15%)</span>
       <span className="text-sm md:text-base text-right">
         {currencyFormat({ value: tax, country: "United States" })}
       </span>
