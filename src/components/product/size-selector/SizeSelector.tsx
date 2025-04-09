@@ -19,9 +19,9 @@ export const SizeSelector = ({ availableSizes, selectedSize, onSizeChanged }: Pr
             key={size}
             onClick={() => onSizeChanged(size)}
             className={
-              clsx('font-medium mr-5 p-2 hover:font-bold hover:underline transition-all bg-neutral-200 dark:bg-neutral-700 w-12 rounded ',
+              clsx('font-medium mr-5 p-2 hover:font-bold hover:underline transition-all bg-neutral-200 hover:bg-blue-600 hover:text-white dark:bg-neutral-700 dark:hover:bg-blue-700 w-12 rounded ',
                 {
-                  'bg-blue-800 transition-all text-white w-fit rounded-sm': size === selectedSize
+                  'bg-neutral-800 dark:bg-blue-800 transition-all text-white': size === selectedSize
                 })
             }>
             <span>{size}</span>
