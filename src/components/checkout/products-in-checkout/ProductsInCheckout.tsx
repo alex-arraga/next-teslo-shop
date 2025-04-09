@@ -45,16 +45,18 @@ export const ProductsInCheckout = () => {
 
               <div>
                 <div className="flex gap-6 text-xs sm:text-sm md:text-base">
-                  <p className="font-normal text-gray-800 dark:text-gray-300">Talla: {product.size}</p>
+                  <p className="font-normal text-gray-800 dark:text-gray-300">
+                    Size: {product.size}
+                  </p>
 
                   <p className="text-xs sm:text-sm md:text-base font-bold">
-                    Precio: <span className="text-gray-800 dark:text-gray-300">{currencyFormat({ value: product.price, country: "United States", })}</span>
+                    Price: <span className="text-gray-800 dark:text-gray-300">{currencyFormat({ value: product.price, country: "United States", })}</span>
                   </p>
                 </div>
 
                 <div className="flex justify-between items-center mt-2 bg-blue-50 dark:bg-gray-800 dark:text-gray-300 rounded p-1">
                   <p className="text-xs sm:text-sm md:text-base">
-                    Unidades: <span className="font-semibold">{product.quantity}</span>
+                    Units: <span className="font-semibold">{product.quantity}</span>
                   </p>
 
                   <p className="mr-2 font-bold text-xs dark:text-white sm:text-sm md:text-base">

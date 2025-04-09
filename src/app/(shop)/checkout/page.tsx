@@ -16,12 +16,12 @@ export default function CheckoutPage() {
       <div className="grid grid-cols-1 xl:grid-cols-2 xl:p-6 gap-6 xl:max-w-[calc(70vw)] h-fit">
         <div className="flex flex-col col-span-2 xl:col-span-1 rounded-md xl:p-6">
           <Title
-            title="Productos"
+            title="Products"
           />
 
           <Link href='/cart' className="flex items-center gap-1 rounded-md mb-2 w-fit transform hover:translate-x-1 hover:text-blue-400 hover:font-semibold transition-all">
             <IoChevronForward size={15} />
-            Editar carrito
+            Edit cart
           </Link>
 
           {/* Products in checkout */}

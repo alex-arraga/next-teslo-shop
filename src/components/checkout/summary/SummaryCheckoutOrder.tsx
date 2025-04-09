@@ -62,18 +62,18 @@ export const SummaryCheckoutOrder = () => {
     <div className="mb-28 col-span-2 xl:col-span-1 bg-white dark:bg-neutral-700 shadow-xl dark:shadow-neutral-950 rounded-md h-fit p-4 xl:p-6">
 
       <Title
-        title="Orden de compra"
+        title="Purchase order"
       />
 
       {/* Shipping address */}
-      <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Dirección de entrega</h2>
+      <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 mb-6">Shipping address</h2>
       <div className="grid grid-cols-2">
-        <p className="text-sm md:text-base">Cliente</p>
+        <p className="text-sm md:text-base">Client</p>
         <p className="text-sm md:text-base text-right font-medium">
           {userAddress.firstName} {userAddress.lastName}
         </p>
 
-        <p className="text-sm md:text-base">Ciudad y país</p>
+        <p className="text-sm md:text-base">City and country</p>
         <p className="text-sm md:text-base text-right">
           {userAddress.city + ' - ' + userAddress.country}
         </p>
@@ -83,7 +83,7 @@ export const SummaryCheckoutOrder = () => {
           {userAddress.state}
         </p> */}
 
-        <p className="text-sm md:text-base">Codigo postal</p>
+        <p className="text-sm md:text-base">Zip code</p>
         <p className="text-sm md:text-base text-right">
           {userAddress.postalCode}
         </p>
@@ -95,12 +95,12 @@ export const SummaryCheckoutOrder = () => {
 
 
       {/* Summary products */}
-      <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Productos</h2>
+      <h2 className="text-base sm:text-lg xl:text-xl font-semibold text-gray-700 dark:text-blue-100 my-6">Products</h2>
       <div className="grid grid-cols-2">
 
-        <span className="text-sm md:text-base">N° Productos</span>
+        <span className="text-sm md:text-base">Number of items</span>
         <span className="text-right text-sm md:text-base">
-          {totalItems + ' artículos'}
+          {totalItems === 1 ? '1 item' : totalItems + ' items'}
         </span>
 
         <span className="text-sm md:text-base">Subtotal</span>
@@ -113,7 +113,7 @@ export const SummaryCheckoutOrder = () => {
           }
         </span>
 
-        <span className="text-sm md:text-base">Impuestos (15%)</span>
+        <span className="text-sm md:text-base">Taxes (15%)</span>
         <span className="text-right text-sm md:text-base">
           {
             currencyFormat({
@@ -138,7 +138,7 @@ export const SummaryCheckoutOrder = () => {
       {/* Terms and conditions */}
       <div className="flex flex-col mt-6">
         <span className="text-xs sm:text-sm text-wrap">
-          Al hacer click en <b>confirmar orden</b> acepta nuestros <a href="#" className="underline font-medium hover:text-blue-700 transition-all">terminos y condiciones</a> de uso y <a href="#" className="underline font-medium hover:text-blue-700 transition-all">politicas de privacidad</a>
+          By clicking on <b>confirm order</b> you accept our <a href="#" className="underline font-medium hover:text-blue-700 transition-all">terms and conditions</a> of use and <a href="#" className="underline font-medium hover:text-blue-700 transition-all">privacy policy</a>
         </span>
 
 
@@ -166,11 +166,11 @@ export const SummaryCheckoutOrder = () => {
               sendingOrder ? (
                 <div className="flex items-center justify-center gap-2">
                   <div className="loader" />
-                  <p>Confirmando orden...</p>
+                  <p>Confirming order...</p>
                 </div>
               ) : (
                 <>
-                  Confirmar order
+                  Confirm order
                 </>
               )
             }
