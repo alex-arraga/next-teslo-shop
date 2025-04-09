@@ -99,55 +99,55 @@ export const EditProductForm = ({ product, categories }: Props) => {
       {/* Textos */}
       <div className="w-full">
         <div className="flex flex-col mb-2">
-          <span>Título</span>
+          <span className="text-xs sm:text-sm md:text-base">Title</span>
           <input
             {...register('title', { required: true })}
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span>Slug</span>
+          <span className="text-xs sm:text-sm md:text-base">Slug</span>
           <input
             {...register('slug', { required: true })}
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span>Descripción</span>
+          <span className="text-xs sm:text-sm md:text-base">Description</span>
           <textarea
             {...register('description', { required: true })}
             rows={5}
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           ></textarea>
         </div>
 
         <div className="flex flex-col mb-2">
-          <span>Price</span>
+          <span className="text-xs sm:text-sm md:text-base">Price</span>
           <input
             {...register('price', { required: true, min: 0 })}
             type="number"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span>Tags</span>
+          <span className="text-xs sm:text-sm md:text-base">Tags</span>
           <input
             {...register('tags', { required: true })}
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span>Gender</span>
+          <span className="text-xs sm:text-sm md:text-base">Gender</span>
           <select
             {...register('gender', { required: true })}
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           >
             <option value="">[Seleccione]</option>
             <option value="men">Men</option>
@@ -158,13 +158,13 @@ export const EditProductForm = ({ product, categories }: Props) => {
         </div>
 
         <div className="flex flex-col mb-2">
-          <span>Categoria</span>
+          <span className="text-xs sm:text-sm md:text-base">Category</span>
 
           <select
             {...register('categoryId', { required: true })}
-            className="p-2 border rounded-md bg-gray-200 capitalize"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200 capitalize"
           >
-            <option value="">[Seleccione]</option>
+            <option value="">[Select]</option>
             {categories.map(c => (
               <option
                 key={c.id}
@@ -178,36 +178,32 @@ export const EditProductForm = ({ product, categories }: Props) => {
           </select>
 
         </div>
-
-        <button className="btn-primary w-full">
-          Guardar
-        </button>
       </div>
 
       {/* Selector de tallas y fotos */}
       <div className="w-full">
 
         <div className="flex flex-col mb-2">
-          <span>Unidades en stock</span>
+          <span className="text-xs sm:text-sm md:text-base">Units in stock</span>
           <input
             {...register('inStock', { required: true, min: 0 })}
             type="number"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         {/* As checkboxes */}
         <div className="flex flex-col">
 
-          <span>Tallas</span>
+          <span className="text-xs sm:text-sm md:text-base">Sizes</span>
           <div className="flex flex-wrap">
 
             {
               sizes.map(size => (
                 <div onClick={() => onSizeChange(size)} key={size} className={clsx(
-                  "flex items-center justify-center w-10 h-10 mr-2 border rounded-md cursor-pointer",
+                  "flex items-center justify-center w-10 h-10 mr-2 border dark:border-neutral-600 rounded-md cursor-pointer",
                   {
-                    "bg-blue-500 text-white": getValues('sizes').includes(size)
+                    "bg-blue-500 text-white border-blue-400": getValues('sizes').includes(size)
                   }
                 )}>
                   <span>{size}</span>
@@ -220,18 +216,18 @@ export const EditProductForm = ({ product, categories }: Props) => {
 
           <div className="flex flex-col mb-2">
 
-            <span>Fotos</span>
+            <span className="text-xs sm:text-sm md:text-base">Photos</span>
             <input
               {...register('images', { required: true })}
               type="file"
               multiple
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
               accept="image/png, image/jpg, image/jpeg, image/avif"
             />
 
           </div>
 
-          <div className="grid grid-cols-1 p-4 mt-4 bg-slate-200 rounded-md sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 p-4 mt-4 bg-slate-200 dark:bg-slate-700 rounded-md sm:grid-cols-3 gap-3">
             {
               product.ProductImage !== undefined ?
                 (product.ProductImage?.map(img => (
@@ -250,24 +246,28 @@ export const EditProductForm = ({ product, categories }: Props) => {
                       onClick={() => deleteImage(img.id, img.url)}
                       className="w-full rounded-b-md text-sm btn-delete"
                     >
-                      Eliminar
+                      Delete
                     </button>
                   </div>
                 )))
 
                 : (
                   <div className="col-span-1 sm:col-span-3">
-                    <h1 className="text-center font-medium">
-                      No hay imagenes
+                    <h1 className="text-xs sm:text-sm md:text-base text-center font-medium">
+                      No images
                     </h1>
                   </div>
                 )
             }
           </div>
-
         </div>
       </div>
 
+      <div className="flex col-span-1 sm:col-span-2 justify-center mt-10 w-full">
+        <button className="btn-primary w-full max-w-sm">
+          Save new product
+        </button>
+      </div>
     </form>
   );
 };

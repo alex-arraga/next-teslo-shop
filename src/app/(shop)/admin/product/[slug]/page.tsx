@@ -52,7 +52,7 @@ export default async function AdminProductBySlugPage({ params }: Props) {
     redirect('/admin/products')
   }
 
-  const title = (slug === 'new') ? 'Añadir nuevo producto' : `Editar - ${product?.title}`
+  const title = (slug === 'new') ? 'Add new product' : `Edit - ${product?.title}`
   
 
   return (
