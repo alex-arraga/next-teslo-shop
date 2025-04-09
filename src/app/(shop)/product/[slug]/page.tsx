@@ -11,7 +11,6 @@ import {
 
 import { getProductBySlug } from "@/actions";
 import { AddProduct } from "./ui/AddProduct";
-import { labels } from "@/utils";
 
 interface Props {
   params: {
@@ -39,8 +38,7 @@ export async function generateMetadata(
     openGraph: {
       title: product?.title,
       description: product?.description,
-      // images: [], --> https://mysite.com/product/slug/image.jpg
-      images: [`/products/${product?.images[1]}`],
+      images: [`/products/${product?.images[1]}`], // -- > https://mysite.com/product/slug/image.jpg
     },
   }
 }

@@ -33,7 +33,6 @@ export async function generateMetadata(
     openGraph: {
       title: `Order #${orderId.split('-').at(0)?.slice(0, -3)}`,
       description: `Order #${orderId.split('-').at(0)?.slice(0, -3)}`,
-      // images: [`/products/${product?.images[1]}`],
     },
   }
 }

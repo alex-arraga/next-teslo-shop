@@ -6,7 +6,6 @@ import { redirect } from "next/navigation";
 import { Pagination, ProductGrid, Title } from "@/components";
 import { Gender } from '@/interfaces';
 
-import { labels } from "@/utils";
 import { getPaginatedProductWithImages } from "@/actions";
 
 
@@ -39,7 +38,6 @@ export async function generateMetadata(
     openGraph: {
       title: gender,
       description: `Section ${gender}`,
-      // images: [`/products/${product?.images[1]}`],
     },
   }
 }
