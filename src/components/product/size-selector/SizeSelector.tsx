@@ -11,7 +11,7 @@ interface Props {
 export const SizeSelector = ({ availableSizes, selectedSize, onSizeChanged }: Props) => {
   return (
     <div className='mb-6'>
-      <h3 className='font-bold mb-4'>Tallas disponibles</h3>
+      <h3 className='font-bold mb-4'>Available sizes</h3>
 
       {
         availableSizes.map(size => (
