@@ -54,7 +54,7 @@ export default async function ProductPage({ params }: Props) {
 
 
   return (
-    <section className="md:mx-10 grid grid-cols-1 md:grid-cols-4 gap-2 w-full">
+    <section className="grid grid-cols-1 md:grid-cols-4 gap-2 md:mx-10">
 
       <div className="col-span-1 md:col-span-2 md:rounded-xl">
         {/* Mobile Slideshow */}

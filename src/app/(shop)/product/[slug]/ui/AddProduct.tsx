@@ -70,12 +70,14 @@ export const AddProduct = ({ product }: Props) => {
 
 
       {/* Button */}
-      <button
-        className="btn-primary mb-6"
-        onClick={addToCart}
-      >
-        Add to cart
-      </button>
+      <div className="flex w-full sm:justify-center">
+        <button
+          className="btn-primary w-full mb-6"
+          onClick={addToCart}
+        >
+          Add to cart
+        </button>
+      </div>
 
     </>
   )

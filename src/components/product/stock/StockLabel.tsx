@@ -37,7 +37,7 @@ export const StockLabel = ({ slug }: Props) => {
           )
 
           : (
-            <h1 className={`${titleFont.className} text-xl text-blue-800 dark:text-blue-300 font-bold`}>
+            <h1 className={`${titleFont.className} text-base md:text-lg text-blue-800 dark:text-blue-300 font-bold`}>
               Stock: {stock}
             </h1 >
           )
