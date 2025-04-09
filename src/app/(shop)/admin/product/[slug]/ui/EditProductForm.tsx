@@ -94,62 +94,62 @@ export const EditProductForm = ({ product, categories }: Props) => {
   return (
     <form
       onSubmit={handleSubmit(onSumbit)}
-      className="grid px-5 mb-16 grid-cols-1 sm:px-0 sm:grid-cols-2 gap-3"
+      className="grid mb-16 grid-cols-1 sm:grid-cols-2 gap-3"
     >
       {/* Textos */}
       <div className="w-full">
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Title</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Title</span>
           <input
             {...register('title', { required: true })}
             type="text"
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Slug</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Slug</span>
           <input
             {...register('slug', { required: true })}
             type="text"
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Description</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Description</span>
           <textarea
             {...register('description', { required: true })}
             rows={5}
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           ></textarea>
         </div>
 
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Price</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Price</span>
           <input
             {...register('price', { required: true, min: 0 })}
             type="number"
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Tags</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Tags</span>
           <input
             {...register('tags', { required: true })}
             type="text"
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Gender</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Gender</span>
           <select
             {...register('gender', { required: true })}
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           >
-            <option value="">[Seleccione]</option>
+            <option value="">[Select]</option>
             <option value="men">Men</option>
             <option value="women">Women</option>
             <option value="kid">Kid</option>
@@ -158,11 +158,11 @@ export const EditProductForm = ({ product, categories }: Props) => {
         </div>
 
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Category</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Category</span>
 
           <select
             {...register('categoryId', { required: true })}
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200 capitalize"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200 capitalize"
           >
             <option value="">[Select]</option>
             {categories.map(c => (
@@ -184,18 +184,17 @@ export const EditProductForm = ({ product, categories }: Props) => {
       <div className="w-full">
 
         <div className="flex flex-col mb-2">
-          <span className="text-xs sm:text-sm md:text-base">Units in stock</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Units in stock</span>
           <input
             {...register('inStock', { required: true, min: 0 })}
             type="number"
-            className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+            className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
           />
         </div>
 
         {/* As checkboxes */}
         <div className="flex flex-col">
-
-          <span className="text-xs sm:text-sm md:text-base">Sizes</span>
+          <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Sizes</span>
           <div className="flex flex-wrap">
 
             {
@@ -210,21 +209,18 @@ export const EditProductForm = ({ product, categories }: Props) => {
                 </div>
               ))
             }
-
           </div>
 
 
-          <div className="flex flex-col mb-2">
-
-            <span className="text-xs sm:text-sm md:text-base">Photos</span>
+          <div className="flex flex-col my-2">
+            <span className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-400">Photos</span>
             <input
               {...register('images', { required: true })}
               type="file"
               multiple
-              className="p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
+              className="text-sm md:text-base p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200"
               accept="image/png, image/jpg, image/jpeg, image/avif"
             />
-
           </div>
 
           <div className="grid grid-cols-1 p-4 mt-4 bg-slate-200 dark:bg-slate-700 rounded-md sm:grid-cols-3 gap-3">
