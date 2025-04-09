@@ -81,7 +81,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
     >
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Nombre</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Name</label>
         <input
           type="text"
           autoFocus
@@ -96,7 +96,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Apellido</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Lastname</label>
         <input
           type="text"
           autoFocus
@@ -111,7 +111,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Dirección</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Address</label>
         <input
           type="text"
           autoFocus
@@ -126,7 +126,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Dirección 2 (opcional)</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Second address (optional)</label>
         <input
           type="text"
           autoFocus
@@ -141,7 +141,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Código postal</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Zip code</label>
         <input
           type="text"
           autoFocus
@@ -156,7 +156,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Ciudad</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">City</label>
         <input
           type="text"
           autoFocus
@@ -171,7 +171,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">País</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Country</label>
         <select
           className={clsx(
             "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200 cursor-pointer",
@@ -194,7 +194,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Teléfono</label>
+        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Phone number</label>
         <input
           type="text"
           autoFocus
@@ -238,7 +238,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
             </svg>
           </div>
         </label>
-        <span>¿Recordar Dirección?</span>
+        <span>Remember address</span>
       </div>
 
       {/* Button checkout */}
@@ -252,7 +252,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
             "btn-disabled": !isValid
           })}
       >
-        Siguiente
+        Continue
       </button>
 
     </form>
