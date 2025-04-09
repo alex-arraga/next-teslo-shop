@@ -25,7 +25,7 @@ export default async function OrdersPage() {
   return (
     <section className='min-h-screen'>
 
-      <Title title="Ordenes" />
+      <Title title="Order history" />
 
       <div className="mb-10">
         <table className="min-w-full">
@@ -36,19 +36,19 @@ export default async function OrdersPage() {
                 #ID
               </th>
               <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
-                Nombre completo
+                Fullname
               </th>
               <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
-                Entrega
+                Shipping address
               </th>
               <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
                 Total
               </th>
               <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
-                Estado
+                State
               </th>
               <th scope="col" className="text-sm text-center w-fit bg-slate-100 dark:bg-neutral-900 dark:text-gray-200 font-semibold text-gray-900 px-6 py-4">
-                Opciones
+                Options
               </th>
             </tr>
           </thead>
@@ -78,7 +78,7 @@ export default async function OrdersPage() {
                   })}
                 </td>
 
-                <td className="flex items-center text-sm text-center  text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                <td className="flex items-center text-sm text-center text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
                   {
                     <PaymentStatus
                       colorTxtPayed='text-green-800 dark:text-green-400'
@@ -90,7 +90,7 @@ export default async function OrdersPage() {
 
                 <td className="text-sm text-center text-gray-900 dark:text-blue-200 font-medium px-6 ">
                   <Link href={`/orders/${order.id}`} className="hover:underline">
-                    Ver orden
+                    View order
                   </Link>
                 </td>
 
