@@ -9,8 +9,8 @@ import {
   IoCloseOutline,
   IoLogInOutline,
   IoPeopleOutline,
+  IoPersonCircleOutline,
   IoPersonOutline,
-  IoSearchOutline,
   IoShirtOutline,
   IoTicketOutline
 } from "react-icons/io5";
@@ -167,16 +167,29 @@ export const Sidebar = () => {
           {/* If is not Auth */}
           {
             !isAuthenticated && (
-              <Link
-                href='/auth/login'
-                onClick={closeMenu}
-                className="flex items-center mt-10 p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-all"
-              >
-                <IoLogInOutline size={24} />
-                <span className="text-sm md:text-base ml-3">
-                  Log in
-                </span>
-              </Link>
+              <div>
+                <Link
+                  href='/auth/login'
+                  onClick={closeMenu}
+                  className="flex items-center mt-14 p-2 bg-gray-300 dark:bg-neutral-700 w-full rounded transition-all"
+                >
+                  <IoLogInOutline size={24} />
+                  <span className="text-sm md:text-base ml-3">
+                    Sign in
+                  </span>
+                </Link>
+
+                <Link
+                  href='/auth/register'
+                  onClick={closeMenu}
+                  className="flex items-center mt-4 p-2 bg-gray-300 dark:bg-neutral-700 w-full rounded transition-all"
+                >
+                  <IoPersonCircleOutline size={24} />
+                  <span className="text-sm md:text-base ml-3">
+                    Sign up
+                  </span>
+                </Link>
+              </div>
             )
           }
         </div>
