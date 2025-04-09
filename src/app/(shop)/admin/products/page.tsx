@@ -30,14 +30,14 @@ export default async function AdminProductsPage({ searchParams }: Props) {
   return (
     <section className='min-h-screen'>
 
-      <Title title="Mantenimiento de Productos" />
+      <Title title="Products maintenance" />
 
       <div className='flex justify-start mb-5'>
         <Link
           className='btn-primary'
           href='/admin/product/new'
         >
-          Crear nuevo producto
+          Create new product
         </Link>
       </div>
 
