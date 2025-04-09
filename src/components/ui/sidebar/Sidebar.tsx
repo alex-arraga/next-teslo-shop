@@ -22,34 +22,34 @@ import { useUIStore } from "@/store";
 const sidebarOptions = {
   userOptions: [
     {
-      title: 'Perfil',
+      title: 'Profile',
       href: '/profile',
       icon: <IoPersonOutline size={24} className="h-5 w-5 sm:h-6 sm:w-6" />
     },
     {
-      title: 'Ordenes',
+      title: 'Orders',
       href: '/orders',
       icon: <IoTicketOutline size={24} className="h-5 w-5 sm:h-6 sm:w-6" />
     },
   ],
   adminOptions: [
     {
-      title: 'Perfil',
+      title: 'Profile',
       href: '/profile',
       icon: <IoPersonOutline size={24} className="h-5 w-5 sm:h-6 sm:w-6" />
     },
     {
-      title: 'Ordenes',
+      title: 'Orders',
       href: '/admin/orders',
       icon: <IoTicketOutline size={24} className="h-5 w-5 sm:h-6 sm:w-6" />
     },
     {
-      title: 'Productos',
+      title: 'Products',
       href: '/admin/products',
       icon: <IoShirtOutline size={24} className="h-5 w-5 sm:h-6 sm:w-6" />
     },
     {
-      title: 'Usuarios',
+      title: 'Users',
       href: '/admin/users',
       icon: <IoPeopleOutline size={24} className="h-5 w-5 sm:h-6 sm:w-6" />
     },
@@ -107,21 +107,8 @@ export const Sidebar = () => {
           onClick={closeMenu}
         />
 
-        {/* Search Input */}
-        {/* <div className="relative mt-14">
-          <IoSearchOutline
-            size={20}
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
-          />
-          <input
-            type="text"
-            placeholder="Buscar"
-            className="w-full text-sm align-middle sm:text-base bg-gray-50 max-h-10 dark:bg-neutral-700 dark:border-neutral-600 rounded py-1 px-10 border-b-2 border-gray-200 focus:outline-none focus:border-blue-500 transition-all"
-          />
-        </div> */}
-
         {/* Menu options */}
-        <div className="mt-10">
+        <div className="mt-10 md:mt-20">
           {/* If is Auth and role is User */}
           {
             isAuthenticated && !isAdmin && (
@@ -143,7 +130,7 @@ export const Sidebar = () => {
                 >
                   <IoLogInOutline size={24} className="rotate-180 h-5 w-5 sm:h-6 sm:w-6" />
                   <span className="text-sm md:text-base ml-3">
-                    Cerrar sesión
+                    Log out
                   </span>
                 </button>
               </div>
@@ -170,7 +157,7 @@ export const Sidebar = () => {
                 >
                   <IoLogInOutline size={24} className="rotate-180 h-5 w-5 sm:h-6 sm:w-6" />
                   <span className="text-sm md:text-base ml-3">
-                    Cerrar sesión
+                    Log out
                   </span>
                 </button>
               </>
@@ -187,7 +174,7 @@ export const Sidebar = () => {
               >
                 <IoLogInOutline size={24} />
                 <span className="text-sm md:text-base ml-3">
-                  Ingresar
+                  Log in
                 </span>
               </Link>
             )
