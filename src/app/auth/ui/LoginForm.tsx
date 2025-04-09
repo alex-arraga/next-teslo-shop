@@ -65,7 +65,7 @@ export const LoginForm = () => {
         href="/auth/new-account"
         className="btn-secondary text-center"
       >
-        Create an account
+        Create
       </Link>
     </form>
   )
