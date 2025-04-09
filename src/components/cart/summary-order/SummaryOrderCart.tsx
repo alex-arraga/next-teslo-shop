@@ -30,9 +30,9 @@ export const SummaryOrderCart = () => {
   return (
     <div className="grid grid-cols-2">
 
-      <span className="text-sm md:text-base">N° Productos</span>
+      <span className="text-sm md:text-base">Number of items</span>
       <span className="text-sm md:text-base text-right">
-        {totalItems === 1 ? '1 artículo' : `${totalItems} artículos`}
+        {totalItems === 1 ? '1 item' : `${totalItems} items`}
       </span>
 
       <span className="text-sm md:text-base">Subtotal</span>
@@ -40,7 +40,7 @@ export const SummaryOrderCart = () => {
         {currencyFormat({ value: subTotal, country: "United States" })}
       </span>
 
-      <span className="text-sm md:text-base">Impuestos 15%</span>
+      <span className="text-sm md:text-base">Taxes 15%</span>
       <span className="text-sm md:text-base text-right">
         {currencyFormat({ value: tax, country: "United States" })}
       </span>
