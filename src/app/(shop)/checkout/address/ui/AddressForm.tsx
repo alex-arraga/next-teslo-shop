@@ -81,7 +81,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
     >
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Name</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">Name</label>
         <input
           type="text"
           autoFocus
@@ -96,7 +96,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Lastname</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">Lastname</label>
         <input
           type="text"
           autoFocus
@@ -111,7 +111,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Address</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">Address</label>
         <input
           type="text"
           autoFocus
@@ -126,7 +126,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Second address (optional)</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">Second address (optional)</label>
         <input
           type="text"
           autoFocus
@@ -141,7 +141,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Zip code</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">Zip code</label>
         <input
           type="text"
           autoFocus
@@ -156,7 +156,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">City</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">City</label>
         <input
           type="text"
           autoFocus
@@ -171,7 +171,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Country</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">Country</label>
         <select
           className={clsx(
             "p-2 border rounded-md bg-gray-200 dark:bg-neutral-700 dark:text-white dark:border-neutral-600 text-black border-gray-200 cursor-pointer",
@@ -194,7 +194,7 @@ export const AddressForm = ({ countries, userAddress = {} }: Props) => {
       </div>
 
       <div className="flex flex-col mb-2">
-        <label className="text-xs sm:text-sm md:text-base text-neutral-500">Phone number</label>
+        <label className="text-sm md:text-base text-neutral-500 dark:text-neutral-400">Phone number</label>
         <input
           type="text"
           autoFocus
