@@ -92,7 +92,7 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Price */}
           <p className="bg-neutral-200 dark:bg-neutral-700 p-2 w-fit rounded mb-4 font-semibold text-xl">
-            ${product.price.toFixed(2)} <span className="text-gray-400 font-normal text-base">p/u</span>
+            ${product.price.toFixed(2)} <span className="text-gray-400 font-normal text-base">each</span>
           </p>
 
           {/* Stock allowed */}
