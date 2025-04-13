@@ -1,3 +1,6 @@
+// General
+export * from './general/LoadingPage'
+
 // Providers
 export * from './providers/Providers'
 
